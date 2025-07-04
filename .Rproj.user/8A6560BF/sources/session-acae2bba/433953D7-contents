@@ -1,0 +1,56 @@
+
+# Create all folders at once
+folders <- c(
+  "data/raw", 
+  "data/processed", 
+  "scripts", 
+  "models", 
+  "outputs/plots", 
+  "outputs/tables", 
+  "outputs/reports",
+  "tableau/data_extracts", 
+  "documentation"
+)
+
+# Create all folders
+for(folder in folders) {
+  dir.create(folder, recursive = TRUE)
+}
+
+# Create placeholder files to ensure folders show up in Git
+placeholder_files <- c(
+  "data/raw/.gitkeep",
+  "data/processed/.gitkeep", 
+  "models/.gitkeep",
+  "outputs/plots/.gitkeep",
+  "outputs/tables/.gitkeep", 
+  "outputs/reports/.gitkeep",
+  "tableau/data_extracts/.gitkeep"
+)
+
+# Create placeholder files
+for(file in placeholder_files) {
+  file.create(file)
+}
+
+# Create the actual R script files
+r_scripts <- c(
+  "scripts/01_data_exploration.R",
+  "scripts/02_data_cleaning.R", 
+  "scripts/03_feature_engineering.R",
+  "scripts/04_modeling.R",
+  "scripts/05_model_evaluation.R",
+  "scripts/06_final_analysis.R",
+  "scripts/utils.R"
+)
+
+# Create R script files
+for(script in r_scripts) {
+  file.create(script)
+}
+
+# Create documentation files
+file.create("data/data_dictionary.md")
+file.create("README.md")
+file.create(".gitignore")
+

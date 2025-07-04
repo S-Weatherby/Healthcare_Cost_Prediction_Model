@@ -1,0 +1,12 @@
+variable_name,data_type,source,description,range_values,missing_count,missing_percent,notes
+age,integer,Kaggle Medical Insurance Dataset,Age of primary beneficiary in years,18 to 64,0,0,NA
+sex,factor,Kaggle Medical Insurance Dataset,Primary beneficiary biological sex,"female, male",0,0,Converted to title case and factor
+bmi,numeric,Kaggle Medical Insurance Dataset,Body mass index (weight in kg / (height in meters)^2),15.96 to 53.13,0,0,NA
+children,integer,Kaggle Medical Insurance Dataset,Number of children/dependents covered by health insurance,0 to 5,0,0,NA
+smoker,factor,Kaggle Medical Insurance Dataset,Smoking status of primary beneficiary,"no, yes",0,0,Converted to title case and factor
+region,factor,Kaggle Medical Insurance Dataset,Beneficiary's residential area in the US,"northeast, northwest, southeast, southwest",0,0,Converted to title case and factor
+charges,numeric,Kaggle Medical Insurance Dataset,Individual medical costs billed by health insurance in USD,1121.87 to 63770.43,0,0,NA
+age_group,factor,Derived from age,Age categories for demographic analysis,"Young Adult, Middle Age, Pre-Senior, Senior",0,0,Created using 15-year age bands
+bmi_category,factor,Derived from bmi,WHO BMI categories for health analysis,"Underweight, Normal Weight, Overweight, Obese",0,0,Based on WHO BMI standards
+has_children,factor,Derived from children,Indicator of whether beneficiary has dependents,"Yes, No",0,0,Binary indicator for family status
+high_cost,factor,Derived from charges,High vs low cost classification,"High, Low",0,0,Split at median charges value

@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/DA Practice GitHub/Healthcare_Cost_Prediction_Model"
+    "path": "~/DA Practice GitHub/Healthcare_Cost_Prediction_Model/data/raw"
 }

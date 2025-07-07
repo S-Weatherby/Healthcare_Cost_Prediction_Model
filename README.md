@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 =======
 # Healthcare Cost Prediction Model
 

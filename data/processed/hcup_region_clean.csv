@@ -1,0 +1,21 @@
+year,outcome,characteristics,characteristic_levels,measure_names,avg_hospital_charges,suppression
+2018,Average Hospital Charges per Stay (in $),Hospital Census Region,Northeast,Estimate,54103,NA
+2019,Average Hospital Charges per Stay (in $),Hospital Census Region,Northeast,Estimate,59239,NA
+2020,Average Hospital Charges per Stay (in $),Hospital Census Region,Northeast,Estimate,64690,NA
+2021,Average Hospital Charges per Stay (in $),Hospital Census Region,Northeast,Estimate,70027,NA
+2022,Average Hospital Charges per Stay (in $),Hospital Census Region,Northeast,Estimate,74020,NA
+2018,Average Hospital Charges per Stay (in $),Hospital Census Region,Midwest,Estimate,41863,NA
+2019,Average Hospital Charges per Stay (in $),Hospital Census Region,Midwest,Estimate,44597,NA
+2020,Average Hospital Charges per Stay (in $),Hospital Census Region,Midwest,Estimate,48649,NA
+2021,Average Hospital Charges per Stay (in $),Hospital Census Region,Midwest,Estimate,52261,NA
+2022,Average Hospital Charges per Stay (in $),Hospital Census Region,Midwest,Estimate,54585,NA
+2018,Average Hospital Charges per Stay (in $),Hospital Census Region,South,Estimate,51206,NA
+2019,Average Hospital Charges per Stay (in $),Hospital Census Region,South,Estimate,54487,NA
+2020,Average Hospital Charges per Stay (in $),Hospital Census Region,South,Estimate,60645,NA
+2021,Average Hospital Charges per Stay (in $),Hospital Census Region,South,Estimate,66279,NA
+2022,Average Hospital Charges per Stay (in $),Hospital Census Region,South,Estimate,68488,NA
+2018,Average Hospital Charges per Stay (in $),Hospital Census Region,West,Estimate,67581,NA
+2019,Average Hospital Charges per Stay (in $),Hospital Census Region,West,Estimate,71725,NA
+2020,Average Hospital Charges per Stay (in $),Hospital Census Region,West,Estimate,78107,NA
+2021,Average Hospital Charges per Stay (in $),Hospital Census Region,West,Estimate,82817,NA
+2022,Average Hospital Charges per Stay (in $),Hospital Census Region,West,Estimate,85473,NA

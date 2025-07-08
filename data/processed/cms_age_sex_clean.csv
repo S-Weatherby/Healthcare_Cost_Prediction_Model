@@ -1,0 +1,67 @@
+service,age_group,sex,per_capita_spending,age_group_standard,sex_standard
+Dental Services,0-18,Males,439,0-18,Male
+Dental Services,19-64,Males,282,19-64,Male
+Dental Services,65+,Males,692,65+,Male
+Dental Services,0-18,Females,436,0-18,Female
+Dental Services,19-64,Females,424,19-64,Female
+Dental Services,65+,Females,619,65+,Female
+Durable Medical Equipment,0-18,Males,68,0-18,Male
+Durable Medical Equipment,19-64,Males,119,19-64,Male
+Durable Medical Equipment,65+,Males,390,65+,Male
+Durable Medical Equipment,0-18,Females,61,0-18,Female
+Durable Medical Equipment,19-64,Females,159,19-64,Female
+Durable Medical Equipment,65+,Females,428,65+,Female
+Home Health Care,0-18,Males,185,0-18,Male
+Home Health Care,19-64,Males,174,19-64,Male
+Home Health Care,65+,Males,1122,65+,Male
+Home Health Care,0-18,Females,149,0-18,Female
+Home Health Care,19-64,Females,194,19-64,Female
+Home Health Care,65+,Females,1563,65+,Female
+Hospital Care,0-18,Males,1636,0-18,Male
+Hospital Care,19-64,Males,3550,19-64,Male
+Hospital Care,65+,Males,8743,65+,Male
+Hospital Care,0-18,Females,1428,0-18,Female
+Hospital Care,19-64,Females,3841,19-64,Female
+Hospital Care,65+,Females,6700,65+,Female
+Nursing Care Facilities and Continuing Care Retirement Communities,0-18,Males,14,0-18,Male
+Nursing Care Facilities and Continuing Care Retirement Communities,19-64,Males,184,19-64,Male
+Nursing Care Facilities and Continuing Care Retirement Communities,65+,Males,2244,65+,Male
+Nursing Care Facilities and Continuing Care Retirement Communities,0-18,Females,16,0-18,Female
+Nursing Care Facilities and Continuing Care Retirement Communities,19-64,Females,165,19-64,Female
+Nursing Care Facilities and Continuing Care Retirement Communities,65+,Females,3434,65+,Female
+Other Health Residential and Personal Care,0-18,Males,371,0-18,Male
+Other Health Residential and Personal Care,19-64,Males,794,19-64,Male
+Other Health Residential and Personal Care,65+,Males,716,65+,Male
+Other Health Residential and Personal Care,0-18,Females,315,0-18,Female
+Other Health Residential and Personal Care,19-64,Females,626,19-64,Female
+Other Health Residential and Personal Care,65+,Females,873,65+,Female
+Other Nondurable Medical Products,0-18,Males,37,0-18,Male
+Other Nondurable Medical Products,19-64,Males,171,19-64,Male
+Other Nondurable Medical Products,65+,Males,750,65+,Male
+Other Nondurable Medical Products,0-18,Females,32,0-18,Female
+Other Nondurable Medical Products,19-64,Females,201,19-64,Female
+Other Nondurable Medical Products,65+,Females,894,65+,Female
+Other Professional Services,0-18,Males,191,0-18,Male
+Other Professional Services,19-64,Males,279,19-64,Male
+Other Professional Services,65+,Males,670,65+,Male
+Other Professional Services,0-18,Females,162,0-18,Female
+Other Professional Services,19-64,Females,368,19-64,Female
+Other Professional Services,65+,Females,774,65+,Female
+Physician and Clinical Services,0-18,Males,1197,0-18,Male
+Physician and Clinical Services,19-64,Males,1805,19-64,Male
+Physician and Clinical Services,65+,Males,5009,65+,Male
+Physician and Clinical Services,0-18,Females,1180,0-18,Female
+Physician and Clinical Services,19-64,Females,2846,19-64,Female
+Physician and Clinical Services,65+,Females,4717,65+,Female
+Prescription Drugs,0-18,Males,278,0-18,Male
+Prescription Drugs,19-64,Males,954,19-64,Male
+Prescription Drugs,65+,Males,2262,65+,Male
+Prescription Drugs,0-18,Females,230,0-18,Female
+Prescription Drugs,19-64,Females,1165,19-64,Female
+Prescription Drugs,65+,Females,2160,65+,Female
+Total Personal Health Care,0-18,Males,4415,0-18,Male
+Total Personal Health Care,19-64,Males,8313,19-64,Male
+Total Personal Health Care,65+,Males,22597,65+,Male
+Total Personal Health Care,0-18,Females,4009,0-18,Female
+Total Personal Health Care,19-64,Females,9989,19-64,Female
+Total Personal Health Care,65+,Females,22162,65+,Female

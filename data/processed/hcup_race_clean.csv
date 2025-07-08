@@ -1,0 +1,31 @@
+year,outcome,characteristics,characteristic_levels,measure_names,avg_hospital_charges,suppression
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Asian/Pacific Islander, non-Hispanic",Estimate,58450,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Asian/Pacific Islander, non-Hispanic",Estimate,61843,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Asian/Pacific Islander, non-Hispanic",Estimate,68577,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Asian/Pacific Islander, non-Hispanic",Estimate,75624,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Asian/Pacific Islander, non-Hispanic",Estimate,78781,NA
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Black, non-Hispanic",Estimate,52614,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Black, non-Hispanic",Estimate,56510,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Black, non-Hispanic",Estimate,62773,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Black, non-Hispanic",Estimate,67838,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Black, non-Hispanic",Estimate,71213,NA
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Hispanic,Estimate,56291,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Hispanic,Estimate,59847,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Hispanic,Estimate,68413,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Hispanic,Estimate,73846,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Hispanic,Estimate,73785,NA
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"White, non-Hispanic",Estimate,52534,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"White, non-Hispanic",Estimate,56174,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"White, non-Hispanic",Estimate,60816,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"White, non-Hispanic",Estimate,65450,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"White, non-Hispanic",Estimate,68680,NA
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Other, non-Hispanic",Estimate,54575,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Other, non-Hispanic",Estimate,60283,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Other, non-Hispanic",Estimate,68480,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Other, non-Hispanic",Estimate,74707,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,"Other, non-Hispanic",Estimate,76805,NA
+2018,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Missing,Estimate,42429,NA
+2019,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Missing,Estimate,43929,NA
+2020,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Missing,Estimate,49682,NA
+2021,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Missing,Estimate,54092,NA
+2022,Average Hospital Charges per Stay (in $),Patient Race/Ethnicity,Missing,Estimate,54793,NA

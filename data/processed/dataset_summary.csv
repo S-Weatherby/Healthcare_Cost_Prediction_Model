@@ -1,0 +1,10 @@
+dataset,rows,columns,file_location
+insurance_clean,1338,12,data/processed/insurance_clean.csv
+hcup_age_final,15,3,data/processed/hcup_age_clean.csv
+hcup_gender_final,10,3,data/processed/hcup_gender_clean.csv
+hcup_overall_final,5,3,data/processed/hcup_overall_clean.csv
+hcup_race_final,30,7,data/processed/hcup_race_clean.csv
+hcup_region_final,20,7,data/processed/hcup_region_clean.csv
+cms_per_capita_clean,510,3,data/processed/cms_per_capita_clean.csv
+cms_age_sex_clean,66,6,data/processed/cms_age_sex_clean.csv
+cms_phi_clean,51,3,data/processed/cms_phi_clean.csv

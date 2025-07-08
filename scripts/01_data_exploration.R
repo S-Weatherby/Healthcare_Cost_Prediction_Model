@@ -21,7 +21,7 @@ hcup_overall <- read_excel("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice G
 #3 CMS Data ####
 
 cms_per_capita <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\US_PER_CAPITA20.CSV")
-cms_phi_enrolle <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\PHI_PER_ENROLLEE20.CSV")
+cms_phi_enrollee <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\PHI_PER_ENROLLEE20.CSV")
 cms_medicare <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\MEDICARE_PER_ENROLLEE20.CSV")
 cms_medicaid <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\MEDICAID_PER_ENROLLEE20.CSV")
 cms_nhe_2023 <- read.csv("C:\\Users\\sheli\\OneDrive\\Documents\\DA Practice GitHub\\Healthcare_Cost_Prediction_Model\\data\\raw\\NHE2023.csv")
@@ -252,3 +252,140 @@ write_csv(insurance_clean, "data/processed/insurance_clean.csv")
 
 head(insurance_clean)
 summary(insurance_clean)
+
+# 4.2 HCUP Cleaning ####
+head(hcup_age)
+glimpse(hcup_age)
+names(hcup_age)
+summary(hcup_age)
+hcup_age <- clean_names(hcup_age)
+## removing ages 0- 17
+hcup_age <- hcup_age %>% 
+  clean_names() %>% 
+    filter(!str_detect(characteristic_levels, "Age 0 years|Age 1-17 years"))
+
+##standardizing age groups
+hcup_age_clean <- hcup_age %>% 
+  clean_names() %>% 
+    filter(str_detect(characteristic_levels, "Age 18-44 years|Age 45-64 years|Age 65-84 years|Age 85+ years")) %>%
+  mutate(
+    age_group_standard = case_when(
+      str_detect(characteristic_levels, "Age 18-44 years") ~ "18-44",
+      str_detect(characteristic_levels, "Age 45-64 years") ~ "45-64", 
+      str_detect(characteristic_levels, "Age 65-84 years|Age 85+ years") ~ "65+",
+      TRUE ~ "Other"
+    )
+  )
+glimpse(hcup_age_clean)
+tail(hcup_age_clean)
+
+hcup_age_final <- hcup_age_clean %>% 
+  filter(measure_names == "Estimate") %>%
+  select(year, age_group_standard, measure_values) %>%
+  rename(avg_hospital_charges = measure_values)
+
+glimpse(hcup_age_final)
+head(hcup_age_final)
+
+hcup_gender <- clean_names(hcup_gender)
+hcup_overall <- clean_names(hcup_overall)
+hcup_race <- clean_names(hcup_race)
+hcup_region <- clean_names(hcup_region)
+
+hcup_gender_final <- hcup_gender %>% 
+  filter(measure_names == "Estimate") %>% 
+  select(year, characteristic_levels, measure_values) %>% 
+  rename(avg_hospital_charges = measure_values)
+
+hcup_overall_final <- hcup_overall %>% 
+  filter(measure_names == "Estimate") %>% 
+  select(year, characteristic_levels, measure_values) %>% 
+  rename(avg_hospital_charges = measure_values)
+
+hcup_race_final <- hcup_race %>% 
+  filter(measure_names == "Estimate") %>% 
+  rename(avg_hospital_charges = measure_values)
+
+hcup_region_final <- hcup_region %>% 
+  filter(measure_names == "Estimate") %>% 
+  rename(avg_hospital_charges = measure_values)
+
+# 4.3 CMS Cleaning ####
+
+glimpse(cms_per_capita)
+glimpse(cms_age_sex_major)
+glimpse(cms_phi_enrollee)
+
+cms_age_sex_major <- clean_names(cms_age_sex_major)
+cms_per_capita <- clean_names(cms_per_capita)
+cms_phi_enrollee <- clean_names(cms_phi_enrollee)
+
+##CMS state
+cms_per_capita_clean <- cms_per_capita %>%
+  clean_names() %>%
+   filter(group == "State", state_name != "") %>%
+   select(state_name, y2020, average_annual_percent_growth) %>%
+  rename(
+    state = state_name,
+    per_capita_spending_2020 = y2020,
+    growth_rate = average_annual_percent_growth
+  ) %>%
+  mutate(state = str_to_title(state))
+
+##CMS age/sex 
+cms_age_sex_clean <- cms_age_sex_major %>%
+  clean_names() %>%
+  # Focus on most recent year
+  select(service, age_group, sex, x2020) %>%
+  rename(per_capita_spending = x2020) %>%
+  # Standardize age groups
+  mutate(
+    age_group_standard = case_when(
+      age_group == "0-18" ~ "0-18",
+      age_group == "19-64" ~ "19-64",     # maps to insurance 18-64
+      age_group == "65+" ~ "65+",
+      age_group == "Total" ~ "Total",
+      TRUE ~ age_group
+    ),
+    # Standardize sex
+    sex_standard = case_when(
+      sex == "Males" ~ "Male",
+      sex == "Females" ~ "Female", 
+      sex == "Total" ~ "Total",
+      TRUE ~ sex
+    )
+  ) %>%
+  # Filter out totals for now (keep specific age/sex combinations)
+  filter(age_group_standard != "Total", sex_standard != "Total")
+
+##CMS PHI
+cms_phi_clean <- cms_phi_enrollee %>%
+  clean_names() %>%
+ 
+  filter(group == "State", state_name != "") %>%
+  select(state_name, y2020, average_annual_percent_growth) %>%
+  rename(
+    state = state_name,
+    phi_per_enrollee_2020 = y2020,
+    phi_growth_rate = average_annual_percent_growth
+  ) %>%
+    mutate(state = str_to_title(state))
+
+
+# 4.4 Fix insurance age groups to match HCUP/CMS standards ####
+insurance_clean <- insurance_clean %>%
+  mutate(
+    age_group_standard = case_when(
+      age >= 18 & age <= 44 ~ "18-44",     # Matches HCUP 18-44
+      age >= 45 & age <= 64 ~ "45-64",     # Matches HCUP 45-64
+      TRUE ~ "Other"                       # No 65+ in your insurance data
+    )
+  )
+
+# Update dictionary
+add_to_dictionary("age_group_standard", "character", "Standardized from age", 
+                  "Standardized age groups for cross-dataset merging",
+                  "18-44, 45-64", 0, 0,
+                  "Matches HCUP and CMS age group standards")
+
+

@@ -1,0 +1,61 @@
+year,outcome,characteristics,characteristic_levels,measure_names,measure_values,suppression,age_group_standard
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Upper,39499,NA,18-44
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Upper,42267,NA,18-44
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Upper,45968,NA,18-44
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Upper,50566,NA,18-44
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Upper,52493,NA,18-44
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Lower,37307,NA,18-44
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Lower,39857,NA,18-44
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Lower,43290,NA,18-44
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Lower,47630,NA,18-44
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,95% CI Lower,49373,NA,18-44
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Std. Error,559,NA,18-44
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Std. Error,615,NA,18-44
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Std. Error,683,NA,18-44
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Std. Error,749,NA,18-44
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Std. Error,796,NA,18-44
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Estimate,38403,NA,18-44
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Estimate,41062,NA,18-44
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Estimate,44629,NA,18-44
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Estimate,49098,NA,18-44
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 18-44 years,Estimate,50933,NA,18-44
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Upper,67289,NA,45-64
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Upper,71877,NA,45-64
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Upper,80263,NA,45-64
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Upper,87660,NA,45-64
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Upper,91186,NA,45-64
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Lower,63835,NA,45-64
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Lower,68201,NA,45-64
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Lower,76099,NA,45-64
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Lower,83062,NA,45-64
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,95% CI Lower,86144,NA,45-64
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Std. Error,881,NA,45-64
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Std. Error,938,NA,45-64
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Std. Error,1062,NA,45-64
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Std. Error,1173,NA,45-64
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Std. Error,1286,NA,45-64
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Estimate,65562,NA,45-64
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Estimate,70039,NA,45-64
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Estimate,78181,NA,45-64
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Estimate,85361,NA,45-64
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 45-64 years,Estimate,88665,NA,45-64
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Upper,67575,NA,65+
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Upper,71810,NA,65+
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Upper,79518,NA,65+
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Upper,85167,NA,65+
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Upper,89080,NA,65+
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Lower,64505,NA,65+
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Lower,68514,NA,65+
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Lower,75872,NA,65+
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Lower,81181,NA,65+
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,95% CI Lower,84812,NA,65+
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Std. Error,783,NA,65+
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Std. Error,841,NA,65+
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Std. Error,930,NA,65+
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Std. Error,1017,NA,65+
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Std. Error,1089,NA,65+
+2018,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Estimate,66040,NA,65+
+2019,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Estimate,70162,NA,65+
+2020,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Estimate,77695,NA,65+
+2021,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Estimate,83174,NA,65+
+2022,Average Hospital Charges per Stay (in $),Patient Age Group,Age 65-84 years,Estimate,86946,NA,65+

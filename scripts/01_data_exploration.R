@@ -388,4 +388,62 @@ add_to_dictionary("age_group_standard", "character", "Standardized from age",
                   "18-44, 45-64", 0, 0,
                   "Matches HCUP and CMS age group standards")
 
+# ==============================================================================
+# SAVE ALL CLEANED DATASETS
+# ==============================================================================
 
+# 1. SAVE MAIN INSURANCE DATASET ####
+write_csv(insurance_clean, "data/processed/insurance_clean.csv")
+
+# 2. SAVE HCUP DATASETS ####
+write_csv(hcup_age_final, "data/processed/hcup_age_clean.csv")
+write_csv(hcup_gender_final, "data/processed/hcup_gender_clean.csv")
+write_csv(hcup_overall_final, "data/processed/hcup_overall_clean.csv")
+write_csv(hcup_race_final, "data/processed/hcup_race_clean.csv")
+write_csv(hcup_region_final, "data/processed/hcup_region_clean.csv")
+
+# 3. SAVE CMS DATASETS ####
+write_csv(cms_per_capita_clean, "data/processed/cms_per_capita_clean.csv")
+write_csv(cms_age_sex_clean, "data/processed/cms_age_sex_clean.csv")
+write_csv(cms_phi_clean, "data/processed/cms_phi_clean.csv")
+
+# 4. SAVE RAW CLEANED DATASETS (for reference) ####
+write_csv(hcup_age_clean, "data/processed/hcup_age_all_measures.csv")
+write_csv(cms_age_sex_major, "data/processed/cms_age_sex_major_clean.csv")
+
+# 5. SAVE DATA DICTIONARY ####
+write_csv(read_csv("data/data_dictionary.csv", show_col_types = FALSE), 
+          "data/processed/data_dictionary_backup.csv")
+
+# 6. CREATE DATASET SUMMARY ####
+dataset_summary <- tibble(
+  dataset = c(
+    "insurance_clean", "hcup_age_final", "hcup_gender_final", 
+    "hcup_overall_final", "hcup_race_final", "hcup_region_final",
+    "cms_per_capita_clean", "cms_age_sex_clean", "cms_phi_clean"
+  ),
+  rows = c(
+    nrow(insurance_clean), nrow(hcup_age_final), nrow(hcup_gender_final),
+    nrow(hcup_overall_final), nrow(hcup_race_final), nrow(hcup_region_final),
+    nrow(cms_per_capita_clean), nrow(cms_age_sex_clean), nrow(cms_phi_clean)
+  ),
+  columns = c(
+    ncol(insurance_clean), ncol(hcup_age_final), ncol(hcup_gender_final),
+    ncol(hcup_overall_final), ncol(hcup_race_final), ncol(hcup_region_final),
+    ncol(cms_per_capita_clean), ncol(cms_age_sex_clean), ncol(cms_phi_clean)
+  ),
+  file_location = paste0("data/processed/", 
+                         c("insurance_clean.csv", "hcup_age_clean.csv", "hcup_gender_clean.csv",
+                           "hcup_overall_clean.csv", "hcup_race_clean.csv", "hcup_region_clean.csv",
+                           "cms_per_capita_clean.csv", "cms_age_sex_clean.csv", "cms_phi_clean.csv"))
+)
+
+write_csv(dataset_summary, "data/processed/dataset_summary.csv")
+
+# 7. NEXT SESSION PREPARATION ####
+# TOMORROW'S AGENDA:
+# 1. Load cleaned datasets from data/processed/
+# 2. Begin data integration and merging\
+# 3. Create analysis-ready dataset\
+# 4. Start feature engineering\
+# 5. Begin modeling preparation\n

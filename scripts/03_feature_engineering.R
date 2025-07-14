@@ -74,4 +74,4 @@ insurance_with_benchmarks %>%
 # Quick Recap for Understanding ####
   # already knew smokers/non-smokers would have significant differences just from data cleaning/exploration
   # next with Interaction Features (non-linear/complex variables; allows model to consider real world non-linear impacts)- we'd see how age impacts those differences/outcomes (charges/costs)
-  
+  # review ANOVA tables

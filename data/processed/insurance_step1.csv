@@ -1,0 +1,1339 @@
+age,sex,bmi,children,smoker,region,charges,age_group,bmi_category,has_children,high_cost,age_group_standard,avg_hcup_charges,cost_vs_national
+19,female,27.9,0,yes,southwest,16884.924,Young Adult,Overweight,No,High,18-44,44825,0.3766854210819855
+18,male,33.77,1,no,southeast,1725.5523,Young Adult,Obese,Yes,Low,18-44,44825,0.03849531065253765
+28,male,33,3,no,southeast,4449.462,Young Adult,Obese,Yes,Low,18-44,44825,0.09926295593976577
+33,male,22.705,0,no,northwest,21984.47061,Middle Age,Normal Weight,No,High,18-44,44825,0.4904511011712214
+32,male,28.88,0,no,northwest,3866.8552,Middle Age,Overweight,No,Low,18-44,44825,0.0862655928611266
+31,female,25.74,0,no,southeast,3756.6216,Middle Age,Overweight,No,Low,18-44,44825,0.08380639375348578
+46,female,33.44,1,no,southeast,8240.5896,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10624574016007919
+37,female,27.74,3,no,northwest,7281.5056,Middle Age,Overweight,Yes,Low,18-44,44825,0.1624429581706637
+37,male,29.83,2,no,northeast,6406.4107,Middle Age,Overweight,Yes,Low,18-44,44825,0.14292048410485222
+60,female,25.84,0,no,northwest,28923.13692,Senior,Overweight,No,High,45-64,77561.6,0.3729053670888687
+25,male,26.22,0,no,northeast,2721.3208,Young Adult,Overweight,No,Low,18-44,44825,0.06070988957055214
+62,female,26.29,0,yes,southeast,27808.7251,Senior,Overweight,No,High,45-64,77561.6,0.3585372800457958
+23,male,34.4,0,no,southwest,1826.843,Young Adult,Obese,No,Low,18-44,44825,0.04075500278862242
+56,female,39.82,0,no,southeast,11090.7178,Pre-Senior,Obese,No,High,45-64,77561.6,0.14299238025002062
+27,male,42.13,0,yes,southeast,39611.7577,Young Adult,Obese,No,High,18-44,44825,0.8836978851087564
+19,male,24.6,1,no,southwest,1837.237,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.04098688232013385
+52,female,30.78,1,no,northeast,10797.3362,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13920981774486343
+23,male,23.845,0,no,northeast,2395.17155,Young Adult,Normal Weight,No,Low,18-44,44825,0.05343383268265477
+56,male,40.3,0,no,southwest,10602.385,Pre-Senior,Obese,No,High,45-64,77561.6,0.13669631621833483
+30,male,35.3,0,yes,southwest,36837.467,Middle Age,Obese,No,High,18-44,44825,0.8218062911321806
+60,female,36.005,0,no,northeast,13228.84695,Senior,Obese,No,High,45-64,77561.6,0.17055923227473388
+30,female,32.4,1,no,southwest,4149.736,Middle Age,Obese,Yes,Low,18-44,44825,0.09257637479085332
+18,male,34.1,0,no,southeast,1137.011,Young Adult,Obese,No,Low,18-44,44825,0.025365554935861685
+34,female,31.92,1,yes,northeast,37701.8768,Middle Age,Obese,Yes,High,18-44,44825,0.8410903915225878
+37,male,28.025,2,no,northwest,6203.90175,Middle Age,Overweight,Yes,Low,18-44,44825,0.1384027161182376
+59,female,27.72,3,no,southeast,14001.1338,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1805163096171301
+63,female,23.085,0,no,northeast,14451.83515,Senior,Normal Weight,No,High,45-64,77561.6,0.18632719219304397
+55,female,32.775,2,no,northwest,12268.63225,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15817920530262397
+23,male,17.385,1,no,northwest,2775.19215,Young Adult,Underweight,Yes,Low,18-44,44825,0.06191170440602342
+31,male,36.3,2,yes,southwest,38711,Middle Age,Obese,Yes,High,18-44,44825,0.8636029001673173
+22,male,35.6,0,yes,southwest,35585.576,Young Adult,Obese,No,High,18-44,44825,0.7938778806469604
+18,female,26.315,0,no,northeast,2198.18985,Young Adult,Overweight,No,Low,18-44,44825,0.0490393720022309
+19,female,28.6,5,no,southwest,4687.797,Young Adult,Overweight,Yes,Low,18-44,44825,0.10457996653653094
+63,male,28.31,0,no,northwest,13770.0979,Senior,Overweight,No,High,45-64,77561.6,0.17753756884850236
+28,male,36.4,1,yes,southwest,51194.55914,Young Adult,Obese,Yes,High,18-44,44825,1.1420983634132738
+19,male,20.425,0,no,northwest,1625.43375,Young Adult,Normal Weight,No,Low,18-44,44825,0.03626176798661461
+62,female,32.965,3,no,northwest,15612.19335,Senior,Obese,Yes,High,45-64,77561.6,0.20128766490118818
+26,male,20.8,0,no,southwest,2302.3,Young Adult,Normal Weight,No,Low,18-44,44825,0.05136196319018405
+35,male,36.67,1,yes,northeast,39774.2763,Middle Age,Obese,Yes,High,18-44,44825,0.887323509202454
+60,male,39.9,0,yes,southwest,48173.361,Senior,Obese,No,High,45-64,77561.6,0.6210980820405974
+24,female,26.6,0,no,northeast,3046.062,Young Adult,Overweight,No,Low,18-44,44825,0.06795453430005577
+31,female,36.63,2,no,southeast,4949.7587,Middle Age,Obese,Yes,Low,18-44,44825,0.11042406469604016
+41,male,21.78,1,no,southeast,6272.4772,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1399325644171779
+37,female,30.8,2,no,southeast,6313.759,Middle Age,Obese,Yes,Low,18-44,44825,0.1408535192414947
+38,male,37.05,1,no,northeast,6079.6715,Middle Age,Obese,Yes,Low,18-44,44825,0.13563126603457892
+55,male,37.3,0,no,southwest,20630.28351,Pre-Senior,Obese,No,High,45-64,77561.6,0.26598579077791074
+18,female,38.665,2,no,northeast,3393.35635,Young Adult,Obese,Yes,Low,18-44,44825,0.07570231678750697
+28,female,34.77,0,no,northwest,3556.9223,Young Adult,Obese,No,Low,18-44,44825,0.07935130619074178
+60,female,24.53,0,no,southeast,12629.8967,Senior,Normal Weight,No,High,45-64,77561.6,0.16283697989726872
+36,male,35.2,1,yes,southeast,38709.176,Middle Age,Obese,Yes,High,18-44,44825,0.863562208588957
+18,female,35.625,0,no,northeast,2211.13075,Young Adult,Obese,No,Low,18-44,44825,0.049328070273284993
+21,female,33.63,2,no,northwest,3579.8287,Young Adult,Obese,Yes,Low,18-44,44825,0.07986232459564975
+48,male,28,1,yes,southwest,23568.272,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.30386521165112634
+36,male,34.43,0,yes,southeast,37742.5757,Middle Age,Obese,No,High,18-44,44825,0.8419983424428332
+40,female,28.69,3,no,northwest,8059.6791,Middle Age,Overweight,Yes,Low,18-44,44825,0.17980321472392638
+58,male,36.955,2,yes,northwest,47496.49445,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6123712565238468
+58,female,31.825,2,no,northeast,13607.36875,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.17543950550272297
+18,male,31.68,2,yes,southeast,34303.1672,Young Adult,Obese,Yes,High,18-44,44825,0.7652686491912996
+53,female,22.88,1,yes,southeast,23244.7902,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.2996945679305223
+34,female,37.335,2,no,northwest,5989.52365,Middle Age,Obese,Yes,Low,18-44,44825,0.13362015950920245
+43,male,27.36,3,no,northeast,8606.2174,Middle Age,Overweight,Yes,Low,18-44,44825,0.19199592638036808
+25,male,33.66,4,no,southeast,4504.6624,Young Adult,Obese,Yes,Low,18-44,44825,0.10049442052426102
+64,male,24.7,1,no,northwest,30166.61817,Senior,Normal Weight,Yes,High,45-64,77561.6,0.38893754344933573
+28,female,25.935,1,no,northwest,4133.64165,Young Adult,Overweight,Yes,Low,18-44,44825,0.09221732626882319
+20,female,22.42,0,yes,northwest,14711.7438,Young Adult,Normal Weight,No,High,18-44,44825,0.32820398884551033
+19,female,28.9,0,no,southwest,1743.214,Young Adult,Overweight,No,Low,18-44,44825,0.03888932515337423
+61,female,39.1,2,no,southwest,14235.072,Senior,Obese,Yes,High,45-64,77561.6,0.1835324696757158
+40,male,26.315,1,no,northwest,6389.37785,Middle Age,Overweight,Yes,Low,18-44,44825,0.1425404986056888
+40,female,36.19,0,no,southeast,5920.1041,Middle Age,Obese,No,Low,18-44,44825,0.1320714802007808
+28,male,23.98,3,yes,southeast,17663.1442,Young Adult,Normal Weight,Yes,High,18-44,44825,0.39404671946458447
+27,female,24.75,0,yes,southeast,16577.7795,Young Adult,Normal Weight,No,High,18-44,44825,0.3698333407696598
+31,male,28.5,5,no,northeast,6799.458,Middle Age,Overweight,Yes,Low,18-44,44825,0.1516889682097044
+53,female,28.1,3,no,southwest,11741.726,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.15138581462991996
+58,male,32.01,1,no,southeast,11946.6259,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15402758452636353
+44,male,27.4,2,no,southwest,7726.854,Middle Age,Overweight,Yes,Low,18-44,44825,0.17237822643614056
+57,male,34.01,0,no,northwest,11356.6609,Pre-Senior,Obese,No,High,45-64,77561.6,0.1464211787791897
+29,female,29.59,1,no,southeast,3947.4131,Young Adult,Overweight,Yes,Low,18-44,44825,0.08806275738984942
+21,male,35.53,0,no,southeast,1532.4697,Young Adult,Obese,No,Low,18-44,44825,0.034187834913552706
+22,female,39.805,0,no,northeast,2755.02095,Young Adult,Obese,No,Low,18-44,44825,0.06146170552147239
+41,female,32.965,0,no,northwest,6571.02435,Middle Age,Obese,No,Low,18-44,44825,0.14659284662576685
+31,male,26.885,1,no,northeast,4441.21315,Middle Age,Overweight,Yes,Low,18-44,44825,0.09907893251533742
+45,female,38.285,0,no,northeast,7935.29115,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10230953397041834
+22,male,37.62,1,yes,southeast,37165.1638,Young Adult,Obese,Yes,High,18-44,44825,0.8291168722810932
+48,female,41.23,4,no,northwest,11033.6617,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14225675720975328
+37,female,34.8,2,yes,southwest,39836.519,Middle Age,Obese,Yes,High,18-44,44825,0.8887120803123257
+45,male,22.895,2,yes,northwest,21098.55405,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.27202319253341856
+57,female,31.16,0,yes,northwest,43578.9394,Pre-Senior,Obese,No,High,45-64,77561.6,0.5618623055738923
+56,female,27.2,0,no,southwest,11073.176,Pre-Senior,Overweight,No,High,45-64,77561.6,0.14276621420909313
+46,female,27.74,0,no,northwest,8026.6666,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.10348763563412822
+55,female,26.98,0,no,northwest,11082.5772,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1428874236735704
+21,female,39.49,0,no,southeast,2026.9741,Young Adult,Obese,No,Low,18-44,44825,0.04521972336865588
+53,female,24.795,1,no,northwest,10942.13205,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.14107666744884065
+59,male,29.83,3,yes,northeast,30184.9367,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3891737238530406
+35,male,34.77,2,no,northwest,5729.0053,Middle Age,Obese,Yes,Low,18-44,44825,0.12780826101505854
+64,female,31.3,2,yes,southwest,47291.055,Senior,Obese,Yes,High,45-64,77561.6,0.6097225302211403
+28,female,37.62,1,no,southeast,3766.8838,Young Adult,Obese,Yes,Low,18-44,44825,0.08403533296151701
+54,female,30.8,3,no,southwest,12105.32,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1560736240613912
+55,male,38.28,0,no,southeast,10226.2842,Pre-Senior,Obese,No,High,45-64,77561.6,0.13184725689000742
+56,male,19.95,0,yes,northeast,22412.6485,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.28896578332576944
+38,male,19.3,0,yes,southwest,15820.699,Middle Age,Normal Weight,No,High,18-44,44825,0.35294364751812607
+41,female,31.6,0,no,southwest,6186.127,Middle Age,Obese,No,Low,18-44,44825,0.1380061795872839
+30,male,25.46,0,no,northeast,3645.0894,Middle Age,Overweight,No,Low,18-44,44825,0.08131822420524261
+18,female,30.115,0,no,northeast,21344.8467,Young Adult,Obese,No,High,18-44,44825,0.47618174456218626
+61,female,29.92,3,yes,southeast,30942.1918,Senior,Overweight,Yes,High,45-64,77561.6,0.3989369971738592
+34,female,27.5,1,no,southwest,5003.853,Middle Age,Overweight,Yes,Low,18-44,44825,0.11163085331846068
+20,male,28.025,1,yes,northwest,17560.37975,Young Adult,Overweight,Yes,High,18-44,44825,0.39175414947016174
+19,female,28.4,1,no,southwest,2331.519,Young Adult,Overweight,Yes,Low,18-44,44825,0.052013809258226434
+26,male,30.875,2,no,northwest,3877.30425,Young Adult,Obese,Yes,Low,18-44,44825,0.08649870050195203
+29,male,27.94,0,no,southeast,2867.1196,Young Adult,Overweight,No,Low,18-44,44825,0.0639625119910764
+63,male,35.09,0,yes,southeast,47055.5321,Senior,Obese,No,High,45-64,77561.6,0.6066859386603679
+54,male,33.63,1,no,northwest,10825.2537,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13956975745729844
+55,female,29.7,2,no,southwest,11881.358,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.15318608692961463
+37,male,30.8,0,no,southwest,4646.759,Middle Age,Obese,No,Low,18-44,44825,0.10366445064138316
+21,female,35.72,0,no,northwest,2404.7338,Young Adult,Obese,No,Low,18-44,44825,0.053647156720580035
+52,male,32.205,3,no,northeast,11488.31695,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1481186173312567
+60,male,28.595,0,no,northeast,30259.99556,Senior,Overweight,No,High,45-64,77561.6,0.3901414560813598
+58,male,49.06,0,no,southeast,11381.3254,Pre-Senior,Obese,No,High,45-64,77561.6,0.14673917763429326
+29,female,27.94,1,yes,southeast,19107.7796,Young Adult,Overweight,Yes,High,18-44,44825,0.4262750607919688
+49,female,27.17,0,no,southeast,8601.3293,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.11089674916453501
+37,female,23.37,2,no,northwest,6686.4313,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.14916745789180144
+44,male,37.1,2,no,southwest,7740.337,Middle Age,Obese,Yes,Low,18-44,44825,0.17267901840490799
+18,male,23.75,0,no,northeast,1705.6245,Young Adult,Normal Weight,No,Low,18-44,44825,0.03805074177356386
+20,female,28.975,0,no,northwest,2257.47525,Young Adult,Overweight,No,Low,18-44,44825,0.05036196876742889
+44,male,31.35,1,yes,northeast,39556.4945,Middle Age,Obese,Yes,High,18-44,44825,0.8824650195203569
+47,female,33.915,3,no,northwest,10115.00885,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1304125862540226
+26,female,28.785,0,no,northeast,3385.39915,Young Adult,Overweight,No,Low,18-44,44825,0.0755247997769102
+19,female,28.3,0,yes,southwest,17081.08,Young Adult,Overweight,No,High,18-44,44825,0.3810614612381484
+52,female,37.4,0,no,southwest,9634.538,Pre-Senior,Obese,No,High,45-64,77561.6,0.1242178861704761
+32,female,17.765,2,yes,northwest,32734.1863,Middle Age,Underweight,Yes,High,18-44,44825,0.7302662866703848
+38,male,34.7,2,no,southwest,6082.405,Middle Age,Obese,Yes,Low,18-44,44825,0.13569224762967094
+59,female,26.505,0,no,northeast,12815.44495,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1652292493966086
+61,female,22.04,0,no,northeast,13616.3586,Senior,Normal Weight,No,High,45-64,77561.6,0.1755554114407129
+53,female,35.9,2,no,southwest,11163.568,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1439316362736199
+19,male,25.555,0,no,northwest,1632.56445,Young Adult,Overweight,No,Low,18-44,44825,0.036420846625766876
+20,female,28.785,0,no,northeast,2457.21115,Young Adult,Overweight,No,Low,18-44,44825,0.05481787283881762
+22,female,28.05,0,no,southeast,2155.6815,Young Adult,Overweight,No,Low,18-44,44825,0.048091054099274964
+19,male,34.1,0,no,southwest,1261.442,Young Adult,Obese,No,Low,18-44,44825,0.02814148354712772
+22,male,25.175,0,no,northwest,2045.68525,Young Adult,Overweight,No,Low,18-44,44825,0.04563715002788622
+54,female,31.9,3,no,southeast,27322.73386,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.35227140569560195
+22,female,36,0,no,southwest,2166.732,Young Adult,Obese,No,Low,18-44,44825,0.04833757947573898
+34,male,22.42,2,no,northeast,27375.90478,Middle Age,Normal Weight,Yes,High,18-44,44825,0.6107284948131623
+26,male,32.49,1,no,northeast,3490.5491,Young Adult,Obese,Yes,Low,18-44,44825,0.07787058784160625
+34,male,25.3,2,yes,southeast,18972.495,Middle Age,Overweight,Yes,High,18-44,44825,0.4232569994422755
+29,male,29.735,2,no,northwest,18157.876,Young Adult,Overweight,Yes,High,18-44,44825,0.4050836809815951
+30,male,28.69,3,yes,northwest,20745.9891,Middle Age,Overweight,Yes,High,18-44,44825,0.46282184272169546
+29,female,38.83,3,no,southeast,5138.2567,Young Adult,Obese,Yes,Low,18-44,44825,0.11462926268823201
+46,male,30.495,3,yes,northwest,40720.55105,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5250091675519845
+51,female,37.73,1,no,southeast,9877.6077,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12735177845738097
+53,female,37.43,1,no,northwest,10959.6947,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14130310230835877
+19,male,28.4,1,no,southwest,1842.519,Young Adult,Overweight,Yes,Low,18-44,44825,0.041104718349135524
+35,male,24.13,1,no,northwest,5125.2157,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.11433833128834356
+48,male,29.7,0,no,southeast,7789.635,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.10043159243749483
+32,female,37.145,3,no,northeast,6334.34355,Middle Age,Obese,Yes,Low,18-44,44825,0.1413127395426659
+42,female,23.37,0,yes,northeast,19964.7463,Middle Age,Normal Weight,No,High,18-44,44825,0.44539311321807024
+40,female,25.46,1,no,northeast,7077.1894,Middle Age,Overweight,Yes,Low,18-44,44825,0.15788487228109316
+44,male,39.52,0,no,northwest,6948.7008,Middle Age,Obese,No,Low,18-44,44825,0.15501842275515895
+48,male,24.42,0,yes,southeast,21223.6758,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.27363638449954614
+18,male,25.175,0,yes,northeast,15518.18025,Young Adult,Overweight,No,High,18-44,44825,0.3461947629670942
+30,male,35.53,0,yes,southeast,36950.2567,Middle Age,Obese,No,High,18-44,44825,0.8243225142219743
+50,female,27.83,3,no,southeast,19749.38338,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.25462836480939016
+42,female,26.6,0,yes,northwest,21348.706,Middle Age,Overweight,No,High,18-44,44825,0.47626784160624647
+18,female,36.85,0,yes,southeast,36149.4835,Young Adult,Obese,No,High,18-44,44825,0.8064580814277748
+54,male,39.6,1,no,southwest,10450.552,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13473873669444672
+32,female,29.8,2,no,southwest,5152.134,Middle Age,Overweight,Yes,Low,18-44,44825,0.11493885108756274
+37,male,29.64,0,no,northwest,5028.1466,Middle Age,Overweight,No,Low,18-44,44825,0.11217281873954267
+47,male,28.215,4,no,northeast,10407.08585,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1341783285801221
+20,female,37,5,no,southwest,4830.63,Young Adult,Obese,Yes,Low,18-44,44825,0.10776642498605689
+32,female,33.155,3,no,northwest,6128.79745,Middle Age,Obese,Yes,Low,18-44,44825,0.13672721583937536
+19,female,31.825,1,no,northwest,2719.27975,Young Adult,Obese,Yes,Low,18-44,44825,0.06066435582822086
+27,male,18.905,3,no,northeast,4827.90495,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.10770563190184049
+63,male,41.47,0,no,southeast,13405.3903,Senior,Obese,No,High,45-64,77561.6,0.17283540179676538
+49,male,30.3,0,no,southwest,8116.68,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10464817641719613
+18,male,15.96,0,no,northeast,1694.7964,Young Adult,Underweight,No,Low,18-44,44825,0.037809177914110426
+35,female,34.8,1,no,southwest,5246.047,Middle Age,Obese,Yes,Low,18-44,44825,0.1170339542665923
+24,female,33.345,0,no,northwest,2855.43755,Young Adult,Obese,No,Low,18-44,44825,0.06370189737869493
+63,female,37.7,0,yes,southwest,48824.45,Senior,Obese,No,High,45-64,77561.6,0.6294925581731166
+38,male,27.835,2,no,northwest,6455.86265,Middle Age,Overweight,Yes,Low,18-44,44825,0.14402370663692135
+54,male,29.2,1,no,southwest,10436.096,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13455235580493438
+46,female,28.9,2,no,southwest,8823.279,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11375834175674561
+41,female,33.155,3,no,northeast,8538.28845,Middle Age,Obese,Yes,Low,18-44,44825,0.1904805008365867
+58,male,28.595,0,no,northwest,11735.87905,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15131043003238714
+18,female,38.28,0,no,southeast,1631.8212,Young Adult,Obese,No,Low,18-44,44825,0.036404265476854436
+22,male,19.95,3,no,northeast,4005.4225,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.0893568878973787
+44,female,26.41,0,no,northwest,7419.4779,Middle Age,Overweight,No,Low,18-44,44825,0.16552097936419408
+44,male,30.69,2,no,southeast,7731.4271,Middle Age,Obese,Yes,Low,18-44,44825,0.17248024762967093
+36,male,41.895,3,yes,northeast,43753.33705,Middle Age,Obese,Yes,High,18-44,44825,0.9760922933630787
+26,female,29.92,2,no,southeast,3981.9768,Young Adult,Overweight,Yes,Low,18-44,44825,0.08883383825989961
+30,female,30.9,3,no,southwest,5325.651,Middle Age,Obese,Yes,Low,18-44,44825,0.1188098382598996
+41,female,32.2,1,no,southwest,6775.961,Middle Age,Obese,Yes,Low,18-44,44825,0.15116477412158394
+29,female,32.11,2,no,northwest,4922.9159,Young Adult,Obese,Yes,Low,18-44,44825,0.10982522922476297
+61,male,31.57,0,no,southeast,12557.6053,Senior,Obese,No,High,45-64,77561.6,0.1619049284697582
+36,female,26.2,0,no,southwest,4883.866,Middle Age,Overweight,No,Low,18-44,44825,0.10895406581148913
+25,male,25.74,0,no,southeast,2137.6536,Young Adult,Overweight,No,Low,18-44,44825,0.0476888700501952
+56,female,26.6,1,no,northwest,12044.342,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.15528743605082926
+18,male,34.43,0,no,southeast,1137.4697,Young Adult,Obese,No,Low,18-44,44825,0.025375788064696043
+19,male,30.59,0,no,northwest,1639.5631,Young Adult,Obese,No,Low,18-44,44825,0.03657697936419409
+39,female,32.8,0,no,southwest,5649.715,Middle Age,Obese,No,Low,18-44,44825,0.12603937534857781
+45,female,28.6,2,no,southeast,8516.829,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.10980728865830514
+51,female,18.05,0,no,northwest,9644.2525,Pre-Senior,Underweight,No,High,45-64,77561.6,0.1243431350049509
+64,female,39.33,0,no,northeast,14901.5167,Senior,Obese,No,High,45-64,77561.6,0.19212492651002558
+19,female,32.11,0,no,northwest,2130.6759,Young Adult,Obese,No,Low,18-44,44825,0.04753320468488567
+48,female,32.23,1,no,southeast,8871.1517,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11437556342313722
+60,female,24.035,0,no,northwest,13012.20865,Senior,Normal Weight,No,High,45-64,77561.6,0.16776611944570508
+27,female,36.08,0,yes,southeast,37133.8982,Young Adult,Obese,No,High,18-44,44825,0.8284193686558841
+46,male,22.3,0,no,southwest,7147.105,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.09214746730340787
+28,female,28.88,1,no,northeast,4337.7352,Young Adult,Overweight,Yes,Low,18-44,44825,0.09677044506413832
+59,male,26.4,0,no,southeast,11743.299,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15140609528426438
+35,male,27.74,2,yes,northeast,20984.0936,Middle Age,Overweight,Yes,High,18-44,44825,0.46813371109871726
+63,female,31.8,0,no,southwest,13880.949,Senior,Obese,No,High,45-64,77561.6,0.17896676963858404
+40,male,41.23,1,no,northeast,6610.1097,Middle Age,Obese,Yes,Low,18-44,44825,0.14746480089235917
+20,male,33,1,no,southwest,1980.07,Young Adult,Obese,Yes,Low,18-44,44825,0.044173340769659786
+40,male,30.875,4,no,northwest,8162.71625,Middle Age,Obese,Yes,Low,18-44,44825,0.18210186837702175
+24,male,28.5,2,no,northwest,3537.703,Young Adult,Overweight,Yes,Low,18-44,44825,0.07892254322364751
+34,female,26.73,1,no,southeast,5002.7827,Middle Age,Overweight,Yes,Low,18-44,44825,0.11160697601784718
+45,female,30.9,2,no,southwest,8520.026,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10984850750887036
+41,female,37.1,2,no,southwest,7371.772,Middle Age,Obese,Yes,Low,18-44,44825,0.16445670942554377
+53,female,26.6,0,no,northwest,10355.641,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1335150512624804
+27,male,23.1,0,no,southeast,2483.736,Young Adult,Normal Weight,No,Low,18-44,44825,0.055409615170105966
+26,female,29.92,1,no,southeast,3392.9768,Young Adult,Overweight,Yes,Low,18-44,44825,0.0756938494143893
+24,female,23.21,0,no,southeast,25081.76784,Young Adult,Normal Weight,No,High,18-44,44825,0.559548641160067
+34,female,33.7,1,no,southwest,5012.471,Middle Age,Obese,Yes,Low,18-44,44825,0.11182311210262129
+53,female,33.25,0,no,northeast,10564.8845,Pre-Senior,Obese,No,High,45-64,77561.6,0.13621282309802787
+32,male,30.8,3,no,southwest,5253.524,Middle Age,Obese,Yes,Low,18-44,44825,0.11720075850529839
+19,male,34.8,0,yes,southwest,34779.615,Young Adult,Obese,No,High,18-44,44825,0.7758977133296151
+42,male,24.64,0,yes,southeast,19515.5416,Middle Age,Normal Weight,No,High,18-44,44825,0.43537181483547127
+55,male,33.88,3,no,southeast,11987.1682,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.154550295507055
+28,male,38.06,0,no,southeast,2689.4954,Young Adult,Obese,No,Low,18-44,44825,0.05999989737869492
+58,female,41.91,0,no,southeast,24227.33724,Pre-Senior,Obese,No,High,45-64,77561.6,0.3123625252702368
+41,female,31.635,1,no,northeast,7358.17565,Middle Age,Obese,Yes,Low,18-44,44825,0.16415338873396543
+47,male,25.46,2,no,northeast,9225.2564,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11894102751877217
+42,female,36.195,1,no,northwest,7443.64305,Middle Age,Obese,Yes,Low,18-44,44825,0.16606007919687674
+59,female,27.83,3,no,southeast,14001.2867,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1805182809534615
+19,female,17.8,0,no,southwest,1727.785,Young Adult,Underweight,No,Low,18-44,44825,0.038545119910764085
+59,male,27.5,1,no,southwest,12333.828,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.15901977267101244
+39,male,24.51,2,no,northwest,6710.1919,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.14969753262688232
+40,female,22.22,2,yes,southeast,19444.2658,Middle Age,Normal Weight,Yes,High,18-44,44825,0.4337817244841049
+18,female,26.73,0,no,southeast,1615.7667,Young Adult,Overweight,No,Low,18-44,44825,0.036046105967651974
+31,male,38.39,2,no,southeast,4463.2051,Middle Age,Obese,Yes,Low,18-44,44825,0.09956955047406582
+19,male,29.07,0,yes,northwest,17352.6803,Young Adult,Overweight,No,High,18-44,44825,0.3871205867261573
+44,male,38.06,1,no,southeast,7152.6714,Middle Age,Obese,Yes,Low,18-44,44825,0.15956879866146123
+23,female,36.67,2,yes,northeast,38511.6283,Young Adult,Obese,Yes,High,18-44,44825,0.8591551210262129
+33,female,22.135,1,no,northeast,5354.07465,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.11944394088120468
+55,female,26.8,1,no,southwest,35160.13457,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.45331884037977555
+40,male,35.3,3,no,southwest,7196.867,Middle Age,Obese,Yes,Low,18-44,44825,0.16055475738984942
+63,female,27.74,0,yes,northeast,29523.1656,Senior,Overweight,No,High,45-64,77561.6,0.38064152364056436
+54,male,30.02,0,no,northwest,24476.47851,Pre-Senior,Obese,No,High,45-64,77561.6,0.31557469817538575
+60,female,38.06,0,no,southeast,12648.7034,Senior,Obese,No,High,45-64,77561.6,0.16307945426602855
+24,male,35.86,0,no,southeast,1986.9334,Young Adult,Obese,No,Low,18-44,44825,0.044326456218628
+19,male,20.9,1,no,southwest,1832.094,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.04087214723926381
+29,male,28.975,1,no,northeast,4040.55825,Young Adult,Overweight,Yes,Low,18-44,44825,0.09014073061907418
+18,male,17.29,2,yes,northeast,12829.4551,Young Adult,Underweight,Yes,High,18-44,44825,0.28621204907975456
+63,female,32.2,2,yes,southwest,47305.305,Senior,Obese,Yes,High,45-64,77561.6,0.6099062551571911
+54,male,34.21,2,yes,southeast,44260.7499,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.57065287332907
+27,male,30.3,3,no,southwest,4260.744,Young Adult,Obese,Yes,Low,18-44,44825,0.09505284997211377
+50,male,31.825,0,yes,northeast,41097.16175,Pre-Senior,Obese,No,High,45-64,77561.6,0.529864801009778
+55,female,25.365,3,no,northeast,13047.33235,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.16821896853597657
+56,male,33.63,0,yes,northwest,43921.1837,Pre-Senior,Obese,No,High,45-64,77561.6,0.5662748537936299
+38,female,40.15,0,no,southeast,5400.9805,Middle Age,Obese,No,Low,18-44,44825,0.12049036252091466
+51,male,24.415,4,no,northwest,11520.09985,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.14852839356073108
+19,male,31.92,0,yes,northwest,33750.2918,Young Adult,Obese,No,High,18-44,44825,0.7529345633017289
+58,female,25.2,0,no,southwest,11837.16,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1526162430893638
+20,female,26.84,1,yes,southeast,17085.2676,Young Adult,Overweight,Yes,High,18-44,44825,0.38115488232013384
+52,male,24.32,3,yes,northeast,24869.8368,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.3206462579420744
+19,male,36.955,0,yes,northwest,36219.40545,Young Adult,Obese,No,High,18-44,44825,0.8080179687674288
+53,female,38.06,3,no,southeast,20462.99766,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.2638289779994224
+46,male,42.35,3,yes,southeast,46151.1245,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5950254313990427
+40,male,19.8,1,yes,southeast,17179.522,Middle Age,Normal Weight,Yes,High,18-44,44825,0.38325760178471835
+59,female,32.395,3,no,northeast,14590.63205,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1881166975668372
+45,male,30.2,1,no,southwest,7441.053,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.0959373323912864
+49,male,25.84,1,no,northeast,9282.4806,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11967881786863603
+18,male,29.37,1,no,southeast,1719.4363,Young Adult,Overweight,Yes,Low,18-44,44825,0.038358868934746236
+50,male,34.2,2,yes,southwest,42856.838,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5525522681326842
+41,male,37.05,2,no,northwest,7265.7025,Middle Age,Obese,Yes,Low,18-44,44825,0.1620904071388734
+50,male,27.455,1,no,northeast,9617.66245,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12400031007612013
+25,male,27.55,0,no,northwest,2523.1695,Young Adult,Overweight,No,Low,18-44,44825,0.05628933630786392
+47,female,26.6,2,no,northeast,9715.841,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12526612395824738
+19,male,20.615,2,no,northwest,2803.69785,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.06254763747908533
+22,female,24.3,0,no,southwest,2150.469,Young Adult,Normal Weight,No,Low,18-44,44825,0.047974768544339096
+59,male,31.79,2,no,southeast,12928.7911,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16669061881137057
+51,female,21.56,1,no,southeast,9855.1314,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.12706199201666804
+40,female,28.12,1,yes,northeast,22331.5668,Middle Age,Overweight,Yes,High,18-44,44825,0.4981944629113218
+54,male,40.565,3,yes,northeast,48549.17835,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6259434868543197
+30,male,27.645,1,no,northeast,4237.12655,Middle Age,Overweight,Yes,Low,18-44,44825,0.09452596876742889
+55,female,32.395,1,no,northeast,11879.10405,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15315702680192259
+52,female,31.2,0,no,southwest,9625.92,Pre-Senior,Obese,No,High,45-64,77561.6,0.12410677448634375
+46,male,26.62,1,no,southeast,7742.1098,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.09981885108094726
+46,female,48.07,2,no,northeast,9432.9253,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1216184980712105
+63,female,26.22,0,no,northwest,14256.1928,Senior,Overweight,No,High,45-64,77561.6,0.18380477968479247
+59,female,36.765,1,yes,northeast,47896.79135,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6175322756363973
+52,male,26.4,3,no,southeast,25992.82104,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3351248690073438
+28,female,33.4,0,no,southwest,3172.018,Young Adult,Obese,No,Low,18-44,44825,0.0707644841048522
+29,male,29.64,1,no,northeast,20277.80751,Young Adult,Overweight,Yes,High,18-44,44825,0.45237718929168985
+25,male,45.54,2,yes,southeast,42112.2356,Young Adult,Obese,Yes,High,18-44,44825,0.9394809949804797
+22,female,28.82,0,no,southeast,2156.7518,Young Adult,Overweight,No,Low,18-44,44825,0.048114931399888455
+25,male,26.8,3,no,southwest,3906.127,Young Adult,Overweight,Yes,Low,18-44,44825,0.08714170663692136
+18,male,22.99,0,no,northeast,1704.5681,Young Adult,Normal Weight,No,Low,18-44,44825,0.03802717456776352
+19,male,27.7,0,yes,southwest,16297.846,Young Adult,Overweight,No,High,18-44,44825,0.3635883100948131
+47,male,25.41,1,yes,southeast,21978.6769,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.2833705970480237
+31,male,34.39,3,yes,northwest,38746.3551,Middle Age,Obese,Yes,High,18-44,44825,0.8643916363636364
+48,female,28.88,1,no,northwest,9249.4952,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11925353783315454
+36,male,27.55,3,no,northeast,6746.7425,Middle Age,Overweight,Yes,Low,18-44,44825,0.15051293920803124
+53,female,22.61,3,yes,northeast,24873.3849,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.3206920035172044
+56,female,37.51,2,no,southeast,12265.5069,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15813891023393017
+28,female,33,2,no,southeast,4349.462,Young Adult,Obese,Yes,Low,18-44,44825,0.09703205800334636
+57,female,38,2,no,southwest,12646.207,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16304726823582802
+29,male,33.345,2,no,northwest,19442.3535,Young Adult,Obese,Yes,High,18-44,44825,0.43373906302286674
+28,female,27.5,2,no,southwest,20177.67113,Young Adult,Overweight,Yes,High,18-44,44825,0.4501432488566648
+30,female,33.33,1,no,southeast,4151.0287,Middle Age,Obese,Yes,Low,18-44,44825,0.09260521360847741
+58,male,34.865,0,no,northeast,11944.59435,Pre-Senior,Obese,No,High,45-64,77561.6,0.15400139179697167
+41,female,33.06,2,no,northwest,7749.1564,Middle Age,Obese,Yes,Low,18-44,44825,0.17287577021751255
+50,male,26.6,0,no,southwest,8444.474,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.10887441723739581
+19,female,24.7,0,no,southwest,1737.376,Young Adult,Normal Weight,No,Low,18-44,44825,0.03875908533184607
+43,male,35.97,3,yes,southeast,42124.5153,Middle Age,Obese,Yes,High,18-44,44825,0.9397549425543781
+49,male,35.86,0,no,southeast,8124.4084,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10474781850812773
+27,female,31.4,0,yes,southwest,34838.873,Young Adult,Obese,No,High,18-44,44825,0.7772196988287786
+52,male,33.25,0,no,northeast,9722.7695,Pre-Senior,Obese,No,High,45-64,77561.6,0.12535545295610198
+50,male,32.205,0,no,northwest,8835.26495,Pre-Senior,Obese,No,Low,45-64,77561.6,0.1139128763460269
+54,male,32.775,0,no,northeast,10435.06525,Pre-Senior,Obese,No,High,45-64,77561.6,0.13453906636789337
+44,female,27.645,0,no,northwest,7421.19455,Middle Age,Overweight,No,Low,18-44,44825,0.16555927607361964
+32,male,37.335,1,no,northeast,4667.60765,Middle Age,Obese,Yes,Low,18-44,44825,0.10412956274400446
+34,male,25.27,1,no,northwest,4894.7533,Middle Age,Overweight,Yes,Low,18-44,44825,0.10919695036252092
+26,female,29.64,4,no,northeast,24671.66334,Young Adult,Overweight,Yes,High,18-44,44825,0.5503996283324037
+34,male,30.8,0,yes,southwest,35491.64,Middle Age,Obese,No,High,18-44,44825,0.7917822643614054
+57,male,40.945,0,no,northeast,11566.30055,Pre-Senior,Obese,No,High,45-64,77561.6,0.1491240581679594
+29,male,27.2,0,no,southwest,2866.091,Young Adult,Overweight,No,Low,18-44,44825,0.0639395649749024
+40,male,34.105,1,no,northeast,6600.20595,Middle Age,Obese,Yes,Low,18-44,44825,0.14724385833798104
+27,female,23.21,1,no,southeast,3561.8889,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.07946210596765198
+45,male,36.48,2,yes,northwest,42760.5022,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5513102127857084
+64,female,33.8,1,yes,southwest,47928.03,Senior,Obese,Yes,High,45-64,77561.6,0.6179350348626124
+52,male,36.7,0,no,southwest,9144.565,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11790067507632643
+61,female,36.385,1,yes,northeast,48517.56315,Senior,Obese,Yes,High,45-64,77561.6,0.6255358727772505
+52,male,27.36,0,yes,northwest,24393.6224,Pre-Senior,Overweight,No,High,45-64,77561.6,0.31450643617460183
+61,female,31.16,0,no,northwest,13429.0354,Senior,Obese,No,High,45-64,77561.6,0.1731402575501279
+56,female,28.785,0,no,northeast,11658.37915,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15031122552912782
+43,female,35.72,2,no,northeast,19144.57652,Middle Age,Obese,Yes,High,18-44,44825,0.42709596252091464
+64,male,34.5,0,no,southwest,13822.803,Senior,Obese,No,High,45-64,77561.6,0.17821709454162885
+60,male,25.74,0,no,southeast,12142.5786,Senior,Overweight,No,High,45-64,77561.6,0.15655399837032757
+62,male,27.55,1,no,northwest,13937.6665,Senior,Overweight,Yes,High,45-64,77561.6,0.17969802711651126
+50,male,32.3,1,yes,northeast,41919.097,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5404619940795445
+46,female,27.72,1,no,southeast,8232.6388,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.10614323067084742
+24,female,27.6,0,no,southwest,18955.22017,Young Adult,Overweight,No,High,18-44,44825,0.42287161561628556
+62,male,30.02,0,no,northwest,13352.0998,Senior,Obese,No,High,45-64,77561.6,0.17214832855433615
+60,female,27.55,0,no,northeast,13217.0945,Senior,Overweight,No,High,45-64,77561.6,0.17040770819580822
+63,male,36.765,0,no,northeast,13981.85035,Senior,Obese,No,High,45-64,77561.6,0.18026768852112385
+49,female,41.47,4,no,southeast,10977.2063,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14152887898135158
+34,female,29.26,3,no,southeast,6184.2994,Middle Age,Overweight,Yes,Low,18-44,44825,0.13796540769659787
+33,male,35.75,2,no,southeast,4889.9995,Middle Age,Obese,Yes,Low,18-44,44825,0.1090908979364194
+46,male,33.345,1,no,northeast,8334.45755,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10745597757137551
+36,female,29.92,1,no,southeast,5478.0368,Middle Age,Overweight,Yes,Low,18-44,44825,0.12220940992749581
+19,male,27.835,0,no,northwest,1635.73365,Young Adult,Overweight,No,Low,18-44,44825,0.03649154824316787
+57,female,23.18,0,no,northwest,11830.6072,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.15253175798333196
+50,female,25.6,0,no,southwest,8932.084,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.115161162224606
+30,female,27.7,0,no,southwest,3554.203,Middle Age,Overweight,No,Low,18-44,44825,0.07929064138315672
+33,male,35.245,0,no,northeast,12404.8791,Middle Age,Obese,No,High,18-44,44825,0.27674019185722254
+18,female,38.28,0,no,southeast,14133.03775,Young Adult,Obese,No,High,18-44,44825,0.31529364751812605
+46,male,27.6,0,no,southwest,24603.04837,Pre-Senior,Overweight,No,High,45-64,77561.6,0.3172065605918392
+46,male,43.89,3,no,southeast,8944.1151,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11531627893184257
+47,male,29.83,3,no,northwest,9620.3307,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12403471176458453
+23,male,41.91,0,no,southeast,1837.2819,Young Adult,Obese,No,Low,18-44,44825,0.04098788399330731
+18,female,20.79,0,no,southeast,1607.5101,Young Adult,Normal Weight,No,Low,18-44,44825,0.035861909648633575
+48,female,32.3,2,no,northeast,10043.249,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12948738808895122
+35,male,30.5,1,no,southwest,4751.07,Middle Age,Obese,Yes,Low,18-44,44825,0.1059915225878416
+19,female,21.7,0,yes,southwest,13844.506,Young Adult,Normal Weight,No,High,18-44,44825,0.3088567986614612
+21,female,26.4,1,no,southwest,2597.779,Young Adult,Overweight,Yes,Low,18-44,44825,0.057953798103736756
+21,female,21.89,2,no,southeast,3180.5101,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.07095393418851087
+49,female,30.78,1,no,northeast,9778.3472,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12607201501774074
+56,female,32.3,3,no,northeast,13430.265,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.17315611075583792
+42,female,24.985,2,no,northwest,8017.06115,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.17885245175683215
+44,male,32.015,2,no,northwest,8116.26885,Middle Age,Obese,Yes,Low,18-44,44825,0.1810656742889013
+18,male,30.4,3,no,northeast,3481.868,Young Adult,Obese,Yes,Low,18-44,44825,0.07767692136084774
+61,female,21.09,0,no,northwest,13415.0381,Senior,Normal Weight,No,High,45-64,77561.6,0.17295979066960968
+57,female,22.23,0,no,northeast,12029.2867,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.15509332839962042
+42,female,33.155,1,no,northeast,7639.41745,Middle Age,Obese,Yes,Low,18-44,44825,0.1704276062465142
+26,male,32.9,2,yes,southwest,36085.219,Young Adult,Obese,Yes,High,18-44,44825,0.8050244060234244
+20,male,33.33,0,no,southeast,1391.5287,Young Adult,Obese,No,Low,18-44,44825,0.031043585052983828
+23,female,28.31,0,yes,northwest,18033.9679,Young Adult,Overweight,No,High,18-44,44825,0.40231941773563856
+39,female,24.89,3,yes,northeast,21659.9301,Middle Age,Normal Weight,Yes,High,18-44,44825,0.48321093363078643
+24,male,40.15,0,yes,southeast,38126.2465,Young Adult,Obese,No,High,18-44,44825,0.8505576464026771
+64,female,30.115,3,no,northwest,16455.70785,Senior,Obese,Yes,High,45-64,77561.6,0.21216307876578097
+62,male,31.46,1,no,southeast,27000.98473,Senior,Obese,Yes,High,45-64,77561.6,0.34812310125113455
+27,female,17.955,2,yes,northeast,15006.57945,Young Adult,Underweight,Yes,High,18-44,44825,0.33478147127718905
+55,male,30.685,0,yes,northeast,42303.69215,Pre-Senior,Obese,No,High,45-64,77561.6,0.5454205708752785
+55,male,33,0,no,southeast,20781.48892,Pre-Senior,Obese,No,High,45-64,77561.6,0.2679352787977556
+35,female,43.34,2,no,southeast,5846.9176,Middle Age,Obese,Yes,Low,18-44,44825,0.1304387640825432
+44,male,22.135,2,no,northeast,8302.53565,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.18522109648633575
+19,male,34.4,0,no,southwest,1261.859,Young Adult,Obese,No,Low,18-44,44825,0.028150786391522586
+58,female,39.05,0,no,southeast,11856.4115,Pre-Senior,Obese,No,High,45-64,77561.6,0.15286445225472398
+50,male,25.365,2,no,northwest,30284.64294,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.39045923420868056
+26,female,22.61,0,no,northwest,3176.8159,Young Adult,Normal Weight,No,Low,18-44,44825,0.07087152035694368
+24,female,30.21,3,no,northwest,4618.0799,Young Adult,Obese,Yes,Low,18-44,44825,0.10302464919129949
+48,male,35.625,4,no,northeast,10736.87075,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13843023803015925
+19,female,37.43,0,no,northwest,2138.0707,Young Adult,Obese,No,Low,18-44,44825,0.04769817512548801
+48,male,31.445,1,no,northeast,8964.06055,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11557343517926395
+49,male,31.35,1,no,northeast,9290.1395,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11977756389759879
+46,female,32.3,2,no,northeast,9411.005,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12133588012624802
+46,male,19.855,0,no,northwest,7526.70645,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.09704166043506064
+43,female,34.4,3,no,southwest,8522.003,Middle Age,Obese,Yes,Low,18-44,44825,0.19011718906860012
+21,male,31.02,0,no,southeast,16586.49771,Young Adult,Obese,No,High,18-44,44825,0.3700278351366425
+64,male,25.6,2,no,southwest,14988.432,Senior,Overweight,Yes,High,45-64,77561.6,0.19324552355804933
+18,female,38.17,0,no,southeast,1631.6683,Young Adult,Obese,No,Low,18-44,44825,0.03640085443390965
+51,female,20.6,0,no,southwest,9264.797,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.11945082360343262
+47,male,47.52,1,no,southeast,8083.9198,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10422579988035315
+64,female,32.965,0,no,northwest,14692.66935,Senior,Obese,No,High,45-64,77561.6,0.1894322622277003
+49,male,32.3,3,no,northwest,10269.46,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13240392152817887
+31,male,20.4,0,no,southwest,3260.199,Middle Age,Normal Weight,No,Low,18-44,44825,0.0727317122141662
+52,female,38.38,2,no,northeast,11396.9002,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14693998318755672
+33,female,24.31,0,no,southeast,4185.0979,Middle Age,Normal Weight,No,Low,18-44,44825,0.093365262688232
+47,female,23.6,1,no,southwest,8539.671,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11010179006106113
+38,male,21.12,3,no,southeast,6652.5288,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.14841112771890685
+32,male,30.03,1,no,southeast,4074.4537,Middle Age,Obese,Yes,Low,18-44,44825,0.09089690351366425
+19,male,17.48,0,no,northwest,1621.3402,Young Adult,Underweight,No,Low,18-44,44825,0.036170445064138315
+44,female,20.235,1,yes,northeast,19594.80965,Middle Age,Normal Weight,Yes,High,18-44,44825,0.43714020412716115
+26,female,17.195,2,yes,northeast,14455.64405,Young Adult,Underweight,Yes,High,18-44,44825,0.3224906648075851
+25,male,23.9,5,no,southwest,5080.096,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.11333175683212492
+19,female,35.15,0,no,northwest,2134.9015,Young Adult,Obese,No,Low,18-44,44825,0.047627473508087007
+43,female,35.64,1,no,southeast,7345.7266,Middle Age,Obese,Yes,Low,18-44,44825,0.1638756631344116
+52,male,34.1,0,no,southeast,9140.951,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11785407985394833
+36,female,22.6,2,yes,southwest,18608.262,Middle Age,Normal Weight,Yes,High,18-44,44825,0.415131332961517
+64,male,39.16,1,no,southeast,14418.2804,Senior,Obese,Yes,High,45-64,77561.6,0.18589457154055614
+63,female,26.98,0,yes,northwest,28950.4692,Senior,Overweight,No,High,45-64,77561.6,0.373257761572737
+64,male,33.88,0,yes,southeast,46889.2612,Senior,Obese,No,High,45-64,77561.6,0.6045422116098688
+61,male,35.86,0,yes,southeast,46599.1084,Senior,Obese,No,High,45-64,77561.6,0.6008012779519761
+40,male,32.775,1,yes,northeast,39125.33225,Middle Age,Obese,Yes,High,18-44,44825,0.8728462297824875
+25,male,30.59,0,no,northeast,2727.3951,Young Adult,Obese,No,Low,18-44,44825,0.06084540100390408
+48,male,30.2,2,no,southwest,8968.33,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11562848110405148
+45,male,24.31,5,no,southeast,9788.8659,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.12620763238509777
+38,female,27.265,1,no,northeast,6555.07035,Middle Age,Overweight,Yes,Low,18-44,44825,0.14623692916899053
+18,female,29.165,0,no,northeast,7323.734819,Young Adult,Overweight,No,Low,18-44,44825,0.16338504894590072
+21,female,16.815,1,no,northeast,3167.45585,Young Adult,Underweight,Yes,Low,18-44,44825,0.07066270719464585
+27,female,30.4,3,no,northwest,18804.7524,Young Adult,Obese,Yes,High,18-44,44825,0.4195148332403793
+19,male,33.1,0,no,southwest,23082.95533,Young Adult,Obese,No,High,18-44,44825,0.5149571741215839
+29,female,20.235,2,no,northwest,4906.40965,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.10945699163413274
+42,male,26.9,0,no,southwest,5969.723,Middle Age,Overweight,No,Low,18-44,44825,0.13317842721695483
+60,female,30.5,0,no,southwest,12638.195,Senior,Obese,No,High,45-64,77561.6,0.16294396969634456
+31,male,28.595,1,no,northwest,4243.59005,Middle Age,Overweight,Yes,Low,18-44,44825,0.09467016285554936
+60,male,33.11,3,no,southeast,13919.8229,Senior,Obese,Yes,High,45-64,77561.6,0.17946796997483289
+22,male,31.73,0,no,northeast,2254.7967,Young Adult,Obese,No,Low,18-44,44825,0.05030221305075293
+35,male,28.9,3,no,southwest,5926.846,Middle Age,Overweight,Yes,Low,18-44,44825,0.13222188510875627
+52,female,46.75,5,no,southeast,12592.5345,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16235526987581483
+26,male,29.45,0,no,northeast,2897.3235,Young Adult,Overweight,No,Low,18-44,44825,0.0646363301728946
+31,female,32.68,1,no,northwest,4738.2682,Middle Age,Obese,Yes,Low,18-44,44825,0.10570592749581707
+33,female,33.5,0,yes,southwest,37079.372,Middle Age,Obese,No,High,18-44,44825,0.8272029447852761
+18,male,43.01,0,no,southeast,1149.3959,Young Adult,Obese,No,Low,18-44,44825,0.02564184941438929
+59,female,36.52,1,no,southeast,28287.89766,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.3647152413049756
+56,male,26.695,1,yes,northwest,26109.32905,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3366270042134252
+45,female,33.1,0,no,southwest,7345.084,Pre-Senior,Obese,No,Low,45-64,77561.6,0.09470000618862942
+60,male,29.64,0,no,northeast,12730.9996,Senior,Overweight,No,High,45-64,77561.6,0.16414049735951808
+56,female,25.65,0,no,northwest,11454.0215,Pre-Senior,Overweight,No,High,45-64,77561.6,0.14767644684998762
+40,female,29.6,0,no,southwest,5910.944,Middle Age,Overweight,No,Low,18-44,44825,0.13186712771890688
+35,male,38.6,1,no,southwest,4762.329,Middle Age,Obese,Yes,Low,18-44,44825,0.10624269938650306
+39,male,29.6,4,no,southwest,7512.267,Middle Age,Overweight,Yes,Low,18-44,44825,0.16759100948131622
+30,male,24.13,1,no,northwest,4032.2407,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.08995517456776352
+24,male,23.4,0,no,southwest,1969.614,Young Adult,Normal Weight,No,Low,18-44,44825,0.043940078081427775
+20,male,29.735,0,no,northwest,1769.53165,Young Adult,Overweight,No,Low,18-44,44825,0.03947644506413831
+32,male,46.53,2,no,southeast,4686.3887,Middle Age,Obese,Yes,Low,18-44,44825,0.10454854880089237
+59,male,37.4,0,no,southwest,21797.0004,Pre-Senior,Obese,No,High,45-64,77561.6,0.28102824593613335
+55,female,30.14,2,no,southeast,11881.9696,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15319397227494017
+57,female,30.495,0,no,northwest,11840.77505,Pre-Senior,Obese,No,High,45-64,77561.6,0.15266285184936876
+56,male,39.6,0,no,southwest,10601.412,Pre-Senior,Obese,No,High,45-64,77561.6,0.1366837713507715
+40,female,33,3,no,southeast,7682.67,Middle Age,Obese,Yes,Low,18-44,44825,0.171392526491913
+49,female,36.63,3,no,southeast,10381.4787,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13384817615933656
+42,male,30,0,yes,southwest,22144.032,Middle Age,Obese,No,High,18-44,44825,0.4940107529280535
+62,female,38.095,2,no,northeast,15230.32405,Senior,Obese,Yes,High,45-64,77561.6,0.1963642324294496
+56,male,25.935,0,no,northeast,11165.41765,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1439554837703193
+19,male,25.175,0,no,northwest,1632.03625,Young Adult,Overweight,No,Low,18-44,44825,0.03640906302286671
+30,female,28.38,1,yes,southeast,19521.9682,Middle Age,Overweight,Yes,High,18-44,44825,0.4355151857222532
+60,female,28.7,1,no,southwest,13224.693,Senior,Overweight,Yes,High,45-64,77561.6,0.1705056754889017
+56,female,33.82,2,no,northwest,12643.3778,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16301079142255961
+28,female,24.32,1,no,northeast,23288.9284,Young Adult,Normal Weight,Yes,High,18-44,44825,0.5195522230897937
+18,female,24.09,1,no,southeast,2201.0971,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.04910422978248745
+27,male,32.67,0,no,southeast,2497.0383,Young Adult,Obese,No,Low,18-44,44825,0.05570637590630229
+18,female,30.115,0,no,northeast,2203.47185,Young Adult,Obese,No,Low,18-44,44825,0.049157208031232566
+19,female,29.8,0,no,southwest,1744.465,Young Adult,Overweight,No,Low,18-44,44825,0.03891723368655884
+47,female,33.345,0,no,northeast,20878.78443,Pre-Senior,Obese,No,High,45-64,77561.6,0.26918970766461753
+54,male,25.1,3,yes,southwest,25382.297,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3272533960103969
+61,male,28.31,1,yes,northwest,28868.6639,Senior,Overweight,Yes,High,45-64,77561.6,0.37220304764213213
+24,male,28.5,0,yes,northeast,35147.52848,Young Adult,Overweight,No,High,18-44,44825,0.784105487562744
+25,male,35.625,0,no,northwest,2534.39375,Young Adult,Obese,No,Low,18-44,44825,0.05653973786949248
+21,male,36.85,0,no,southeast,1534.3045,Young Adult,Obese,No,Low,18-44,44825,0.034228767428890125
+23,male,32.56,0,no,southeast,1824.2854,Young Adult,Obese,No,Low,18-44,44825,0.04069794534300056
+63,male,41.325,3,no,northwest,15555.18875,Senior,Obese,Yes,High,45-64,77561.6,0.20055270584928622
+49,male,37.51,2,no,southeast,9304.7019,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11996531659996698
+18,female,31.35,0,no,southeast,1622.1885,Young Adult,Obese,No,Low,18-44,44825,0.03618936977133296
+51,female,39.5,1,no,southwest,9880.068,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1273834990510768
+48,male,34.3,3,no,southwest,9563.029,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12329592220892813
+31,female,31.065,0,no,northeast,4347.02335,Middle Age,Obese,No,Low,18-44,44825,0.09697765421081986
+54,female,21.47,3,no,northwest,12475.3513,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.16084442945993893
+19,male,28.7,0,no,southwest,1253.936,Young Adult,Overweight,No,Low,18-44,44825,0.027974032348020077
+44,female,38.06,0,yes,southeast,48885.13561,Middle Age,Obese,No,High,18-44,44825,1.0905774815393194
+53,male,31.16,1,no,northwest,10461.9794,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13488606991088373
+19,female,32.9,0,no,southwest,1748.774,Young Adult,Obese,No,Low,18-44,44825,0.03901336307863915
+61,female,25.08,0,no,southeast,24513.09126,Senior,Overweight,No,High,45-64,77561.6,0.3160467455545012
+18,female,25.08,0,no,northeast,2196.4732,Young Adult,Overweight,No,Low,18-44,44825,0.049001075292805354
+61,male,43.4,0,no,southwest,12574.049,Senior,Obese,No,High,45-64,77561.6,0.1621169367315785
+21,male,25.7,4,yes,southwest,17942.106,Young Adult,Overweight,Yes,High,18-44,44825,0.40027007250418295
+20,male,27.93,0,no,northeast,1967.0227,Young Adult,Overweight,No,Low,18-44,44825,0.043882268823201336
+31,female,23.6,2,no,southwest,4931.647,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.11002001115448969
+45,male,28.7,2,no,southwest,8027.968,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.1035044145556564
+44,female,23.98,2,no,southeast,8211.1002,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.18318126491912998
+62,female,39.2,0,no,southwest,13470.86,Senior,Obese,No,High,45-64,77561.6,0.17367950119646836
+29,male,34.4,0,yes,southwest,36197.699,Young Adult,Obese,No,High,18-44,44825,0.8075337200223089
+43,male,26.03,0,no,northeast,6837.3687,Middle Age,Overweight,No,Low,18-44,44825,0.15253471723368656
+51,male,23.21,1,yes,southeast,22218.1149,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.28645766590684046
+19,male,30.25,0,yes,southeast,32548.3405,Young Adult,Obese,No,High,18-44,44825,0.7261202565532626
+38,female,28.93,1,no,southeast,5974.3847,Middle Age,Overweight,Yes,Low,18-44,44825,0.13328242498605689
+37,male,30.875,3,no,northwest,6796.86325,Middle Age,Obese,Yes,Low,18-44,44825,0.15163108198549918
+22,male,31.35,1,no,northwest,2643.2685,Young Adult,Obese,Yes,Low,18-44,44825,0.058968622420524267
+21,male,23.75,2,no,northwest,3077.0955,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.06864686001115448
+24,female,25.27,0,no,northeast,3044.2133,Young Adult,Overweight,No,Low,18-44,44825,0.06791329168990519
+57,female,28.7,0,no,southwest,11455.28,Pre-Senior,Overweight,No,High,45-64,77561.6,0.14769267266276095
+56,male,32.11,1,no,northeast,11763.0009,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15166011144690153
+27,male,33.66,0,no,southeast,2498.4144,Young Adult,Obese,No,Low,18-44,44825,0.05573707529280535
+51,male,22.42,0,no,northeast,9361.3268,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.12069538018813433
+19,male,30.4,0,no,southwest,1256.299,Young Adult,Obese,No,Low,18-44,44825,0.02802674846625767
+39,male,28.3,1,yes,southwest,21082.16,Middle Age,Overweight,Yes,High,18-44,44825,0.47032147239263805
+58,male,35.7,0,no,southwest,11362.755,Pre-Senior,Obese,No,High,45-64,77561.6,0.14649974987622738
+20,male,35.31,1,no,southeast,27724.28875,Young Adult,Obese,Yes,High,18-44,44825,0.6185005856107083
+45,male,30.495,2,no,northwest,8413.46305,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.1084745937422642
+35,female,31,1,no,southwest,5240.765,Middle Age,Obese,Yes,Low,18-44,44825,0.11691611823759064
+31,male,30.875,0,no,northeast,3857.75925,Middle Age,Obese,No,Low,18-44,44825,0.08606267150027887
+50,female,27.36,0,no,northeast,25656.57526,Pre-Senior,Overweight,No,High,45-64,77561.6,0.33078965957380974
+32,female,44.22,0,no,southeast,3994.1778,Middle Age,Obese,No,Low,18-44,44825,0.08910603011712213
+51,female,33.915,0,no,northeast,9866.30485,Pre-Senior,Obese,No,High,45-64,77561.6,0.12720605106134994
+38,female,37.73,0,no,southeast,5397.6167,Middle Age,Obese,No,Low,18-44,44825,0.12041531957612939
+42,male,26.07,1,yes,southeast,38245.59327,Middle Age,Overweight,Yes,High,18-44,44825,0.8532201510317903
+18,female,33.88,0,no,southeast,11482.63485,Young Adult,Obese,No,High,18-44,44825,0.2561658639152259
+19,female,30.59,2,no,northwest,24059.68019,Young Adult,Obese,Yes,High,18-44,44825,0.5367469088678193
+51,female,25.8,1,no,southwest,9861.025,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12713797807162305
+46,male,39.425,1,no,northeast,8342.90875,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10756493870678274
+18,male,25.46,0,no,northeast,1708.0014,Young Adult,Overweight,No,Low,18-44,44825,0.03810376798661461
+57,male,42.13,1,yes,southeast,48675.5177,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6275723773104216
+62,female,31.73,0,no,northeast,14043.4767,Senior,Obese,No,High,45-64,77561.6,0.18106223569395163
+59,male,29.7,2,no,southeast,12925.886,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.16665316342107434
+37,male,36.19,0,no,southeast,19214.70553,Middle Age,Obese,No,High,18-44,44825,0.428660469157836
+64,male,40.48,0,no,southeast,13831.1152,Senior,Obese,No,High,45-64,77561.6,0.17832426355309844
+38,male,28.025,1,no,northeast,6067.12675,Middle Age,Overweight,Yes,Low,18-44,44825,0.13535140546569996
+33,female,38.9,3,no,southwest,5972.378,Middle Age,Obese,Yes,Low,18-44,44825,0.13323765755716677
+46,female,30.2,2,no,southwest,8825.086,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11378163936793463
+46,female,28.05,1,no,southeast,8233.0975,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.10614914467984156
+53,male,31.35,0,no,southeast,27346.04207,Pre-Senior,Obese,No,High,45-64,77561.6,0.3525719179336166
+34,female,38,3,no,southwest,6196.448,Middle Age,Obese,Yes,Low,18-44,44825,0.13823643056330173
+20,female,31.79,2,no,southeast,3056.3881,Young Adult,Obese,Yes,Low,18-44,44825,0.06818489905186838
+63,female,36.3,0,no,southeast,13887.204,Senior,Obese,No,High,45-64,77561.6,0.17904741521577686
+54,female,47.41,0,yes,southeast,63770.42801,Pre-Senior,Obese,No,High,45-64,77561.6,0.8221907233734219
+54,male,30.21,0,no,northwest,10231.4999,Pre-Senior,Obese,No,High,45-64,77561.6,0.13191450279519762
+49,male,25.84,2,yes,northwest,23807.2406,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.30694622854608467
+28,male,35.435,0,no,northeast,3268.84665,Young Adult,Obese,No,Low,18-44,44825,0.07292463245956497
+54,female,46.7,2,no,southwest,11538.421,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14876460774403827
+25,female,28.595,0,no,northeast,3213.62205,Young Adult,Overweight,No,Low,18-44,44825,0.0716926279977691
+43,female,46.2,0,yes,southeast,45863.205,Middle Age,Obese,No,High,18-44,44825,1.0231612939208032
+63,male,30.8,0,no,southwest,13390.559,Senior,Obese,No,High,45-64,77561.6,0.17264418217262148
+32,female,28.93,0,no,southeast,3972.9247,Middle Age,Overweight,No,Low,18-44,44825,0.08863189514779699
+62,male,21.4,0,no,southwest,12957.118,Senior,Normal Weight,No,High,45-64,77561.6,0.16705583690898587
+52,female,31.73,2,no,northwest,11187.6567,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14424221135200924
+25,female,41.325,0,no,northeast,17878.90068,Young Adult,Obese,No,High,18-44,44825,0.3988600263245956
+28,male,23.8,2,no,southwest,3847.674,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.08583767986614613
+46,male,33.44,1,no,northeast,8334.5896,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10745768008911624
+34,male,34.21,0,no,southeast,3935.1799,Middle Age,Obese,No,Low,18-44,44825,0.08778984718349135
+35,female,34.105,3,yes,northwest,39983.42595,Middle Age,Obese,Yes,High,18-44,44825,0.8919894244283323
+19,male,35.53,0,no,northwest,1646.4297,Young Adult,Obese,No,Low,18-44,44825,0.03673016620189626
+46,female,19.95,2,no,northwest,9193.8385,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11853595722625627
+54,female,32.68,0,no,northeast,10923.9332,Pre-Senior,Obese,No,High,45-64,77561.6,0.14084203007673898
+27,male,30.5,0,no,southwest,2494.022,Young Adult,Obese,No,Low,18-44,44825,0.05563908533184607
+50,male,44.77,1,no,southeast,9058.7303,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11679401018029538
+18,female,32.12,2,no,southeast,2801.2588,Young Adult,Obese,Yes,Low,18-44,44825,0.06249322476296709
+19,female,30.495,0,no,northwest,2128.43105,Young Adult,Obese,No,Low,18-44,44825,0.04748312437255996
+38,female,40.565,1,no,northwest,6373.55735,Middle Age,Obese,Yes,Low,18-44,44825,0.14218755939765756
+41,male,30.59,2,no,northwest,7256.7231,Middle Age,Obese,Yes,Low,18-44,44825,0.16189008588957055
+49,female,31.9,5,no,southwest,11552.904,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14895133674395578
+48,male,40.565,2,yes,northwest,45702.02235,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5892351672734961
+31,female,29.1,0,no,southwest,3761.292,Middle Age,Overweight,No,Low,18-44,44825,0.08391058561070831
+18,female,37.29,1,no,southeast,2219.4451,Young Adult,Obese,Yes,Low,18-44,44825,0.04951355493586168
+30,female,43.12,2,no,southeast,4753.6368,Middle Age,Obese,Yes,Low,18-44,44825,0.10604878527607363
+62,female,36.86,1,no,northeast,31620.00106,Senior,Obese,Yes,High,45-64,77561.6,0.4076759770298704
+57,female,34.295,2,no,northeast,13224.05705,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.17049747619956265
+58,female,27.17,0,no,northwest,12222.8983,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15758955849286244
+22,male,26.84,0,no,southeast,1664.9996,Young Adult,Overweight,No,Low,18-44,44825,0.03714444171779141
+31,female,38.095,1,yes,northeast,58571.07448,Middle Age,Obese,Yes,High,18-44,44825,1.306660891912995
+52,male,30.2,1,no,southwest,9724.53,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1253781510438155
+25,female,23.465,0,no,northeast,3206.49135,Young Adult,Normal Weight,No,Low,18-44,44825,0.07153354935861683
+59,male,25.46,1,no,northeast,12913.9924,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.16649981949830842
+19,male,30.59,0,no,northwest,1639.5631,Young Adult,Obese,No,Low,18-44,44825,0.03657697936419409
+39,male,45.43,2,no,southeast,6356.2707,Middle Age,Obese,Yes,Low,18-44,44825,0.1418019118795315
+32,female,23.65,1,no,southeast,17626.23951,Middle Age,Normal Weight,Yes,High,18-44,44825,0.3932234134969325
+19,male,20.7,0,no,southwest,1242.816,Young Adult,Normal Weight,No,Low,18-44,44825,0.02772595649749024
+33,female,28.27,1,no,southeast,4779.6023,Middle Age,Overweight,Yes,Low,18-44,44825,0.1066280490797546
+21,male,20.235,3,no,northeast,3861.20965,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.08613964640267707
+34,female,30.21,1,yes,northwest,43943.8761,Middle Age,Obese,Yes,High,18-44,44825,0.98034302509760185
+61,female,35.91,0,no,northeast,13635.6379,Senior,Obese,No,High,45-64,77561.6,0.17580397903086062
+38,female,30.69,1,no,southeast,5976.8311,Middle Age,Obese,Yes,Low,18-44,44825,0.13333700167317347
+58,female,29,0,no,southwest,11842.442,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1526843437989933
+47,male,19.57,1,no,northwest,8428.0693,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.10866291180171629
+20,male,31.13,2,no,southeast,2566.4707,Young Adult,Obese,Yes,Low,18-44,44825,0.05725534188510875
+21,female,21.85,1,yes,northeast,15359.1045,Young Adult,Normal Weight,Yes,High,18-44,44825,0.3426459453430005
+41,male,40.26,0,no,southeast,5709.1644,Middle Age,Obese,No,Low,18-44,44825,0.12736563078639151
+46,female,33.725,1,no,northeast,8823.98575,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11376745386892481
+42,female,29.48,2,no,southeast,7640.3092,Middle Age,Overweight,Yes,Low,18-44,44825,0.17044750027886224
+34,female,33.25,1,no,northeast,5594.8455,Middle Age,Obese,Yes,Low,18-44,44825,0.12481529280535417
+43,male,32.6,2,no,southwest,7441.501,Middle Age,Obese,Yes,Low,18-44,44825,0.16601229224762967
+52,female,37.525,2,no,northwest,33471.97189,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.43155339613932664
+18,female,39.16,0,no,southeast,1633.0444,Young Adult,Obese,No,Low,18-44,44825,0.036431553820412715
+51,male,31.635,0,no,northwest,9174.13565,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11828192881529004
+56,female,25.3,0,no,southwest,11070.535,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1427321638542784
+64,female,39.05,3,no,southeast,16085.1275,Senior,Obese,Yes,High,45-64,77561.6,0.20738519447767967
+19,female,28.31,0,yes,northwest,17468.9839,Young Adult,Overweight,No,High,18-44,44825,0.38971520133853876
+51,female,34.1,0,no,southeast,9283.562,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11969276033501113
+27,female,25.175,0,no,northeast,3558.62025,Young Adult,Overweight,No,Low,18-44,44825,0.0793891857222532
+59,female,23.655,0,yes,northwest,25678.77845,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.33107592481330966
+28,male,26.98,2,no,northeast,4435.0942,Young Adult,Overweight,Yes,Low,18-44,44825,0.09894242498605688
+30,male,37.8,2,yes,southwest,39241.442,Middle Age,Obese,Yes,High,18-44,44825,0.8754365197992192
+47,female,29.37,1,no,southeast,8547.6913,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11020519561226173
+38,female,34.8,2,no,southwest,6571.544,Middle Age,Obese,Yes,Low,18-44,44825,0.14660443948689347
+18,female,33.155,0,no,northeast,2207.69745,Young Adult,Obese,No,Low,18-44,44825,0.049251476854433915
+34,female,19,3,no,northeast,6753.038,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1506533853876185
+20,female,33,0,no,southeast,1880.07,Young Adult,Obese,No,Low,18-44,44825,0.041942442833240376
+47,female,36.63,1,yes,southeast,42969.8527,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5540093641698985
+56,female,28.595,0,no,northeast,11658.11505,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15030782049364633
+49,male,25.6,2,yes,southwest,23306.547,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.30049079699232606
+19,female,33.11,0,yes,southeast,34439.8559,Young Adult,Obese,No,High,18-44,44825,0.7683180345789181
+55,female,37.1,0,no,southwest,10713.644,Pre-Senior,Obese,No,High,45-64,77561.6,0.13813077605412988
+30,male,31.4,1,no,southwest,3659.346,Middle Age,Obese,Yes,Low,18-44,44825,0.08163627440044618
+37,male,34.1,4,yes,southwest,40182.246,Middle Age,Obese,Yes,High,18-44,44825,0.8964248968209704
+49,female,21.3,1,no,southwest,9182.17,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11838551551283108
+18,male,33.535,0,yes,northeast,34617.84065,Young Adult,Obese,No,High,18-44,44825,0.7722886926938092
+59,male,28.785,0,no,northwest,12129.61415,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15638684800210412
+29,female,26.03,0,no,northwest,3736.4647,Young Adult,Overweight,No,Low,18-44,44825,0.08335671388733966
+36,male,28.88,3,no,northeast,6748.5912,Middle Age,Overweight,Yes,Low,18-44,44825,0.1505541818181818
+33,male,42.46,1,no,southeast,11326.71487,Middle Age,Obese,Yes,High,18-44,44825,0.2526874482989403
+58,male,38,0,no,southwest,11365.952,Pre-Senior,Obese,No,High,45-64,77561.6,0.14654096872679262
+44,female,38.95,0,yes,northwest,42983.4585,Middle Age,Obese,No,High,18-44,44825,0.958917088678193
+53,male,36.1,1,no,southwest,10085.846,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13003659027147452
+24,male,29.3,0,no,southwest,1977.815,Young Adult,Overweight,No,Low,18-44,44825,0.04412303402119353
+29,female,35.53,0,no,southeast,3366.6697,Young Adult,Obese,No,Low,18-44,44825,0.0751069648633575
+40,male,22.705,2,no,northeast,7173.35995,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.16003033909648634
+51,male,39.7,1,no,southwest,9391.346,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1210824170723657
+64,male,38.19,0,no,northeast,14410.9321,Senior,Obese,No,High,45-64,77561.6,0.18579983007055037
+19,female,24.51,1,no,northwest,2709.1119,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.06043752147239263
+35,female,38.095,2,no,northeast,24915.04626,Middle Age,Obese,Yes,High,18-44,44825,0.555829252872281
+39,male,26.41,0,yes,northeast,20149.3229,Middle Age,Overweight,No,High,18-44,44825,0.44951082877858334
+56,male,33.66,4,no,southeast,12949.1554,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16695317528261405
+33,male,42.4,5,no,southwest,6666.243,Middle Age,Obese,Yes,Low,18-44,44825,0.1487170775237033
+42,male,28.31,3,yes,northwest,32787.45859,Middle Age,Overweight,Yes,High,18-44,44825,0.7314547370886783
+61,male,33.915,0,no,northeast,13143.86485,Senior,Obese,No,High,45-64,77561.6,0.16946355993171877
+23,female,34.96,3,no,northwest,4466.6214,Young Adult,Obese,Yes,Low,18-44,44825,0.09964576464026771
+43,male,35.31,2,no,southeast,18806.14547,Middle Age,Obese,Yes,High,18-44,44825,0.41954591121026213
+48,male,30.78,3,no,northeast,10141.1362,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13074944560194734
+39,male,26.22,1,no,northwest,6123.5688,Middle Age,Overweight,Yes,Low,18-44,44825,0.13661056999442275
+40,female,23.37,3,no,northeast,8252.2843,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.18410004015616285
+18,male,28.5,0,no,northeast,1712.227,Young Adult,Overweight,No,Low,18-44,44825,0.038198036809815955
+58,female,32.965,0,no,northeast,12430.95335,Pre-Senior,Obese,No,High,45-64,77561.6,0.16027200766874328
+49,female,42.68,2,no,southeast,9800.8882,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12636263563412822
+53,female,39.6,1,no,southeast,10579.711,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13640398083587754
+48,female,31.13,0,no,southeast,8280.6227,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10676188603638913
+45,female,36.3,2,no,southeast,8527.532,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10994528220150175
+59,female,35.2,0,no,southeast,12244.531,Pre-Senior,Obese,No,High,45-64,77561.6,0.15786846841736116
+52,female,25.3,2,yes,southeast,24667.419,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3180364897062464
+26,female,42.4,1,no,southwest,3410.324,Young Adult,Obese,Yes,Low,18-44,44825,0.07608084774121585
+27,male,33.155,2,no,northwest,4058.71245,Young Adult,Obese,Yes,Low,18-44,44825,0.09054573229224763
+48,female,35.91,1,no,northeast,26392.26029,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.3402748304573397
+57,female,28.785,4,no,northeast,14394.39815,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.18558665821746845
+37,male,46.53,3,no,southeast,6435.6237,Middle Age,Obese,Yes,Low,18-44,44825,0.1435721963190184
+57,female,23.98,1,no,southeast,22192.43711,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.28612660272609125
+32,female,31.54,1,no,northeast,5148.5526,Middle Age,Obese,Yes,Low,18-44,44825,0.11485895370886783
+18,male,33.66,0,no,southeast,1136.3994,Young Adult,Obese,No,Low,18-44,44825,0.025351910764082542
+64,female,22.99,0,yes,southeast,27037.9141,Senior,Normal Weight,No,High,45-64,77561.6,0.3485992308049344
+43,male,38.06,2,yes,southeast,42560.4304,Middle Age,Obese,Yes,High,18-44,44825,0.9494797635248187
+49,male,28.7,1,no,southwest,8703.456,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11221346645762852
+40,female,32.775,2,yes,northwest,40003.33225,Middle Age,Obese,Yes,High,18-44,44825,0.8924335136642498
+62,male,32.015,0,yes,northeast,45710.20785,Senior,Obese,No,High,45-64,77561.6,0.5893407027446571
+40,female,29.81,1,no,southeast,6500.2359,Middle Age,Overweight,Yes,Low,18-44,44825,0.14501362855549357
+30,male,31.57,3,no,southeast,4837.5823,Middle Age,Obese,Yes,Low,18-44,44825,0.10792152370329057
+29,female,31.16,0,no,northeast,3943.5954,Young Adult,Obese,No,Low,18-44,44825,0.08797758839933073
+36,male,29.7,0,no,southeast,4399.731,Middle Age,Overweight,No,Low,18-44,44825,0.09815350808700501
+41,female,31.02,0,no,southeast,6185.3208,Middle Age,Obese,No,Low,18-44,44825,0.1379881940881205
+44,female,43.89,2,yes,southeast,46200.9851,Middle Age,Obese,Yes,High,18-44,44825,1.0306968232013385
+45,male,21.375,0,no,northwest,7222.78625,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.09312322399228484
+55,female,40.81,3,no,southeast,12485.8009,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16097915592251835
+60,male,31.35,3,yes,northwest,46130.5265,Senior,Obese,Yes,High,45-64,77561.6,0.594759861838848
+56,male,36.1,3,no,southwest,12363.547,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1594029390832577
+49,female,23.18,2,no,northwest,10156.7832,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.13095118202822015
+21,female,17.4,1,no,southwest,2585.269,Young Adult,Underweight,Yes,Low,18-44,44825,0.05767471277189068
+19,male,20.3,0,no,southwest,1242.26,Young Adult,Normal Weight,No,Low,18-44,44825,0.027713552704963746
+39,male,35.3,2,yes,southwest,40103.89,Middle Age,Obese,Yes,High,18-44,44825,0.8946768544339097
+53,male,24.32,0,no,northwest,9863.4718,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.12716952461011632
+33,female,18.5,1,no,southwest,4766.022,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.10632508644729503
+53,male,26.41,2,no,northeast,11244.3769,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.14497350364097697
+42,male,26.125,2,no,northeast,7729.64575,Middle Age,Overweight,Yes,Low,18-44,44825,0.17244050752928053
+40,male,41.69,0,no,southeast,5438.7491,Middle Age,Obese,No,Low,18-44,44825,0.12133294143892917
+47,female,24.1,1,no,southwest,26236.57997,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.3382676475214539
+27,male,31.13,1,yes,southeast,34806.4677,Young Adult,Obese,Yes,High,18-44,44825,0.7764967696597881
+21,male,27.36,0,no,northeast,2104.1134,Young Adult,Overweight,No,Low,18-44,44825,0.04694062242052426
+47,male,36.2,1,no,southwest,8068.185,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.10402293145061474
+20,male,32.395,1,no,northwest,2362.22905,Young Adult,Obese,Yes,Low,18-44,44825,0.052698919129949805
+24,male,23.655,0,no,northwest,2352.96845,Young Adult,Normal Weight,No,Low,18-44,44825,0.052492324595649745
+27,female,34.8,1,no,southwest,3577.999,Young Adult,Obese,Yes,Low,18-44,44825,0.07982150585610708
+26,female,40.185,0,no,northwest,3201.24515,Young Adult,Obese,No,Low,18-44,44825,0.07141651199107642
+53,female,32.3,2,no,northeast,29186.48236,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.3763006740448882
+41,male,35.75,1,yes,southeast,40273.6455,Middle Age,Obese,Yes,High,18-44,44825,0.8984639263803681
+56,male,33.725,0,no,northwest,10976.24575,Pre-Senior,Obese,No,High,45-64,77561.6,0.14151649463136395
+23,female,39.27,2,no,southeast,3500.6123,Young Adult,Obese,Yes,Low,18-44,44825,0.078095087562744
+21,female,34.87,0,no,southeast,2020.5523,Young Adult,Obese,No,Low,18-44,44825,0.045076459564974906
+50,female,44.745,0,no,northeast,9541.69555,Pre-Senior,Obese,No,High,45-64,77561.6,0.12302087050808647
+53,male,41.47,0,no,southeast,9504.3103,Pre-Senior,Obese,No,High,45-64,77561.6,0.12253886330349037
+34,female,26.41,1,no,northwest,5385.3379,Middle Age,Overweight,Yes,Low,18-44,44825,0.12014139208031234
+47,female,29.545,1,no,northwest,8930.93455,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11514634239108011
+33,female,32.9,2,no,southwest,5375.038,Middle Age,Obese,Yes,Low,18-44,44825,0.11991161182375905
+51,female,38.06,0,yes,southeast,44400.4064,Pre-Senior,Obese,No,High,45-64,77561.6,0.5724534615067249
+49,male,28.69,3,no,northwest,10264.4421,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13233922585403085
+31,female,30.495,3,no,northeast,6113.23105,Middle Age,Obese,Yes,Low,18-44,44825,0.13637994534300057
+36,female,27.74,0,no,northeast,5469.0066,Middle Age,Overweight,No,Low,18-44,44825,0.12200795538204126
+18,male,35.2,1,no,southeast,1727.54,Young Adult,Obese,Yes,Low,18-44,44825,0.038539654210819854
+50,female,23.54,2,no,southeast,10107.2206,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.1303121725183596
+43,female,30.685,2,no,northwest,8310.83915,Middle Age,Obese,Yes,Low,18-44,44825,0.18540633909648632
+20,male,40.47,0,no,northeast,1984.4533,Young Adult,Obese,No,Low,18-44,44825,0.04427112771890686
+24,female,22.6,0,no,southwest,2457.502,Young Adult,Normal Weight,No,Low,18-44,44825,0.0548243614054657
+60,male,28.9,0,no,southwest,12146.971,Senior,Overweight,No,High,45-64,77561.6,0.1566106294867563
+49,female,22.61,1,no,northwest,9566.9909,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.12334700289834144
+60,male,24.32,1,no,northwest,13112.6048,Senior,Normal Weight,Yes,High,45-64,77561.6,0.1690605247957752
+51,female,36.67,2,no,northwest,10848.1343,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13986475652900404
+58,female,33.44,0,no,northwest,12231.6136,Pre-Senior,Obese,No,High,45-64,77561.6,0.15770192466375113
+51,female,40.66,0,no,northeast,9875.6804,Pre-Senior,Obese,No,High,45-64,77561.6,0.1273269298209423
+53,male,36.6,3,no,southwest,11264.541,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14523347893803118
+62,male,37.4,0,no,southwest,12979.358,Senior,Obese,No,High,45-64,77561.6,0.16734257673900485
+19,male,35.4,0,no,southwest,1263.249,Young Adult,Obese,No,Low,18-44,44825,0.028181795872838818
+50,female,27.075,1,no,northeast,10106.13425,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13029816623174353
+30,female,39.05,3,yes,southeast,40932.4295,Middle Age,Obese,Yes,High,18-44,44825,0.9131607250418293
+41,male,28.405,1,no,northwest,6664.68595,Middle Age,Overweight,Yes,Low,18-44,44825,0.14868234132738428
+29,female,21.755,1,yes,northeast,16657.71745,Young Adult,Normal Weight,Yes,High,18-44,44825,0.37161667484662575
+18,female,40.28,0,no,northeast,2217.6012,Young Adult,Obese,No,Low,18-44,44825,0.04947241940881205
+41,female,36.08,1,no,southeast,6781.3542,Middle Age,Obese,Yes,Low,18-44,44825,0.1512850909090909
+35,male,24.42,3,yes,southeast,19361.9988,Middle Age,Normal Weight,Yes,High,18-44,44825,0.43194643167875074
+53,male,21.4,1,no,southwest,10065.413,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.12977314805264462
+24,female,30.1,3,no,southwest,4234.927,Young Adult,Obese,Yes,Low,18-44,44825,0.09447689905186837
+48,female,27.265,1,no,northeast,9447.25035,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12180319062525785
+59,female,32.1,3,no,southwest,14007.222,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1805948046455978
+49,female,34.77,1,no,northwest,9583.8933,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12356492516915586
+37,female,38.39,0,yes,southeast,40419.0191,Middle Age,Obese,No,High,18-44,44825,0.9017070630228666
+26,male,23.7,2,no,southwest,3484.331,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.07773186837702176
+23,male,31.73,3,yes,northeast,36189.1017,Young Adult,Obese,Yes,High,18-44,44825,0.8073419230340212
+29,male,35.5,2,yes,southwest,44585.45587,Young Adult,Obese,Yes,High,18-44,44825,0.9946560149470162
+45,male,24.035,2,no,northeast,8604.48365,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11093741812958989
+27,male,29.15,0,yes,southeast,18246.4955,Young Adult,Overweight,No,High,18-44,44825,0.40706069157836033
+53,male,34.105,0,yes,northeast,43254.41795,Pre-Senior,Obese,No,High,45-64,77561.6,0.5576782576687432
+31,female,26.62,0,no,southeast,3757.8448,Middle Age,Overweight,No,Low,18-44,44825,0.08383368209704406
+50,male,26.41,0,no,northwest,8827.2099,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.11380902276384189
+50,female,30.115,1,no,northwest,9910.35985,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1277740512057513
+34,male,27,2,no,southwest,11737.84884,Middle Age,Overweight,Yes,High,18-44,44825,0.26185942755158953
+19,male,21.755,0,no,northwest,1627.28245,Young Adult,Normal Weight,No,Low,18-44,44825,0.036303010596765196
+47,female,36,1,no,southwest,8556.907,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11032401342932584
+28,male,30.875,0,no,northwest,3062.50825,Young Adult,Obese,No,Low,18-44,44825,0.06832143335192414
+37,female,26.4,0,yes,southeast,19539.243,Middle Age,Overweight,No,High,18-44,44825,0.43590056887897377
+21,male,28.975,0,no,northwest,1906.35825,Young Adult,Overweight,No,Low,18-44,44825,0.04252890686001116
+64,male,37.905,0,no,northwest,14210.53595,Senior,Obese,No,High,45-64,77561.6,0.1832161269236323
+58,female,22.77,0,no,southeast,11833.7823,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.15257269447767968
+24,male,33.63,4,no,northeast,17128.42608,Young Adult,Obese,Yes,High,18-44,44825,0.38211770395984385
+31,male,27.645,2,no,northeast,5031.26955,Middle Age,Overweight,Yes,Low,18-44,44825,0.11224248856664808
+39,female,22.8,3,no,northeast,7985.815,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1781553820412716
+47,female,27.83,0,yes,southeast,23065.4207,Pre-Senior,Overweight,No,High,45-64,77561.6,0.29738196091880514
+30,male,37.43,3,no,northeast,5428.7277,Middle Age,Obese,Yes,Low,18-44,44825,0.12110937423312884
+18,male,38.17,0,yes,southeast,36307.7983,Young Adult,Obese,No,High,18-44,44825,0.8099899230340213
+22,female,34.58,2,no,northeast,3925.7582,Young Adult,Obese,Yes,Low,18-44,44825,0.08757965867261573
+23,male,35.2,1,no,southwest,2416.955,Young Adult,Obese,Yes,Low,18-44,44825,0.05391979921918572
+33,male,27.1,1,yes,southwest,19040.876,Middle Age,Overweight,Yes,High,18-44,44825,0.42478250976017845
+27,male,26.03,0,no,northeast,3070.8087,Young Adult,Overweight,No,Low,18-44,44825,0.06850660791968767
+45,female,25.175,2,no,northeast,9095.06825,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.1172625145690651
+57,female,31.825,0,no,northwest,11842.62375,Pre-Senior,Obese,No,High,45-64,77561.6,0.15268668709773908
+47,male,32.3,1,no,southwest,8062.764,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.1039530386170476
+42,female,29,1,no,southwest,7050.642,Middle Age,Overweight,Yes,Low,18-44,44825,0.15729262688232012
+64,female,39.7,0,no,southwest,14319.031,Senior,Obese,No,High,45-64,77561.6,0.18461495121297136
+38,female,19.475,2,no,northwest,6933.24225,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1546735582822086
+61,male,36.1,3,no,southwest,27941.28758,Senior,Obese,Yes,High,45-64,77561.6,0.3602464051798828
+53,female,26.7,2,no,southwest,11150.78,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.14376676087135903
+44,female,36.48,0,no,northeast,12797.20962,Middle Age,Obese,No,High,18-44,44825,0.2854926853318461
+19,female,28.88,0,yes,northwest,17748.5062,Young Adult,Overweight,No,High,18-44,44825,0.3959510585610708
+41,male,34.2,2,no,northwest,7261.741,Middle Age,Obese,Yes,Low,18-44,44825,0.16200203011712214
+51,male,33.33,3,no,southeast,10560.4917,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13615618682440794
+40,male,32.3,2,no,northwest,6986.697,Middle Age,Obese,Yes,Low,18-44,44825,0.15586607919687676
+45,male,39.805,0,no,northeast,7448.40395,Pre-Senior,Obese,No,Low,45-64,77561.6,0.09603210802768379
+35,male,34.32,3,no,southeast,5934.3798,Middle Age,Obese,Yes,Low,18-44,44825,0.13238995649749025
+53,male,28.88,0,no,northwest,9869.8102,Pre-Senior,Overweight,No,High,45-64,77561.6,0.12725124546167174
+30,male,24.4,3,yes,southwest,18259.216,Middle Age,Normal Weight,Yes,High,18-44,44825,0.4073444729503625
+18,male,41.14,0,no,southeast,1146.7966,Young Adult,Obese,No,Low,18-44,44825,0.02558386168432794
+51,male,35.97,1,no,southeast,9386.1613,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12101557084949252
+50,female,27.6,1,yes,southwest,24520.264,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.31613922353329477
+31,female,29.26,1,no,southeast,4350.5144,Middle Age,Overweight,Yes,Low,18-44,44825,0.09705553597322923
+35,female,27.7,3,no,southwest,6414.178,Middle Age,Overweight,Yes,Low,18-44,44825,0.1430937646402677
+60,male,36.955,0,no,northeast,12741.16745,Senior,Obese,No,High,45-64,77561.6,0.1642715912255549
+21,male,36.86,0,no,northwest,1917.3184,Young Adult,Obese,No,Low,18-44,44825,0.04277341662018963
+29,male,22.515,3,no,northeast,5209.57885,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.11622038706079196
+62,female,29.92,0,no,southeast,13457.9608,Senior,Overweight,No,High,45-64,77561.6,0.17351319209505733
+39,female,41.8,0,no,southeast,5662.225,Middle Age,Obese,No,Low,18-44,44825,0.12631846068042388
+19,male,27.6,0,no,southwest,1252.407,Young Adult,Overweight,No,Low,18-44,44825,0.027939921918572225
+22,female,23.18,0,no,northeast,2731.9122,Young Adult,Normal Weight,No,Low,18-44,44825,0.060946172894590075
+53,male,20.9,0,yes,southeast,21195.818,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.2732772144978958
+39,female,31.92,2,no,northwest,7209.4918,Middle Age,Obese,Yes,Low,18-44,44825,0.16083640379252648
+27,male,28.5,0,yes,northwest,18310.742,Young Adult,Overweight,No,High,18-44,44825,0.40849396542108196
+30,male,44.22,2,no,southeast,4266.1658,Middle Age,Obese,Yes,Low,18-44,44825,0.09517380479643056
+30,female,22.895,1,no,northeast,4719.52405,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1052877646402677
+58,female,33.1,0,no,southwest,11848.141,Pre-Senior,Obese,No,High,45-64,77561.6,0.15275782088043566
+33,male,24.795,0,yes,northeast,17904.52705,Middle Age,Normal Weight,No,High,18-44,44825,0.39943172448410486
+42,female,26.18,1,no,southeast,7046.7222,Middle Age,Overweight,Yes,Low,18-44,44825,0.15720518014500837
+64,female,35.97,0,no,southeast,14313.8463,Senior,Obese,No,High,45-64,77561.6,0.18454810499009816
+21,male,22.3,1,no,southwest,2103.08,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.0469175683212493
+18,female,42.24,0,yes,southeast,38792.6856,Young Adult,Obese,No,High,18-44,44825,0.8654252225320691
+23,male,26.51,0,no,southeast,1815.8759,Young Adult,Overweight,No,Low,18-44,44825,0.04051033798103737
+45,female,35.815,0,no,northwest,7731.85785,Pre-Senior,Obese,No,Low,45-64,77561.6,0.09968667291546332
+40,female,41.42,1,no,northwest,28476.73499,Middle Age,Obese,Yes,High,18-44,44825,0.6352868932515338
+19,female,36.575,0,no,northwest,2136.88225,Young Adult,Obese,No,Low,18-44,44825,0.047671662018962634
+18,male,30.14,0,no,southeast,1131.5066,Young Adult,Obese,No,Low,18-44,44825,0.025242757389849414
+25,male,25.84,1,no,northeast,3309.7926,Young Adult,Overweight,Yes,Low,18-44,44825,0.07383809481316231
+46,female,30.8,3,no,southwest,9414.92,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12138635613499463
+33,female,42.94,3,no,northwest,6360.9936,Middle Age,Obese,Yes,Low,18-44,44825,0.14190727495817065
+54,male,21.01,2,no,southeast,11013.7119,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.1419995448778777
+28,male,22.515,2,no,northeast,4428.88785,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.09880396765197992
+36,male,34.43,2,no,southeast,5584.3057,Middle Age,Obese,Yes,Low,18-44,44825,0.12458016062465142
+20,female,31.46,0,no,southeast,1877.9294,Young Adult,Obese,No,Low,18-44,44825,0.04189468823201339
+24,female,24.225,0,no,northwest,2842.76075,Young Adult,Normal Weight,No,Low,18-44,44825,0.06341909090909091
+23,male,37.1,3,no,southwest,3597.596,Young Adult,Obese,Yes,Low,18-44,44825,0.08025869492470719
+47,female,26.125,1,yes,northeast,23401.30575,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3017125194683967
+33,female,35.53,0,yes,northwest,55135.40209,Middle Age,Obese,No,High,18-44,44825,1.2300145474623536
+45,male,33.7,1,no,southwest,7445.918,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.09600005672910306
+26,male,17.67,0,no,northwest,2680.9493,Young Adult,Underweight,No,Low,18-44,44825,0.05980924261015059
+18,female,31.13,0,no,southeast,1621.8827000000001,Young Adult,Obese,No,Low,18-44,44825,0.03618254768544339
+44,female,29.81,2,no,southeast,8219.2039,Middle Age,Overweight,Yes,Low,18-44,44825,0.18336205019520357
+60,male,24.32,0,no,northwest,12523.6048,Senior,Normal Weight,No,High,45-64,77561.6,0.16146656077234092
+64,female,31.825,2,no,northeast,16069.08475,Senior,Obese,Yes,High,45-64,77561.6,0.20717835565537585
+56,male,31.79,2,yes,southeast,43813.8661,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5648912103411997
+36,male,28.025,1,yes,northeast,20773.62775,Middle Age,Overweight,Yes,High,18-44,44825,0.46343843279419966
+41,male,30.78,3,yes,northeast,39597.4072,Middle Age,Obese,Yes,High,18-44,44825,0.8833777401003904
+39,male,21.85,1,no,northwest,6117.4945,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.13647505856107084
+63,male,33.1,0,no,southwest,13393.756,Senior,Obese,No,High,45-64,77561.6,0.17268540102318672
+36,female,25.84,0,no,northwest,5266.3656,Middle Age,Overweight,No,Low,18-44,44825,0.11748724149470162
+28,female,23.845,2,no,northwest,4719.73655,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.10529250529838259
+58,male,34.39,0,no,northwest,11743.9341,Pre-Senior,Obese,No,High,45-64,77561.6,0.15141428361457215
+36,male,33.82,1,no,northwest,5377.4578,Middle Age,Obese,Yes,Low,18-44,44825,0.11996559509202455
+42,male,35.97,2,no,southeast,7160.3303,Middle Age,Obese,Yes,Low,18-44,44825,0.15973966090351366
+36,male,31.5,0,no,southwest,4402.233,Middle Age,Obese,No,Low,18-44,44825,0.09820932515337424
+56,female,28.31,0,no,northeast,11657.7189,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1503027129404241
+35,female,23.465,2,no,northeast,6402.29135,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.14282858561070833
+59,female,31.35,0,no,northwest,12622.1795,Pre-Senior,Obese,No,High,45-64,77561.6,0.16273748220769038
+21,male,31.1,0,no,southwest,1526.312,Young Adult,Obese,No,Low,18-44,44825,0.034050462911321806
+59,male,24.7,0,no,northeast,12323.936,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.15889223533294825
+23,female,32.78,2,yes,southeast,36021.0112,Young Adult,Obese,Yes,High,18-44,44825,0.8035919955382042
+57,female,29.81,0,yes,southeast,27533.9129,Pre-Senior,Overweight,No,High,45-64,77561.6,0.3549941324057265
+53,male,30.495,0,no,northeast,10072.05505,Pre-Senior,Obese,No,High,45-64,77561.6,0.12985878385696015
+60,female,32.45,0,yes,southeast,45008.9555,Senior,Obese,No,High,45-64,77561.6,0.5802994716457628
+51,female,34.2,1,no,southwest,9872.701,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.127288516482383
+23,male,50.38,1,no,southeast,2438.0552,Young Adult,Obese,Yes,Low,18-44,44825,0.05439052314556608
+27,female,24.1,0,no,southwest,2974.126,Young Adult,Normal Weight,No,Low,18-44,44825,0.06634971556051311
+55,male,32.775,0,no,northwest,10601.63225,Pre-Senior,Obese,No,High,45-64,77561.6,0.13668661102916907
+37,female,30.78,0,yes,northeast,37270.1512,Middle Age,Obese,No,High,18-44,44825,0.8314590340211936
+61,male,32.3,2,no,northwest,14119.62,Senior,Obese,Yes,High,45-64,77561.6,0.18204394958329895
+46,female,35.53,0,yes,northeast,42111.6647,Pre-Senior,Obese,No,High,45-64,77561.6,0.5429447651930852
+53,female,23.75,2,no,northeast,11729.6795,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.15123049937082267
+49,female,23.845,3,yes,northeast,24106.91255,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.31080989239520584
+20,female,29.6,0,no,southwest,1875.344,Young Adult,Overweight,No,Low,18-44,44825,0.0418370105967652
+48,female,33.11,0,yes,southeast,40974.1649,Pre-Senior,Obese,No,High,45-64,77561.6,0.5282790053325357
+25,male,24.13,0,yes,northwest,15817.9857,Young Adult,Normal Weight,No,High,18-44,44825,0.3528831165644172
+25,female,32.23,1,no,southeast,18218.16139,Young Adult,Obese,Yes,High,18-44,44825,0.4064285865030675
+57,male,28.1,0,no,southwest,10965.446,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1413772536925489
+37,female,47.6,2,yes,southwest,46113.511,Middle Age,Obese,Yes,High,18-44,44825,1.028745365309537
+38,female,28,3,no,southwest,7151.092,Middle Age,Overweight,Yes,Low,18-44,44825,0.15953356385945341
+55,female,33.535,2,no,northwest,12269.68865,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15819282544454988
+36,female,19.855,0,no,northeast,5458.04645,Middle Age,Normal Weight,No,Low,18-44,44825,0.1217634456218628
+51,male,25.4,0,no,southwest,8782.469,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.11323217932585194
+40,male,29.9,2,no,southwest,6600.361,Middle Age,Overweight,Yes,Low,18-44,44825,0.14724731734523144
+18,male,37.29,0,no,southeast,1141.4451,Young Adult,Obese,No,Low,18-44,44825,0.025464475181260455
+57,male,43.7,1,no,southwest,11576.13,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14925078905025166
+61,male,23.655,0,no,northeast,13129.60345,Senior,Normal Weight,No,High,45-64,77561.6,0.1692796880157191
+25,female,24.3,3,no,southwest,4391.652,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.0979732738427217
+50,male,36.2,0,no,southwest,8457.818,Pre-Senior,Obese,No,Low,45-64,77561.6,0.1090464611354072
+26,female,29.48,1,no,southeast,3392.3652,Young Adult,Overweight,Yes,Low,18-44,44825,0.07568020524261015
+42,male,24.86,0,no,southeast,5966.8874,Middle Age,Normal Weight,No,Low,18-44,44825,0.13311516787506972
+43,male,30.1,1,no,southwest,6849.026,Middle Age,Obese,Yes,Low,18-44,44825,0.15279477969882876
+44,male,21.85,3,no,northeast,8891.1395,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.19835224762967094
+23,female,28.12,0,no,northwest,2690.1138,Young Adult,Overweight,No,Low,18-44,44825,0.060013693251533745
+49,female,27.1,1,no,southwest,26140.3603,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.33702708943600956
+33,male,33.44,5,no,southeast,6653.7886,Middle Age,Obese,Yes,Low,18-44,44825,0.14843923257110986
+41,male,28.8,1,no,southwest,6282.235,Middle Age,Overweight,Yes,Low,18-44,44825,0.14015025097601783
+37,female,29.5,2,no,southwest,6311.952,Middle Age,Overweight,Yes,Low,18-44,44825,0.1408132069157836
+22,male,34.8,3,no,southwest,3443.064,Young Adult,Obese,Yes,Low,18-44,44825,0.07681124372559955
+23,male,27.36,1,no,northwest,2789.0574,Young Adult,Overweight,Yes,Low,18-44,44825,0.06222102398215282
+21,female,22.135,0,no,northeast,2585.85065,Young Adult,Normal Weight,No,Low,18-44,44825,0.057687688789737866
+51,female,37.05,3,yes,northeast,46255.1125,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.596366146392029
+25,male,26.695,4,no,northwest,4877.98105,Young Adult,Overweight,Yes,Low,18-44,44825,0.10882277858337981
+32,male,28.93,1,yes,southeast,19719.6947,Middle Age,Overweight,Yes,High,18-44,44825,0.4399262621305075
+57,male,28.975,0,yes,northeast,27218.43725,Pre-Senior,Overweight,No,High,45-64,77561.6,0.35092671180068485
+36,female,30.02,0,no,northwest,5272.1758,Middle Age,Obese,No,Low,18-44,44825,0.11761686112660345
+22,male,39.5,0,no,southwest,1682.597,Young Adult,Obese,No,Low,18-44,44825,0.03753702175125488
+57,male,33.63,1,no,northwest,11945.1327,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.154008332731661
+64,female,26.885,0,yes,northwest,29330.98315,Senior,Overweight,No,High,45-64,77561.6,0.378163719546786
+36,female,29.04,4,no,southeast,7243.8136,Middle Age,Overweight,Yes,Low,18-44,44825,0.1616020881204685
+54,male,24.035,0,no,northeast,10422.91665,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.13438243473574552
+47,male,38.94,2,yes,southeast,44202.6536,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5699038390131198
+62,male,32.11,0,no,northeast,13555.0049,Senior,Obese,No,High,45-64,77561.6,0.17476437953832824
+61,female,44,0,no,southwest,13063.883,Senior,Obese,No,High,45-64,77561.6,0.16843235570179055
+43,female,20.045,2,yes,northeast,19798.05455,Middle Age,Normal Weight,Yes,High,18-44,44825,0.4416743904071389
+19,male,25.555,1,no,northwest,2221.56445,Young Adult,Overweight,Yes,Low,18-44,44825,0.04956083547127719
+18,female,40.26,0,no,southeast,1634.5734,Young Adult,Obese,No,Low,18-44,44825,0.03646566424986057
+19,female,22.515,0,no,northwest,2117.33885,Young Adult,Normal Weight,No,Low,18-44,44825,0.047235668711656444
+49,male,22.515,0,no,northeast,8688.85885,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.11202526572427593
+60,male,40.92,0,yes,southeast,48673.5588,Senior,Obese,No,High,45-64,77561.6,0.6275471212558791
+26,male,27.265,3,no,northeast,4661.28635,Young Adult,Overweight,Yes,Low,18-44,44825,0.1039885409927496
+49,male,36.85,0,no,southeast,8125.7845,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10476556053511014
+60,female,35.1,0,no,southwest,12644.589,Senior,Obese,No,High,45-64,77561.6,0.16302640739747504
+26,female,29.355,2,no,northeast,4564.19145,Young Adult,Overweight,Yes,Low,18-44,44825,0.1018224528722811
+27,male,32.585,3,no,northeast,4846.92015,Young Adult,Obese,Yes,Low,18-44,44825,0.10812984160624652
+44,female,32.34,1,no,southeast,7633.7206,Middle Age,Obese,Yes,Low,18-44,44825,0.1703005153374233
+63,male,39.8,3,no,southwest,15170.069,Senior,Obese,Yes,High,45-64,77561.6,0.19558736539730998
+32,female,24.6,0,yes,southwest,17496.306,Middle Age,Normal Weight,No,High,18-44,44825,0.39032472950362523
+22,male,28.31,1,no,northwest,2639.0429,Young Adult,Overweight,Yes,Low,18-44,44825,0.05887435359732292
+18,male,31.73,0,yes,northeast,33732.6867,Young Adult,Obese,No,High,18-44,44825,0.7525418114891244
+59,female,26.695,3,no,northwest,14382.70905,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.18543595090869708
+44,female,27.5,1,no,southwest,7626.993,Middle Age,Overweight,Yes,Low,18-44,44825,0.17015042944785277
+33,male,24.605,2,no,northwest,5257.50795,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.11728963636363637
+24,female,33.99,0,no,southeast,2473.3341,Young Adult,Obese,No,Low,18-44,44825,0.05517755939765756
+43,female,26.885,0,yes,northwest,21774.32215,Middle Age,Overweight,No,High,18-44,44825,0.48576290351366425
+45,male,22.895,0,yes,northeast,35069.37452,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.4521486730547074
+61,female,28.2,0,no,southwest,13041.921,Senior,Overweight,No,High,45-64,77561.6,0.16814920011964682
+35,female,34.21,1,no,southeast,5245.2269,Middle Age,Obese,Yes,Low,18-44,44825,0.11701565867261572
+62,female,25,0,no,southwest,13451.122,Senior,Overweight,No,High,45-64,77561.6,0.17342501959732648
+62,female,33.2,0,no,southwest,13462.52,Senior,Obese,No,High,45-64,77561.6,0.17357197376021122
+38,male,31,1,no,southwest,5488.262,Middle Age,Obese,Yes,Low,18-44,44825,0.12243752370329057
+34,male,35.815,0,no,northwest,4320.41085,Middle Age,Obese,No,Low,18-44,44825,0.09638395649749025
+43,male,23.2,0,no,southwest,6250.435,Middle Age,Normal Weight,No,Low,18-44,44825,0.1394408254322365
+50,male,32.11,2,no,northeast,25333.33284,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.3266221021742718
+19,female,23.4,2,no,southwest,2913.569,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.0649987506971556
+57,female,20.1,1,no,southwest,12032.326,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.15513251402756
+62,female,39.16,0,no,southeast,13470.8044,Senior,Obese,No,High,45-64,77561.6,0.1736787843468933
+41,male,34.21,1,no,southeast,6289.7549,Middle Age,Obese,Yes,Low,18-44,44825,0.14031801226993865
+26,male,46.53,1,no,southeast,2927.0647,Young Adult,Obese,Yes,Low,18-44,44825,0.06529982598996095
+39,female,32.5,1,no,southwest,6238.298,Middle Age,Obese,Yes,Low,18-44,44825,0.13917006134969326
+46,male,25.8,5,no,southwest,10096.97,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13018001175839589
+45,female,35.3,0,no,southwest,7348.142,Pre-Senior,Obese,No,Low,45-64,77561.6,0.09473943291525702
+32,male,37.18,2,no,southeast,4673.3922,Middle Age,Obese,Yes,Low,18-44,44825,0.10425861015058561
+59,female,27.5,0,no,southwest,12233.828,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15773047487416453
+44,male,29.735,2,no,northeast,32108.66282,Middle Age,Overweight,Yes,High,18-44,44825,0.716311496263246
+39,female,24.225,5,no,northwest,8965.79575,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.20001775237032904
+18,male,26.18,2,no,southeast,2304.0022,Young Adult,Overweight,Yes,Low,18-44,44825,0.051399937534857776
+53,male,29.48,0,no,southeast,9487.6442,Pre-Senior,Overweight,No,High,45-64,77561.6,0.12232398764336991
+18,male,23.21,0,no,southeast,1121.8739,Young Adult,Normal Weight,No,Low,18-44,44825,0.025027861684327943
+50,female,46.09,1,no,southeast,9549.5651,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1231223324428583
+18,female,40.185,0,no,northeast,2217.46915,Young Adult,Obese,No,Low,18-44,44825,0.049469473508087
+19,male,22.61,0,no,northwest,1628.4709,Young Adult,Normal Weight,No,Low,18-44,44825,0.036329523703290574
+62,male,39.93,0,no,southeast,12982.8747,Senior,Obese,No,High,45-64,77561.6,0.1673879174746266
+56,female,35.8,1,no,southwest,11674.13,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1505143008911626
+42,male,35.8,2,no,southwest,7160.094,Middle Age,Obese,Yes,Low,18-44,44825,0.1597343892916899
+37,male,34.2,1,yes,northeast,39047.285,Middle Age,Obese,Yes,High,18-44,44825,0.8711050752928055
+42,male,31.255,0,no,northwest,6358.77645,Middle Age,Obese,No,Low,18-44,44825,0.14185781260457334
+25,male,29.7,3,yes,southwest,19933.458,Young Adult,Overweight,Yes,High,18-44,44825,0.44469510317902955
+57,male,18.335,0,no,northeast,11534.87265,Pre-Senior,Underweight,No,High,45-64,77561.6,0.1487188589456638
+51,male,42.9,2,yes,southeast,47462.894,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6119380466622658
+30,female,28.405,1,no,northwest,4527.18295,Middle Age,Overweight,Yes,Low,18-44,44825,0.10099683100948133
+44,male,30.2,2,yes,southwest,38998.546,Middle Age,Obese,Yes,High,18-44,44825,0.870017757947574
+34,male,27.835,1,yes,northwest,20009.63365,Middle Age,Overweight,Yes,High,18-44,44825,0.44639450418293364
+31,male,39.49,1,no,southeast,3875.7341,Middle Age,Obese,Yes,Low,18-44,44825,0.08646367205800334
+54,male,30.8,1,yes,southeast,41999.52,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5414988860467035
+24,male,26.79,1,no,northwest,12609.88702,Young Adult,Overweight,Yes,High,18-44,44825,0.2813137093139989
+43,male,34.96,1,yes,northeast,41034.2214,Middle Age,Obese,Yes,High,18-44,44825,0.9154315984383715
+48,male,36.67,1,no,northwest,28468.91901,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.36704914558235
+19,female,39.615,1,no,northwest,2730.10785,Young Adult,Obese,Yes,Low,18-44,44825,0.06090591968767429
+29,female,25.9,0,no,southwest,3353.284,Young Adult,Overweight,No,Low,18-44,44825,0.07480834355828221
+63,female,35.2,1,no,southeast,14474.675,Senior,Obese,Yes,High,45-64,77561.6,0.18662166587589732
+46,male,24.795,3,no,northeast,9500.57305,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.12249067902157769
+52,male,36.765,2,no,northwest,26467.09737,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.341239703281005
+35,male,27.1,1,no,southwest,4746.344,Middle Age,Overweight,Yes,Low,18-44,44825,0.10588609035136642
+51,male,24.795,2,yes,northwest,23967.38305,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.30901094162575293
+44,male,25.365,1,no,northwest,7518.02535,Middle Age,Overweight,Yes,Low,18-44,44825,0.16771947239263804
+21,male,25.745,2,no,northeast,3279.86855,Young Adult,Overweight,Yes,Low,18-44,44825,0.0731705197992192
+39,female,34.32,5,no,southeast,8596.8278,Middle Age,Obese,Yes,Low,18-44,44825,0.19178645398773003
+50,female,28.16,3,no,southeast,10702.6424,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13798893266771187
+34,female,23.56,0,no,northeast,4992.3764,Middle Age,Normal Weight,No,Low,18-44,44825,0.11137482208588957
+22,female,20.235,0,no,northwest,2527.81865,Young Adult,Normal Weight,No,Low,18-44,44825,0.05639305409927496
+19,female,40.5,0,no,southwest,1759.338,Young Adult,Obese,No,Low,18-44,44825,0.0392490351366425
+26,male,35.42,0,no,southeast,2322.6218,Young Adult,Obese,No,Low,18-44,44825,0.051815321807027324
+29,male,22.895,0,yes,northeast,16138.76205,Young Adult,Normal Weight,No,High,18-44,44825,0.3600393095370887
+48,male,40.15,0,no,southeast,7804.1605,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10061886938897598
+26,male,29.15,1,no,southeast,2902.9065,Young Adult,Overweight,Yes,Low,18-44,44825,0.06476088120468489
+45,female,39.995,3,no,northeast,9704.66805,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12512207136005446
+36,female,29.92,0,no,southeast,4889.0368,Middle Age,Overweight,No,Low,18-44,44825,0.1090694210819855
+54,male,25.46,1,no,northeast,25517.11363,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3289915838507715
+34,male,21.375,0,no,northeast,4500.33925,Middle Age,Normal Weight,No,Low,18-44,44825,0.1003979754601227
+31,male,25.9,3,yes,southwest,19199.944,Middle Age,Overweight,Yes,High,18-44,44825,0.42833115448968206
+27,female,30.59,1,no,northeast,16796.41194,Young Adult,Obese,Yes,High,18-44,44825,0.3747108073619632
+20,male,30.115,5,no,northeast,4915.05985,Young Adult,Obese,Yes,Low,18-44,44825,0.10964996876742888
+44,female,25.8,1,no,southwest,7624.63,Middle Age,Overweight,Yes,Low,18-44,44825,0.17009771332961518
+43,male,30.115,3,no,northwest,8410.04685,Middle Age,Obese,Yes,Low,18-44,44825,0.1876195616285555
+45,female,27.645,1,no,northwest,28340.18885,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3653894304655912
+34,male,34.675,0,no,northeast,4518.82625,Middle Age,Obese,No,Low,18-44,44825,0.10081040156162856
+24,female,20.52,0,yes,northeast,14571.8908,Young Adult,Normal Weight,No,High,18-44,44825,0.32508401115448965
+26,female,19.8,1,no,southwest,3378.91,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.07538003346346904
+38,female,27.835,2,no,northeast,7144.86265,Middle Age,Overweight,Yes,Low,18-44,44825,0.1593945934188511
+50,female,31.6,2,no,southwest,10118.424,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13045661770773168
+38,male,28.27,1,no,southeast,5484.4673,Middle Age,Overweight,Yes,Low,18-44,44825,0.12235286781929727
+27,female,20.045,3,yes,northwest,16420.49455,Young Adult,Normal Weight,Yes,High,18-44,44825,0.3663244740658115
+39,female,23.275,3,no,northeast,7986.47525,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.17817011154489684
+39,female,34.1,3,no,southwest,7418.522,Middle Age,Obese,Yes,Low,18-44,44825,0.16549965421081986
+63,female,36.85,0,no,southeast,13887.9685,Senior,Obese,No,High,45-64,77561.6,0.17905727189743378
+33,female,36.29,3,no,northeast,6551.7501,Middle Age,Obese,Yes,Low,18-44,44825,0.14616285778025656
+36,female,26.885,0,no,northwest,5267.81815,Middle Age,Overweight,No,Low,18-44,44825,0.11751964640267708
+30,male,22.99,2,yes,northwest,17361.7661,Middle Age,Normal Weight,Yes,High,18-44,44825,0.3873232816508645
+24,male,32.7,0,yes,southwest,34472.841,Young Adult,Obese,No,High,18-44,44825,0.7690538984941439
+24,male,25.8,0,no,southwest,1972.95,Young Adult,Overweight,No,Low,18-44,44825,0.04401450083658673
+48,male,29.6,0,no,southwest,21232.18226,Pre-Senior,Overweight,No,High,45-64,77561.6,0.2737460581009159
+47,male,19.19,1,no,northeast,8627.5411,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11123469732444921
+29,male,31.73,2,no,northwest,4433.3877,Young Adult,Obese,Yes,Low,18-44,44825,0.0989043547127719
+28,male,29.26,2,no,northeast,4438.2634,Young Adult,Overweight,Yes,Low,18-44,44825,0.09901312660345789
+47,male,28.215,3,yes,northwest,24915.22085,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3212313934988448
+25,male,24.985,2,no,northeast,23241.47453,Young Adult,Normal Weight,Yes,High,18-44,44825,0.5184935756832125
+51,male,27.74,1,no,northeast,9957.7216,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.12838468520504992
+48,female,22.8,0,no,southwest,8269.044,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.1066126021123855
+43,male,20.13,2,yes,southeast,18767.7377,Middle Age,Normal Weight,Yes,High,18-44,44825,0.41868907306190745
+61,female,33.33,4,no,southeast,36580.28216,Senior,Obese,Yes,High,45-64,77561.6,0.47162877196963443
+48,male,32.3,1,no,northwest,8765.249,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11301016224523475
+38,female,27.6,0,no,southwest,5383.536,Middle Age,Overweight,No,Low,18-44,44825,0.12010119353039599
+59,male,25.46,0,no,northwest,12124.9924,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1563272598811783
+19,female,24.605,1,no,northwest,2709.24395,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.06044046737311768
+26,female,34.2,2,no,southwest,3987.926,Young Adult,Obese,Yes,Low,18-44,44825,0.08896655883993307
+54,female,35.815,3,no,northwest,12495.29085,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1611015096387903
+21,female,32.68,2,no,northwest,26018.95052,Young Adult,Obese,Yes,High,18-44,44825,0.580456230228667
+51,male,37,0,no,southwest,8798.593,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11344006570261572
+22,female,31.02,3,yes,southeast,35595.5898,Young Adult,Obese,Yes,High,18-44,44825,0.7941012783045176
+47,male,36.08,1,yes,southeast,42211.1382,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5442272748370327
+18,male,23.32,1,no,southeast,1711.0268,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.03817126157278305
+47,female,45.32,1,no,southeast,8569.8618,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.1104910393803119
+21,female,34.6,0,no,southwest,2020.177,Young Adult,Obese,No,Low,18-44,44825,0.04506808700501952
+19,male,26.03,1,yes,northwest,16450.8947,Young Adult,Overweight,Yes,High,18-44,44825,0.3670026703848299
+23,male,18.715,0,no,northwest,21595.38229,Young Adult,Normal Weight,No,High,18-44,44825,0.4817709378694925
+54,male,31.6,0,no,southwest,9850.432,Pre-Senior,Obese,No,High,45-64,77561.6,0.12700140275600297
+37,female,17.29,2,no,northeast,6877.9801,Middle Age,Underweight,Yes,Low,18-44,44825,0.1534407161182376
+46,female,23.655,1,yes,northwest,21677.28345,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.27948473793732975
+55,female,35.2,0,yes,southeast,44423.803,Pre-Senior,Obese,No,High,45-64,77561.6,0.5727551133550622
+30,female,27.93,0,no,northeast,4137.5227,Middle Age,Overweight,No,Low,18-44,44825,0.09230390853318461
+18,male,21.565,0,yes,northeast,13747.87235,Young Adult,Normal Weight,No,High,18-44,44825,0.3067010005577245
+61,male,38.38,0,no,northwest,12950.0712,Senior,Obese,No,High,45-64,77561.6,0.1669649826718376
+54,female,23,3,no,southwest,12094.478,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.15593383839425692
+22,male,37.07,2,yes,southeast,37484.4493,Young Adult,Obese,Yes,High,18-44,44825,0.8362398059118795
+45,female,30.495,1,yes,northwest,39725.51805,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5121802290050746
+22,male,28.88,0,no,northeast,2250.8352,Young Adult,Overweight,No,Low,18-44,44825,0.050213836029001674
+19,male,27.265,2,no,northwest,22493.65964,Young Adult,Overweight,Yes,High,18-44,44825,0.5018105887339654
+35,female,28.025,0,yes,northwest,20234.85475,Middle Age,Overweight,No,High,18-44,44825,0.4514189570552147
+18,male,23.085,0,no,northeast,1704.70015,Young Adult,Normal Weight,No,Low,18-44,44825,0.03803012046848856
+20,male,30.685,0,yes,northeast,33475.81715,Young Adult,Obese,No,High,18-44,44825,0.7468113139988846
+28,female,25.8,0,no,southwest,3161.454,Young Adult,Overweight,No,Low,18-44,44825,0.07052881204684885
+55,male,35.245,1,no,northeast,11394.06555,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14690343610755835
+43,female,24.7,2,yes,northwest,21880.82,Middle Age,Normal Weight,Yes,High,18-44,44825,0.4881387618516453
+43,female,25.08,0,no,northeast,7325.0482,Middle Age,Overweight,No,Low,18-44,44825,0.16341434913552705
+22,male,52.58,1,yes,southeast,44501.3982,Young Adult,Obese,Yes,High,18-44,44825,0.992780774121584
+25,female,22.515,1,no,northwest,3594.17085,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.08018228332403793
+49,male,30.9,0,yes,southwest,39727.614,Pre-Senior,Obese,No,High,45-64,77561.6,0.5122072520422477
+44,female,36.955,1,no,northwest,8023.13545,Middle Age,Obese,Yes,Low,18-44,44825,0.17898796319018404
+64,male,26.41,0,no,northeast,14394.5579,Senior,Overweight,No,High,45-64,77561.6,0.1855887178706989
+49,male,29.83,1,no,northeast,9288.0267,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.119750323613747
+47,male,29.8,3,yes,southwest,25309.489,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3263146840704679
+27,female,21.47,0,no,northwest,3353.4703,Young Adult,Normal Weight,No,Low,18-44,44825,0.07481249972113775
+55,male,27.645,0,no,northwest,10594.50155,Pre-Senior,Overweight,No,High,45-64,77561.6,0.13659467507116924
+48,female,28.9,0,no,southwest,8277.523,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.10672192167258022
+45,female,31.79,0,no,southeast,17929.30337,Pre-Senior,Obese,No,High,45-64,77561.6,0.23116211333959072
+24,female,39.49,0,no,southeast,2480.9791,Young Adult,Obese,No,Low,18-44,44825,0.05534811154489682
+32,male,33.82,1,no,northwest,4462.7218,Middle Age,Obese,Yes,Low,18-44,44825,0.09955876854433911
+24,male,32.01,0,no,southeast,1981.5819,Young Adult,Obese,No,Low,18-44,44825,0.04420706971556051
+57,male,27.94,1,no,southeast,11554.2236,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.14896835031768296
+59,male,41.14,1,yes,southeast,48970.2476,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6313723234177737
+36,male,28.595,3,no,northwest,6548.19505,Middle Age,Overweight,Yes,Low,18-44,44825,0.14608354824316788
+29,female,25.6,4,no,southwest,5708.867,Young Adult,Overweight,Yes,Low,18-44,44825,0.12735899609592863
+42,female,25.3,1,no,southwest,7045.499,Middle Age,Overweight,Yes,Low,18-44,44825,0.1571778918014501
+48,male,37.29,2,no,southeast,8978.1851,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11575554269122865
+39,male,42.655,0,no,northeast,5757.41345,Middle Age,Obese,No,Low,18-44,44825,0.12844201784718348
+63,male,21.66,1,no,northwest,14349.8544,Senior,Normal Weight,Yes,High,45-64,77561.6,0.18501235663008497
+54,female,31.9,1,no,southeast,10928.849,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14090540937783644
+37,male,37.07,1,yes,southeast,39871.7043,Middle Age,Obese,Yes,High,18-44,44825,0.8894970284439486
+63,male,31.445,0,no,northeast,13974.45555,Senior,Obese,No,High,45-64,77561.6,0.18017234752764255
+21,male,31.255,0,no,northwest,1909.52745,Young Adult,Obese,No,Low,18-44,44825,0.04259960847741216
+54,female,28.88,2,no,northeast,12096.6512,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.15596185741397806
+60,female,18.335,0,no,northeast,13204.28565,Senior,Underweight,No,High,45-64,77561.6,0.17024256397495666
+32,female,29.59,1,no,southeast,4562.8421,Middle Age,Overweight,Yes,Low,18-44,44825,0.10179235025097601
+47,female,32,1,no,southwest,8551.347,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11025232847182109
+21,male,26.03,0,no,northeast,2102.2647,Young Adult,Overweight,No,Low,18-44,44825,0.046899379810373676
+28,male,31.68,0,yes,southeast,34672.1472,Young Adult,Obese,No,High,18-44,44825,0.7735002163970999
+63,male,33.66,3,no,southeast,15161.5344,Senior,Obese,Yes,High,45-64,77561.6,0.19547732898754022
+18,male,21.78,2,no,southeast,11884.04858,Young Adult,Normal Weight,Yes,High,18-44,44825,0.26512099453430005
+32,male,27.835,1,no,northwest,4454.40265,Middle Age,Overweight,Yes,Low,18-44,44825,0.09937317679866146
+38,male,19.95,1,no,northwest,5855.9025,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.13063920803123258
+32,male,31.5,1,no,southwest,4076.497,Middle Age,Obese,Yes,Low,18-44,44825,0.09094248745119911
+62,female,30.495,2,no,northwest,15019.76005,Senior,Obese,Yes,High,45-64,77561.6,0.19364943541649476
+39,female,18.3,5,yes,southwest,19023.26,Middle Age,Underweight,Yes,High,18-44,44825,0.4243895147796988
+55,male,28.975,0,no,northeast,10796.35025,Pre-Senior,Overweight,No,High,45-64,77561.6,0.1391971059132354
+57,male,31.54,0,no,northwest,11353.2276,Pre-Senior,Obese,No,High,45-64,77561.6,0.1463769133179305
+52,male,47.74,1,no,southeast,9748.9106,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12569248958247378
+56,male,22.1,0,no,southwest,10577.087,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.13637014966168823
+47,male,36.19,0,yes,southeast,41676.0811,Pre-Senior,Obese,No,High,45-64,77561.6,0.5373287954348543
+55,female,29.83,0,no,northeast,11286.5387,Pre-Senior,Overweight,No,High,45-64,77561.6,0.14551709479948838
+23,male,32.7,3,no,southwest,3591.48,Young Adult,Obese,Yes,Low,18-44,44825,0.08012225320691578
+22,female,30.4,0,yes,northwest,33907.548,Young Adult,Obese,No,High,18-44,44825,0.7564427886224205
+50,female,33.7,4,no,southwest,11299.343,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1456821803572902
+18,female,31.35,4,no,northeast,4561.1885,Young Adult,Obese,Yes,Low,18-44,44825,0.10175546012269938
+51,female,34.96,2,yes,northeast,44641.1974,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.575557974564733
+22,male,33.77,0,no,southeast,1674.6323,Young Adult,Obese,No,Low,18-44,44825,0.037359337423312884
+52,female,30.875,0,no,northeast,23045.56616,Pre-Senior,Obese,No,High,45-64,77561.6,0.29712597677201086
+25,female,33.99,1,no,southeast,3227.1211,Young Adult,Obese,Yes,Low,18-44,44825,0.07199377802565532
+33,female,19.095,2,yes,northeast,16776.30405,Middle Age,Normal Weight,Yes,High,18-44,44825,0.37426222085889566
+53,male,28.6,3,no,southwest,11253.421,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1450901090230217
+29,male,38.94,1,no,southeast,3471.4096,Young Adult,Obese,Yes,Low,18-44,44825,0.07744360513106525
+58,male,36.08,0,no,southeast,11363.2832,Pre-Senior,Obese,No,High,45-64,77561.6,0.14650655994719036
+37,male,29.8,0,no,southwest,20420.60465,Middle Age,Overweight,No,High,18-44,44825,0.45556284774121586
+54,female,31.24,0,no,southeast,10338.9316,Pre-Senior,Obese,No,High,45-64,77561.6,0.13329961733641388
+49,female,29.925,0,no,northwest,8988.15875,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.11588413274094397
+50,female,26.22,2,no,northwest,10493.9458,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.13529821200181533
+26,male,30,1,no,southwest,2904.088,Young Adult,Obese,Yes,Low,18-44,44825,0.06478723926380368
+45,male,20.35,3,no,southeast,8605.3615,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11094873623029954
+54,female,32.3,1,no,northeast,11512.405,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14842918402921032
+38,male,38.39,3,yes,southeast,41949.2441,Middle Age,Obese,Yes,High,18-44,44825,0.9358448209704406
+48,female,25.85,3,yes,southeast,24180.9335,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.3117642428727617
+28,female,26.315,3,no,northwest,5312.16985,Young Adult,Overweight,Yes,Low,18-44,44825,0.118509087562744
+23,male,24.51,0,no,northeast,2396.0959,Young Adult,Normal Weight,No,Low,18-44,44825,0.053454453987730056
+55,male,32.67,1,no,southeast,10807.4863,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1393406827605413
+41,male,29.64,5,no,northeast,9222.4026,Middle Age,Overweight,Yes,Low,18-44,44825,0.2057423892916899
+25,male,33.33,2,yes,southeast,36124.5737,Young Adult,Obese,Yes,High,18-44,44825,0.8059023692136085
+33,male,35.75,1,yes,southeast,38282.7495,Middle Age,Obese,Yes,High,18-44,44825,0.8540490686001115
+30,female,19.95,3,no,northwest,5693.4305,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.12701462353597323
+23,female,31.4,0,yes,southwest,34166.273,Young Adult,Obese,No,High,18-44,44825,0.7622146793084217
+46,male,38.17,2,no,southeast,8347.1643,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.1076198054191765
+53,female,36.86,3,yes,northwest,46661.4424,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6016049488406634
+27,female,32.395,1,no,northeast,18903.49141,Young Adult,Obese,Yes,High,18-44,44825,0.4217175997769102
+23,female,42.75,1,yes,northeast,40904.1995,Young Adult,Obese,Yes,High,18-44,44825,0.9125309425543782
+63,female,25.08,0,no,northwest,14254.6082,Senior,Overweight,No,High,45-64,77561.6,0.1837843494719036
+55,male,29.9,0,no,southwest,10214.636,Pre-Senior,Overweight,No,High,45-64,77561.6,0.13169707690403498
+35,female,35.86,2,no,southeast,5836.5204,Middle Age,Obese,Yes,Low,18-44,44825,0.13020681316229782
+34,male,32.8,1,no,southwest,14358.36437,Middle Age,Obese,Yes,High,18-44,44825,0.3203204544339096
+19,female,18.6,0,no,southwest,1728.897,Young Adult,Normal Weight,No,Low,18-44,44825,0.038569927495817065
+39,female,23.87,5,no,southeast,8582.3023,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.19146240490797545
+27,male,45.9,2,no,southwest,3693.428,Young Adult,Obese,Yes,Low,18-44,44825,0.08239660903513664
+57,male,40.28,0,no,northeast,20709.02034,Pre-Senior,Obese,No,High,45-64,77561.6,0.26700094299240856
+52,female,18.335,0,no,northwest,9991.03765,Pre-Senior,Underweight,No,High,45-64,77561.6,0.12881422830369665
+28,male,33.82,0,no,northwest,19673.33573,Young Adult,Obese,No,High,18-44,44825,0.4388920408254322
+50,female,28.12,3,no,northwest,11085.5868,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.14292622638006433
+44,female,25,1,no,southwest,7623.518,Middle Age,Overweight,Yes,Low,18-44,44825,0.17007290574456219
+26,female,22.23,0,no,northwest,3176.2877,Young Adult,Normal Weight,No,Low,18-44,44825,0.0708597367540435
+33,male,30.25,0,no,southeast,3704.3545,Middle Age,Obese,No,Low,18-44,44825,0.08264036809815951
+19,female,32.49,0,yes,northwest,36898.73308,Young Adult,Obese,No,High,18-44,44825,0.8231730748466257
+50,male,37.07,1,no,southeast,9048.0273,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11665601663709876
+41,female,32.6,3,no,southwest,7954.517,Middle Age,Obese,Yes,Low,18-44,44825,0.17745715560513106
+52,female,24.86,0,no,southeast,27117.99378,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.34963169635489727
+39,male,32.34,2,no,southeast,6338.0756,Middle Age,Obese,Yes,Low,18-44,44825,0.14139599776910206
+50,male,32.3,2,no,southwest,9630.397,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.12416449634870864
+52,male,32.775,3,no,northwest,11289.10925,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14555023684400525
+60,male,32.8,0,yes,southwest,52590.82939,Senior,Obese,No,High,45-64,77561.6,0.6780524046693208
+20,female,31.92,0,no,northwest,2261.5688,Young Adult,Obese,No,Low,18-44,44825,0.050453291689905186
+55,male,21.5,1,no,southwest,10791.96,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.13914050251670929
+42,male,34.1,0,no,southwest,5979.731,Middle Age,Obese,No,Low,18-44,44825,0.13340169548243166
+18,female,30.305,0,no,northeast,2203.73595,Young Adult,Obese,No,Low,18-44,44825,0.04916309983268265
+58,female,36.48,0,no,northwest,12235.8392,Pre-Senior,Obese,No,High,45-64,77561.6,0.15775640523145473
+43,female,32.56,3,yes,southeast,40941.2854,Middle Age,Obese,Yes,High,18-44,44825,0.9133582911321807
+35,female,35.815,1,no,northwest,5630.45785,Middle Age,Obese,Yes,Low,18-44,44825,0.1256097679866146
+48,female,27.93,4,no,northwest,11015.1747,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.14201840472604998
+36,female,22.135,3,no,northeast,7228.21565,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.16125411377579477
+19,male,44.88,0,yes,southeast,39722.7462,Young Adult,Obese,No,High,18-44,44825,0.8861739252649191
+23,female,23.18,2,no,northwest,14426.07385,Young Adult,Normal Weight,Yes,High,18-44,44825,0.32183098382598996
+20,female,30.59,0,no,northeast,2459.7201,Young Adult,Obese,No,Low,18-44,44825,0.05487384495259342
+32,female,41.1,0,no,southwest,3989.841,Middle Age,Obese,No,Low,18-44,44825,0.0890092805354155
+43,female,34.58,1,no,northwest,7727.2532,Middle Age,Obese,Yes,Low,18-44,44825,0.17238713218070273
+34,male,42.13,2,no,southeast,5124.1887,Middle Age,Obese,Yes,Low,18-44,44825,0.11431541996653652
+30,male,38.83,1,no,southeast,18963.17192,Middle Age,Obese,Yes,High,18-44,44825,0.4230490110429448
+18,female,28.215,0,no,northeast,2200.83085,Young Adult,Overweight,No,Low,18-44,44825,0.04909829001673173
+41,female,28.31,1,no,northwest,7153.5539,Middle Age,Overweight,Yes,Low,18-44,44825,0.15958848633575012
+35,female,26.125,0,no,northeast,5227.98875,Middle Age,Overweight,No,Low,18-44,44825,0.11663109313998886
+57,male,40.37,0,no,southeast,10982.5013,Pre-Senior,Obese,No,High,45-64,77561.6,0.1415971472996947
+29,female,24.6,2,no,southwest,4529.477,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.10104800892359174
+32,male,35.2,2,no,southwest,4670.64,Middle Age,Obese,Yes,Low,18-44,44825,0.10419721137757948
+37,female,34.105,1,no,northwest,6112.35295,Middle Age,Obese,Yes,Low,18-44,44825,0.13636035582822087
+18,male,27.36,1,yes,northeast,17178.6824,Young Adult,Overweight,Yes,High,18-44,44825,0.3832388711656442
+43,female,26.7,2,yes,southwest,22478.6,Middle Age,Overweight,Yes,High,18-44,44825,0.5014746235359732
+56,female,41.91,0,no,southeast,11093.6229,Pre-Senior,Obese,No,High,45-64,77561.6,0.14302983564031685
+38,male,29.26,2,no,northwest,6457.8434,Middle Age,Overweight,Yes,Low,18-44,44825,0.14406789514779697
+29,male,32.11,2,no,northwest,4433.9159,Young Adult,Obese,Yes,Low,18-44,44825,0.09891613831567206
+22,female,27.1,0,no,southwest,2154.361,Young Adult,Overweight,No,Low,18-44,44825,0.04806159509202454
+52,female,24.13,1,yes,northwest,23887.6627,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.3079831089095635
+40,female,27.4,1,no,southwest,6496.886,Middle Age,Overweight,Yes,Low,18-44,44825,0.1449388957055215
+23,female,34.865,0,no,northeast,2899.48935,Young Adult,Obese,No,Low,18-44,44825,0.06468464807585053
+31,male,29.81,0,yes,southeast,19350.3689,Middle Age,Overweight,No,High,18-44,44825,0.4316869804796431
+42,female,41.325,1,no,northeast,7650.77375,Middle Age,Obese,Yes,Low,18-44,44825,0.17068095370886782
+24,female,29.925,0,no,northwest,2850.68375,Young Adult,Overweight,No,Low,18-44,44825,0.06359584495259342
+25,female,30.3,0,no,southwest,2632.992,Young Adult,Obese,No,Low,18-44,44825,0.05873936419408812
+48,female,27.36,1,no,northeast,9447.3824,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1218048931429986
+23,female,28.49,1,yes,southeast,18328.2381,Young Adult,Overweight,Yes,High,18-44,44825,0.40888428555493583
+45,male,23.56,2,no,northeast,8603.8234,Pre-Senior,Normal Weight,Yes,Low,45-64,77561.6,0.11092890554088619
+20,male,35.625,3,yes,northwest,37465.34375,Young Adult,Obese,Yes,High,18-44,44825,0.8358135805911879
+62,female,32.68,0,no,northwest,13844.7972,Senior,Obese,No,High,45-64,77561.6,0.17850066527766317
+43,female,25.27,1,yes,northeast,21771.3423,Middle Age,Overweight,Yes,High,18-44,44825,0.4856964261015059
+23,female,28,0,no,southwest,13126.67745,Young Adult,Overweight,No,High,18-44,44825,0.29284277635248185
+31,female,32.775,2,no,northwest,5327.40025,Middle Age,Obese,Yes,Low,18-44,44825,0.11884886224205242
+41,female,21.755,1,no,northeast,13725.47184,Middle Age,Normal Weight,Yes,High,18-44,44825,0.30620126804238706
+58,female,32.395,1,no,northeast,13019.16105,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.16785575658573315
+48,female,36.575,0,no,northwest,8671.19125,Pre-Senior,Obese,No,Low,45-64,77561.6,0.11179747774672001
+31,female,21.755,0,no,northwest,4134.08245,Middle Age,Normal Weight,No,Low,18-44,44825,0.09222716006692694
+19,female,27.93,3,no,northwest,18838.70366,Young Adult,Overweight,Yes,High,18-44,44825,0.4202722511991076
+19,female,30.02,0,yes,northwest,33307.5508,Young Adult,Obese,No,High,18-44,44825,0.7430574634690462
+41,male,33.55,0,no,southeast,5699.8375,Middle Age,Obese,No,Low,18-44,44825,0.1271575571667596
+40,male,29.355,1,no,northwest,6393.60345,Middle Age,Overweight,Yes,Low,18-44,44825,0.1426347674288901
+31,female,25.8,2,no,southwest,4934.705,Middle Age,Overweight,Yes,Low,18-44,44825,0.11008823201338538
+37,male,24.32,2,no,northwest,6198.7518,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.13828782598996095
+46,male,40.375,2,no,northwest,8733.22925,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.11259733231392854
+22,male,32.11,0,no,northwest,2055.3249,Young Adult,Obese,No,Low,18-44,44825,0.04585220078081428
+51,male,32.3,1,no,northeast,9964.06,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1284664060566053
+18,female,27.28,3,yes,southeast,18223.4512,Young Adult,Overweight,Yes,High,18-44,44825,0.406546596765198
+35,male,17.86,1,no,northwest,5116.5004,Middle Age,Underweight,Yes,Low,18-44,44825,0.1141439018404908
+59,female,34.8,2,no,southwest,36910.60803,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.4758876561339632
+36,male,33.4,2,yes,southwest,38415.474,Middle Age,Obese,Yes,High,18-44,44825,0.8570100167317346
+37,female,25.555,1,yes,northeast,20296.86345,Middle Age,Overweight,Yes,High,18-44,44825,0.45280230786391523
+59,male,37.1,1,no,southwest,12347.172,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.15919181656902384
+36,male,30.875,1,no,northwest,5373.36425,Middle Age,Obese,Yes,Low,18-44,44825,0.11987427216954824
+39,male,34.1,2,no,southeast,23563.01618,Middle Age,Obese,Yes,High,18-44,44825,0.5256668417177914
+18,male,21.47,0,no,northeast,1702.4553,Young Adult,Normal Weight,No,Low,18-44,44825,0.03798004015616286
+52,female,33.3,2,no,southwest,10806.839,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.1393323371359023
+27,female,31.255,1,no,northwest,3956.07145,Young Adult,Obese,Yes,Low,18-44,44825,0.08825591634132739
+18,male,39.14,0,no,northeast,12890.05765,Young Adult,Obese,No,High,18-44,44825,0.28756403011712217
+40,male,25.08,0,no,southeast,5415.6612,Middle Age,Overweight,No,Low,18-44,44825,0.12081787395426659
+29,male,37.29,2,no,southeast,4058.1161,Young Adult,Obese,Yes,Low,18-44,44825,0.0905324283324038
+46,female,34.6,1,yes,southwest,41661.602,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.5371421167175509
+38,female,30.21,3,no,northwest,7537.1639,Middle Age,Obese,Yes,Low,18-44,44825,0.16814643390964862
+30,female,21.945,1,no,northeast,4718.20355,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.10525830563301729
+40,male,24.97,2,no,southeast,6593.5083,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.14709444060234245
+50,male,25.3,0,no,southeast,8442.667,Pre-Senior,Overweight,No,Low,45-64,77561.6,0.10885111962620676
+20,female,24.42,0,yes,southeast,26125.67477,Young Adult,Normal Weight,No,High,18-44,44825,0.5828371393195761
+41,male,23.94,1,no,northeast,6858.4796,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1530056798661461
+33,female,39.82,1,no,southeast,4795.6568,Middle Age,Obese,Yes,Low,18-44,44825,0.10698620858895705
+38,male,16.815,2,no,northeast,6640.54485,Middle Age,Underweight,Yes,Low,18-44,44825,0.14814377802565534
+42,male,37.18,2,no,southeast,7162.0122,Middle Age,Obese,Yes,Low,18-44,44825,0.1597771823759063
+56,male,34.43,0,no,southeast,10594.2257,Pre-Senior,Obese,No,High,45-64,77561.6,0.13659111854319664
+58,male,30.305,0,no,northeast,11938.25595,Pre-Senior,Obese,No,High,45-64,77561.6,0.15391967094541628
+52,male,34.485,3,yes,northwest,60021.39897,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.7738545745575129
+20,female,21.8,0,yes,southwest,20167.33603,Young Adult,Normal Weight,No,High,18-44,44825,0.4499126833240379
+54,female,24.605,3,no,northwest,12479.70895,Pre-Senior,Normal Weight,Yes,High,45-64,77561.6,0.16090061254538326
+58,male,23.3,0,no,southwest,11345.519,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.1462775265079627
+45,female,27.83,2,no,southeast,8515.7587,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.10979348930398547
+26,male,31.065,0,no,northwest,2699.56835,Young Adult,Obese,No,Low,18-44,44825,0.06022461461238148
+63,female,21.66,0,no,northeast,14449.8544,Senior,Normal Weight,No,High,45-64,77561.6,0.18630165442693292
+58,female,28.215,0,no,northwest,12224.35085,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15760828618801057
+37,male,22.705,3,no,northeast,6985.50695,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.1558395303959844
+25,female,42.13,1,no,southeast,3238.4357,Young Adult,Obese,Yes,Low,18-44,44825,0.07224619520356944
+52,male,41.8,2,yes,southeast,47269.854,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.6094491861952306
+64,male,36.96,2,yes,southeast,49577.6624,Senior,Obese,Yes,High,45-64,77561.6,0.6392037090519019
+22,female,21.28,3,no,northwest,4296.2712,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.09584542554378138
+28,female,33.11,0,no,southeast,3171.6149,Young Adult,Obese,No,Low,18-44,44825,0.0707554913552705
+18,male,33.33,0,no,southeast,1135.9407,Young Adult,Obese,No,Low,18-44,44825,0.02534167763524819
+28,male,24.3,5,no,southwest,5615.369,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.12527315114333518
+45,female,25.7,3,no,southwest,9101.798,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11734928108754848
+33,male,29.4,4,no,southwest,6059.173,Middle Age,Overweight,Yes,Low,18-44,44825,0.13517396542108198
+18,female,39.82,0,no,southeast,1633.9618,Young Adult,Obese,No,Low,18-44,44825,0.03645202007808143
+32,male,33.63,1,yes,northeast,37607.5277,Middle Age,Obese,Yes,High,18-44,44825,0.8389855593976575
+24,male,29.83,0,yes,northeast,18648.4217,Young Adult,Overweight,No,High,18-44,44825,0.41602725488008924
+19,male,19.8,0,no,southwest,1241.565,Young Adult,Normal Weight,No,Low,18-44,44825,0.027698047964305635
+20,male,27.3,0,yes,southwest,16232.847,Young Adult,Overweight,No,High,18-44,44825,0.3621382487451199
+40,female,29.3,4,no,southwest,15828.82173,Middle Age,Overweight,Yes,High,18-44,44825,0.35312485733407695
+34,female,27.72,0,no,southeast,4415.1588,Middle Age,Overweight,No,Low,18-44,44825,0.09849768655883993
+42,female,37.9,0,no,southwest,6474.013,Middle Age,Obese,No,Low,18-44,44825,0.14442862242052426
+51,female,36.385,3,no,northwest,11436.73815,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14745361299921608
+54,female,27.645,1,no,northwest,11305.93455,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.1457671650662183
+55,male,37.715,3,no,northwest,30063.58055,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.38760908168475117
+52,female,23.18,0,no,northeast,10197.7722,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.13147965230217012
+32,female,20.52,0,no,northeast,4544.2348,Middle Age,Normal Weight,No,Low,18-44,44825,0.10137724037925265
+28,male,37.1,1,no,southwest,3277.161,Young Adult,Obese,Yes,Low,18-44,44825,0.07311011712214166
+41,female,28.05,1,no,southeast,6770.1925,Middle Age,Overweight,Yes,Low,18-44,44825,0.1510360847741216
+43,female,29.9,1,no,southwest,7337.748,Middle Age,Overweight,Yes,Low,18-44,44825,0.16369766871165642
+49,female,33.345,2,no,northeast,10370.91255,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13371194702017491
+64,male,23.76,0,yes,southeast,26926.5144,Senior,Normal Weight,No,High,45-64,77561.6,0.34716295692713917
+55,female,30.5,0,no,southwest,10704.47,Pre-Senior,Obese,No,High,45-64,77561.6,0.13801249587424702
+24,male,31.065,0,yes,northeast,34254.05335,Young Adult,Obese,No,High,18-44,44825,0.7641729693251534
+20,female,33.3,0,no,southwest,1880.487,Young Adult,Obese,No,Low,18-44,44825,0.04195174567763525
+45,male,27.5,3,no,southwest,8615.3,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11107687309183924
+26,male,33.915,1,no,northwest,3292.52985,Young Adult,Obese,Yes,Low,18-44,44825,0.07345298047964305
+25,female,34.485,0,no,northwest,3021.80915,Young Adult,Obese,No,Low,18-44,44825,0.06741347796988288
+43,male,25.52,5,no,southeast,14478.33015,Middle Age,Overweight,Yes,High,18-44,44825,0.3229967685443391
+35,male,27.61,1,no,southeast,4747.0529,Middle Age,Overweight,Yes,Low,18-44,44825,0.10590190518683769
+26,male,27.06,0,yes,southeast,17043.3414,Young Adult,Overweight,No,High,18-44,44825,0.3802195515895148
+57,male,23.7,0,no,southwest,10959.33,Pre-Senior,Normal Weight,No,High,45-64,77561.6,0.14129840023929366
+22,female,30.4,0,no,northeast,2741.948,Young Adult,Obese,No,Low,18-44,44825,0.06117006134969325
+32,female,29.735,0,no,northwest,4357.04365,Middle Age,Overweight,No,Low,18-44,44825,0.09720119687674288
+39,male,29.925,1,yes,northeast,22462.04375,Middle Age,Overweight,Yes,High,18-44,44825,0.5011052704963748
+25,female,26.79,2,no,northwest,4189.1131,Young Adult,Overweight,Yes,Low,18-44,44825,0.09345483770217512
+48,female,33.33,0,no,southeast,8283.6807,Pre-Senior,Obese,No,Low,45-64,77561.6,0.10680131276301676
+47,female,27.645,2,yes,northwest,24535.69855,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.31633822084639823
+18,female,21.66,0,yes,northeast,14283.4594,Young Adult,Normal Weight,No,High,18-44,44825,0.31864940100390404
+18,male,30.03,1,no,southeast,1720.3537,Young Adult,Obese,Yes,Low,18-44,44825,0.038379335192414946
+61,male,36.3,1,yes,southwest,47403.88,Senior,Obese,Yes,High,45-64,77561.6,0.6111771804604339
+47,female,24.32,0,no,northeast,8534.6718,Pre-Senior,Normal Weight,No,Low,45-64,77561.6,0.11003733548560111
+28,female,17.29,0,no,northeast,3732.6251,Young Adult,Underweight,No,Low,18-44,44825,0.0832710563301729
+36,female,25.9,1,no,southwest,5472.449,Middle Age,Overweight,Yes,Low,18-44,44825,0.12208475181260456
+20,male,39.4,2,yes,southwest,38344.566,Young Adult,Obese,Yes,High,18-44,44825,0.8554281316229783
+44,male,34.32,1,no,southeast,7147.4728,Middle Age,Obese,Yes,Low,18-44,44825,0.15945282320133852
+38,female,19.95,2,no,northeast,7133.9025,Middle Age,Normal Weight,Yes,Low,18-44,44825,0.15915008365867261
+19,male,34.9,0,yes,southwest,34828.654,Young Adult,Obese,No,High,18-44,44825,0.776991723368656
+21,male,23.21,0,no,southeast,1515.3449,Young Adult,Normal Weight,No,Low,18-44,44825,0.03380579810373675
+46,male,25.745,3,no,northwest,9301.89355,Pre-Senior,Overweight,Yes,Low,45-64,77561.6,0.11992910860528921
+58,male,25.175,0,no,northeast,11931.12525,Pre-Senior,Overweight,No,High,45-64,77561.6,0.15382773498741642
+20,male,22,1,no,southwest,1964.78,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.04383223647518126
+18,male,26.125,0,no,northeast,1708.92575,Young Adult,Overweight,No,Low,18-44,44825,0.03812438929168991
+28,female,26.51,2,no,southeast,4340.4409,Young Adult,Overweight,Yes,Low,18-44,44825,0.096830806469604
+33,male,27.455,2,no,northwest,5261.46945,Middle Age,Overweight,Yes,Low,18-44,44825,0.11737801338538761
+19,female,25.745,1,no,northwest,2710.82855,Young Adult,Overweight,Yes,Low,18-44,44825,0.060475818181818186
+45,male,30.36,0,yes,southeast,62592.87309,Pre-Senior,Obese,No,High,45-64,77561.6,0.8070085337331875
+62,male,30.875,3,yes,northwest,46718.16325,Senior,Obese,Yes,High,45-64,77561.6,0.6023362495100668
+25,female,20.8,1,no,southwest,3208.787,Young Adult,Normal Weight,Yes,Low,18-44,44825,0.07158476296709425
+43,male,27.8,0,yes,southwest,37829.7242,Middle Age,Overweight,No,High,18-44,44825,0.8439425365309536
+42,male,24.605,2,yes,northeast,21259.37795,Middle Age,Normal Weight,Yes,High,18-44,44825,0.47427502398215277
+24,female,27.72,0,no,southeast,2464.6188,Young Adult,Overweight,No,Low,18-44,44825,0.0549831299498048
+29,female,21.85,0,yes,northeast,16115.3045,Young Adult,Normal Weight,No,High,18-44,44825,0.3595159955382041
+32,male,28.12,4,yes,northwest,21472.4788,Middle Age,Overweight,Yes,High,18-44,44825,0.479029086447295
+25,female,30.2,0,yes,southwest,33900.653,Young Adult,Obese,No,High,18-44,44825,0.7562889682097044
+41,male,32.2,2,no,southwest,6875.961,Middle Age,Obese,Yes,Low,18-44,44825,0.15339567205800336
+42,male,26.315,1,no,northwest,6940.90985,Middle Age,Overweight,Yes,Low,18-44,44825,0.15484461461238147
+33,female,26.695,0,no,northwest,4571.41305,Middle Age,Overweight,No,Low,18-44,44825,0.10198355939765756
+34,male,42.9,1,no,southwest,4536.259,Middle Age,Obese,Yes,Low,18-44,44825,0.10119930842163971
+19,female,34.7,2,yes,southwest,36397.576,Young Adult,Obese,Yes,High,18-44,44825,0.811992771890686
+30,female,23.655,3,yes,northwest,18765.87545,Middle Age,Normal Weight,Yes,High,18-44,44825,0.41864752816508644
+18,male,28.31,1,no,northeast,11272.33139,Young Adult,Overweight,Yes,High,18-44,44825,0.25147420836586726
+19,female,20.6,0,no,southwest,1731.677,Young Adult,Normal Weight,No,Low,18-44,44825,0.03863194645844952
+18,male,53.13,0,no,southeast,1163.4627,Young Adult,Obese,No,Low,18-44,44825,0.02595566536530954
+35,male,39.71,4,no,northeast,19496.71917,Middle Age,Obese,Yes,High,18-44,44825,0.4349519056330173
+39,female,26.315,2,no,northwest,7201.70085,Middle Age,Overweight,Yes,Low,18-44,44825,0.16066259564974902
+31,male,31.065,3,no,northwest,5425.02335,Middle Age,Obese,Yes,Low,18-44,44825,0.12102673396542109
+62,male,26.695,0,yes,northeast,28101.33305,Senior,Overweight,No,High,45-64,77561.6,0.36230986789854774
+62,male,38.83,0,no,southeast,12981.3457,Senior,Obese,No,High,45-64,77561.6,0.1673682041113128
+42,female,40.37,2,yes,southeast,43896.3763,Middle Age,Obese,Yes,High,18-44,44825,0.9792833530395986
+31,male,25.935,1,no,northwest,4239.89265,Middle Age,Overweight,Yes,Low,18-44,44825,0.09458767763524818
+61,male,33.535,0,no,northeast,13143.33665,Senior,Obese,No,High,45-64,77561.6,0.16945674986075582
+42,female,32.87,0,no,northeast,7050.0213,Middle Age,Obese,No,Low,18-44,44825,0.15727877969882878
+51,male,30.03,1,no,southeast,9377.9047,Pre-Senior,Obese,Yes,Low,45-64,77561.6,0.12090911868759796
+23,female,24.225,2,no,northeast,22395.74424,Young Adult,Normal Weight,Yes,High,18-44,44825,0.4996261960959286
+52,male,38.6,2,no,southwest,10325.206,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13312265347800972
+57,female,25.74,2,no,southeast,12629.1656,Pre-Senior,Overweight,Yes,High,45-64,77561.6,0.162827553841076
+23,female,33.4,0,no,southwest,10795.93733,Young Adult,Obese,No,High,18-44,44825,0.24084634311210262
+52,female,44.7,3,no,southwest,11411.685,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.14713060328822508
+50,male,30.97,3,no,northwest,10600.5483,Pre-Senior,Obese,Yes,High,45-64,77561.6,0.13667263568570012
+18,female,31.92,0,no,northeast,2205.9808,Young Adult,Obese,No,Low,18-44,44825,0.04921318014500836
+18,female,36.85,0,no,southeast,1629.8335,Young Adult,Obese,No,Low,18-44,44825,0.03635992191857222
+21,female,25.8,0,no,southwest,2007.945,Young Adult,Overweight,No,Low,18-44,44825,0.0447952035694367
+61,female,29.07,0,yes,northwest,29141.3603,Senior,Overweight,No,High,45-64,77561.6,0.3757189163194158

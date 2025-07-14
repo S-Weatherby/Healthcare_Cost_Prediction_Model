@@ -1,0 +1,19 @@
+analysis_type,variables,anova_code,business_question,priority
+One-way,smoker → charges,aov(charges ~ smoker),Do smokers cost significantly more?,High
+One-way,sex → charges,aov(charges ~ sex),Do men and women have different healthcare costs?,High
+One-way,region → charges,aov(charges ~ region),Do costs vary significantly by region?,Medium
+One-way,bmi_category → charges,aov(charges ~ bmi_category),Do BMI categories have different costs?,High
+One-way,age_group_standard → charges,aov(charges ~ age_group_standard),Do age groups cost differently?,High
+One-way,has_children → charges,aov(charges ~ has_children),Do people with children cost more/less?,Medium
+One-way,high_cost → other_variables,aov(sex ~ high_cost),Are men or women more likely to be high cost?,Medium
+Two-way,smoker × sex → charges,aov(charges ~ smoker * sex),Does smoking impact differ between men and women?,Very High
+Two-way,smoker × region → charges,aov(charges ~ smoker * region),Does smoking impact vary by region?,Medium
+Two-way,smoker × age_group → charges,aov(charges ~ smoker * age_group_standard),Does smoking impact change with age?,Very High
+Two-way,sex × age_group → charges,aov(charges ~ sex * age_group_standard),Do age effects differ between men and women?,High
+Two-way,sex × region → charges,aov(charges ~ sex * region),Do regional effects differ between men and women?,Medium
+Two-way,bmi_category × smoker → charges,aov(charges ~ bmi_category * smoker),Is BMI impact worse for smokers?,Very High
+Two-way,bmi_category × sex → charges,aov(charges ~ bmi_category * sex),Do BMI effects differ between men and women?,High
+Two-way,has_children × sex → charges,aov(charges ~ has_children * sex),Does having children affect costs differently by sex?,Medium
+Multi-way,smoker × sex × age_group → charges,aov(charges ~ smoker * sex * age_group_standard),Complex 3-way: smoking×sex×age interaction?,Low
+Multi-way,smoker × sex × region → charges,aov(charges ~ smoker * sex * region),Complex 3-way: smoking×sex×region interaction?,Low
+Multi-way,bmi_category × smoker × sex → charges,aov(charges ~ bmi_category * smoker * sex),Complex 3-way: BMI×smoking×sex interaction?,Low

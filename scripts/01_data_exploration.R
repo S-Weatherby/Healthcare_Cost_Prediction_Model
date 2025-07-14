@@ -448,4 +448,181 @@ write_csv(dataset_summary, "data/processed/dataset_summary.csv")
 # 4. Start feature engineering\
 # 5. Begin modeling preparation\n
 
+# ==============================================================================
+# CREATE ANOVA ANALYSIS TABLES
+# ==============================================================================
 
+library(tidyverse)
+
+# Create outputs/tables directory if it doesn't exist
+if (!dir.exists("outputs/tables")) {
+  dir.create("outputs/tables", recursive = TRUE)
+}
+
+# Table 1: Regular Variables ANOVA Analysis Plan
+regular_anova_plan <- tibble(
+  analysis_type = c(
+    "One-way", "One-way", "One-way", "One-way", "One-way", "One-way", "One-way",
+    "Two-way", "Two-way", "Two-way", "Two-way", "Two-way", "Two-way", "Two-way", "Two-way",
+    "Multi-way", "Multi-way", "Multi-way"
+  ),
+  variables = c(
+    "smoker → charges", 
+    "sex → charges",
+    "region → charges", 
+    "bmi_category → charges", 
+    "age_group_standard → charges", 
+    "has_children → charges",
+    "high_cost → other_variables",
+    "smoker × sex → charges",
+    "smoker × region → charges", 
+    "smoker × age_group → charges", 
+    "sex × age_group → charges",
+    "sex × region → charges",
+    "bmi_category × smoker → charges",
+    "bmi_category × sex → charges",
+    "has_children × sex → charges", 
+    "smoker × sex × age_group → charges",
+    "smoker × sex × region → charges",
+    "bmi_category × smoker × sex → charges"
+  ),
+  anova_code = c(
+    "aov(charges ~ smoker)",
+    "aov(charges ~ sex)",
+    "aov(charges ~ region)", 
+    "aov(charges ~ bmi_category)", 
+    "aov(charges ~ age_group_standard)", 
+    "aov(charges ~ has_children)",
+    "aov(sex ~ high_cost)",
+    "aov(charges ~ smoker * sex)",
+    "aov(charges ~ smoker * region)", 
+    "aov(charges ~ smoker * age_group_standard)", 
+    "aov(charges ~ sex * age_group_standard)",
+    "aov(charges ~ sex * region)",
+    "aov(charges ~ bmi_category * smoker)",
+    "aov(charges ~ bmi_category * sex)",
+    "aov(charges ~ has_children * sex)",
+    "aov(charges ~ smoker * sex * age_group_standard)",
+    "aov(charges ~ smoker * sex * region)",
+    "aov(charges ~ bmi_category * smoker * sex)"
+  ),
+  business_question = c(
+    "Do smokers cost significantly more?",
+    "Do men and women have different healthcare costs?",
+    "Do costs vary significantly by region?", 
+    "Do BMI categories have different costs?", 
+    "Do age groups cost differently?", 
+    "Do people with children cost more/less?",
+    "Are men or women more likely to be high cost?",
+    "Does smoking impact differ between men and women?",
+    "Does smoking impact vary by region?", 
+    "Does smoking impact change with age?",
+    "Do age effects differ between men and women?",
+    "Do regional effects differ between men and women?", 
+    "Is BMI impact worse for smokers?",
+    "Do BMI effects differ between men and women?",
+    "Does having children affect costs differently by sex?",
+    "Complex 3-way: smoking×sex×age interaction?",
+    "Complex 3-way: smoking×sex×region interaction?",
+    "Complex 3-way: BMI×smoking×sex interaction?"
+  ),
+  priority = c(
+    "High", "High", "Medium", "High", "High", "Medium", "Medium",
+    "Very High", "Medium", "Very High", "High", "Medium", "Very High", "High", "Medium",
+    "Low", "Low", "Low"
+  )
+)
+
+# Table 2: Engineered Features ANOVA Analysis Plan  
+engineered_anova_plan <- tibble(
+  analysis_type = c(
+    "Continuous", "Continuous", "Continuous", "Continuous", "Continuous",
+    "Continuous", "Continuous", "Categorical", "Categorical", "Categorical",
+    "Comparison", "Comparison", "Comparison", "Interaction", "Interaction", "Interaction"
+  ),
+  engineered_feature = c(
+    "age_smoker_interaction",
+    "age_sex_interaction", 
+    "bmi_smoker_interaction",
+    "bmi_sex_interaction",
+    "age_bmi_interaction",
+    "health_risk_score",
+    "cost_per_family_member",
+    "risk_level → charges",
+    "sex_smoker_risk → charges",
+    "age_sex_risk → charges", 
+    "cost_vs_national vs smoker",
+    "cost_vs_national vs sex",
+    "cost_vs_national vs region",
+    "age_smoker × region",
+    "sex_smoker × age_group",
+    "bmi_smoker × sex"
+  ),
+  anova_code = c(
+    "aov(charges ~ age_smoker_interaction)",
+    "aov(charges ~ age_sex_interaction)",
+    "aov(charges ~ bmi_smoker_interaction)",
+    "aov(charges ~ bmi_sex_interaction)",
+    "aov(charges ~ age_bmi_interaction)", 
+    "aov(charges ~ health_risk_score)",
+    "aov(charges ~ cost_per_family_member)",
+    "aov(charges ~ risk_level)",
+    "aov(charges ~ sex_smoker_risk)",
+    "aov(charges ~ age_sex_risk)",
+    "aov(cost_vs_national ~ smoker)",
+    "aov(cost_vs_national ~ sex)",
+    "aov(cost_vs_national ~ region)",
+    "aov(charges ~ age_smoker_interaction * region)",
+    "aov(charges ~ sex_smoker_interaction * age_group_standard)",
+    "aov(charges ~ bmi_smoker_interaction * sex)"
+  ),
+  what_it_tests = c(
+    "Is the age×smoking interaction significant?",
+    "Is the age×sex interaction significant?",
+    "Is the BMI×smoking interaction significant?", 
+    "Is the BMI×sex interaction significant?",
+    "Is the age×BMI interaction significant?",
+    "Does composite risk score predict costs?",
+    "Does per-person family cost matter?",
+    "Do risk categories differ significantly?",
+    "Do sex-smoking combinations differ?",
+    "Do age-sex combinations differ?",
+    "Do smokers deviate more from national avg?",
+    "Does sex affect deviation from national avg?",
+    "Does region affect deviation from national avg?", 
+    "Does age-smoking effect vary by region?",
+    "Does sex-smoking effect vary by age?",
+    "Does BMI-smoking effect vary by sex?"
+  ),
+  expected_significance = c(
+    "High", "Medium", "Very High", "High", "Medium", "High", "Medium",
+    "High", "High", "Medium", "High", "Medium", "Medium", "Medium", "Medium", "High"
+  )
+)
+
+# Save tables
+write_csv(regular_anova_plan, "outputs/tables/regular_anova_analysis_plan.csv")
+write_csv(engineered_anova_plan, "outputs/tables/engineered_features_anova_plan.csv")
+
+# Display tables
+print("📊 REGULAR VARIABLES ANOVA PLAN:")
+print(regular_anova_plan)
+
+print("📊 ENGINEERED FEATURES ANOVA PLAN:") 
+print(engineered_anova_plan)
+
+# Priority summary
+priority_summary <- regular_anova_plan %>%
+  count(priority) %>%
+  arrange(match(priority, c("Very High", "High", "Medium", "Low")))
+
+print("🎯 ANALYSIS PRIORITIES:")
+print(priority_summary)
+
+# Expected significance summary
+significance_summary <- engineered_anova_plan %>%
+  count(expected_significance) %>%
+  arrange(match(expected_significance, c("Very High", "High", "Medium", "Low")))
+
+print("📈 EXPECTED SIGNIFICANCE LEVELS:")
+print(significance_summary)

@@ -1,19 +1,19 @@
-analysis_type,variables,anova_code,business_question,priority
-One-way,smoker → charges,aov(charges ~ smoker),Do smokers cost significantly more?,High
-One-way,sex → charges,aov(charges ~ sex),Do men and women have different healthcare costs?,High
-One-way,region → charges,aov(charges ~ region),Do costs vary significantly by region?,Medium
-One-way,bmi_category → charges,aov(charges ~ bmi_category),Do BMI categories have different costs?,High
-One-way,age_group_standard → charges,aov(charges ~ age_group_standard),Do age groups cost differently?,High
-One-way,has_children → charges,aov(charges ~ has_children),Do people with children cost more/less?,Medium
-One-way,high_cost → other_variables,aov(sex ~ high_cost),Are men or women more likely to be high cost?,Medium
-Two-way,smoker × sex → charges,aov(charges ~ smoker * sex),Does smoking impact differ between men and women?,Very High
-Two-way,smoker × region → charges,aov(charges ~ smoker * region),Does smoking impact vary by region?,Medium
-Two-way,smoker × age_group → charges,aov(charges ~ smoker * age_group_standard),Does smoking impact change with age?,Very High
-Two-way,sex × age_group → charges,aov(charges ~ sex * age_group_standard),Do age effects differ between men and women?,High
-Two-way,sex × region → charges,aov(charges ~ sex * region),Do regional effects differ between men and women?,Medium
-Two-way,bmi_category × smoker → charges,aov(charges ~ bmi_category * smoker),Is BMI impact worse for smokers?,Very High
-Two-way,bmi_category × sex → charges,aov(charges ~ bmi_category * sex),Do BMI effects differ between men and women?,High
-Two-way,has_children × sex → charges,aov(charges ~ has_children * sex),Does having children affect costs differently by sex?,Medium
-Multi-way,smoker × sex × age_group → charges,aov(charges ~ smoker * sex * age_group_standard),Complex 3-way: smoking×sex×age interaction?,Low
-Multi-way,smoker × sex × region → charges,aov(charges ~ smoker * sex * region),Complex 3-way: smoking×sex×region interaction?,Low
-Multi-way,bmi_category × smoker × sex → charges,aov(charges ~ bmi_category * smoker * sex),Complex 3-way: BMI×smoking×sex interaction?,Low
+analysis_type,variables,anova_code,business_question,priority,f_value,p_value,significance,status
+One-way,smoker → charges,aov(charges ~ smoker),Do smokers cost significantly more?,High,2177.615,,***,Completed
+One-way,sex → charges,aov(charges ~ sex),Do men and women have different healthcare costs?,High,4.4,,*,Completed
+One-way,region → charges,aov(charges ~ region),Do costs vary significantly by region?,Medium,2.97,,*,Completed
+One-way,bmi_category → charges,aov(charges ~ bmi_category),Do BMI categories have different costs?,High,18.731,,***,Completed
+One-way,age_group_standard → charges,aov(charges ~ age_group_standard),Do age groups cost differently?,High,92.015,,***,Completed
+One-way,has_children → charges,aov(charges ~ has_children),Do people with children cost more/less?,Medium,5.627,,*,Completed
+One-way,high_cost → other_variables,aov(sex ~ high_cost),Are men or women more likely to be high cost?,Medium,NA,,NA,Not Completed
+Two-way,smoker × sex → charges,aov(charges ~ smoker * sex),Does smoking impact differ between men and women?,Very High,8.868,,**,Completed
+Two-way,smoker × region → charges,aov(charges ~ smoker * region),Does smoking impact vary by region?,Medium,NA,,NA,Not Completed
+Two-way,smoker × age_group → charges,aov(charges ~ smoker * age_group_standard),Does smoking impact change with age?,Very High,1.296,,ns,Completed
+Two-way,sex × age_group → charges,aov(charges ~ sex * age_group_standard),Do age effects differ between men and women?,High,0.056,,ns,Completed
+Two-way,sex × region → charges,aov(charges ~ sex * region),Do regional effects differ between men and women?,Medium,NA,,NA,Not Completed
+Two-way,bmi_category × smoker → charges,aov(charges ~ bmi_category * smoker),Is BMI impact worse for smokers?,Very High,194.236,,***,Completed
+Two-way,bmi_category × sex → charges,aov(charges ~ bmi_category * sex),Do BMI effects differ between men and women?,High,1.657,,ns,Completed
+Two-way,has_children × sex → charges,aov(charges ~ has_children * sex),Does having children affect costs differently by sex?,Medium,0.329,,ns,Completed
+Multi-way,smoker × sex × age_group → charges,aov(charges ~ smoker * sex * age_group_standard),Complex 3-way: smoking×sex×age interaction?,Low,NA,,NA,Not Completed
+Multi-way,smoker × sex × region → charges,aov(charges ~ smoker * sex * region),Complex 3-way: smoking×sex×region interaction?,Low,NA,,NA,Not Completed
+Multi-way,bmi_category × smoker × sex → charges,aov(charges ~ bmi_category * smoker * sex),Complex 3-way: BMI×smoking×sex interaction?,Low,NA,,NA,Not Completed

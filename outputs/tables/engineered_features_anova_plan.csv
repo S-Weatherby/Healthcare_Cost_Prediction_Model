@@ -1,17 +1,17 @@
-analysis_type,engineered_feature,anova_code,what_it_tests,expected_significance
-Continuous,age_smoker_interaction,aov(charges ~ age_smoker_interaction),Is the age×smoking interaction significant?,High
-Continuous,age_sex_interaction,aov(charges ~ age_sex_interaction),Is the age×sex interaction significant?,Medium
-Continuous,bmi_smoker_interaction,aov(charges ~ bmi_smoker_interaction),Is the BMI×smoking interaction significant?,Very High
-Continuous,bmi_sex_interaction,aov(charges ~ bmi_sex_interaction),Is the BMI×sex interaction significant?,High
-Continuous,age_bmi_interaction,aov(charges ~ age_bmi_interaction),Is the age×BMI interaction significant?,Medium
-Continuous,health_risk_score,aov(charges ~ health_risk_score),Does composite risk score predict costs?,High
-Continuous,cost_per_family_member,aov(charges ~ cost_per_family_member),Does per-person family cost matter?,Medium
-Categorical,risk_level → charges,aov(charges ~ risk_level),Do risk categories differ significantly?,High
-Categorical,sex_smoker_risk → charges,aov(charges ~ sex_smoker_risk),Do sex-smoking combinations differ?,High
-Categorical,age_sex_risk → charges,aov(charges ~ age_sex_risk),Do age-sex combinations differ?,Medium
-Comparison,cost_vs_national vs smoker,aov(cost_vs_national ~ smoker),Do smokers deviate more from national avg?,High
-Comparison,cost_vs_national vs sex,aov(cost_vs_national ~ sex),Does sex affect deviation from national avg?,Medium
-Comparison,cost_vs_national vs region,aov(cost_vs_national ~ region),Does region affect deviation from national avg?,Medium
-Interaction,age_smoker × region,aov(charges ~ age_smoker_interaction * region),Does age-smoking effect vary by region?,Medium
-Interaction,sex_smoker × age_group,aov(charges ~ sex_smoker_interaction * age_group_standard),Does sex-smoking effect vary by age?,Medium
-Interaction,bmi_smoker × sex,aov(charges ~ bmi_smoker_interaction * sex),Does BMI-smoking effect vary by sex?,High
+analysis_type,engineered_feature,anova_code,what_it_tests,expected_significance,f_value,p_value,significance,status
+Continuous,age_smoker_interaction,aov(charges ~ age_smoker_interaction),Is the age×smoking interaction significant?,High,NA,NA,NA,Not Completed
+Continuous,age_sex_interaction,aov(charges ~ age_sex_interaction),Is the age×sex interaction significant?,Medium,NA,NA,NA,Not Completed
+Continuous,bmi_smoker_interaction,aov(charges ~ bmi_smoker_interaction),Is the BMI×smoking interaction significant?,Very High,NA,NA,NA,Not Completed
+Continuous,bmi_sex_interaction,aov(charges ~ bmi_sex_interaction),Is the BMI×sex interaction significant?,High,NA,NA,NA,Not Completed
+Continuous,age_bmi_interaction,aov(charges ~ age_bmi_interaction),Is the age×BMI interaction significant?,Medium,NA,NA,NA,Not Completed
+Continuous,health_risk_score,aov(charges ~ health_risk_score),Does composite risk score predict costs?,High,NA,NA,NA,Not Completed
+Continuous,cost_per_family_member,aov(charges ~ cost_per_family_member),Does per-person family cost matter?,Medium,NA,NA,NA,Not Completed
+Categorical,risk_level → charges,aov(charges ~ risk_level),Do risk categories differ significantly?,High,NA,NA,NA,Not Completed
+Categorical,sex_smoker_risk → charges,aov(charges ~ sex_smoker_risk),Do sex-smoking combinations differ?,High,NA,NA,NA,Not Completed
+Categorical,age_sex_risk → charges,aov(charges ~ age_sex_risk),Do age-sex combinations differ?,Medium,NA,NA,NA,Not Completed
+Comparison,cost_vs_national vs smoker,aov(cost_vs_national ~ smoker),Do smokers deviate more from national avg?,High,NA,NA,NA,Not Completed
+Comparison,cost_vs_national vs sex,aov(cost_vs_national ~ sex),Does sex affect deviation from national avg?,Medium,NA,NA,NA,Not Completed
+Comparison,cost_vs_national vs region,aov(cost_vs_national ~ region),Does region affect deviation from national avg?,Medium,NA,NA,NA,Not Completed
+Interaction,age_smoker × region,aov(charges ~ age_smoker_interaction * region),Does age-smoking effect vary by region?,Medium,NA,NA,NA,Not Completed
+Interaction,sex_smoker × age_group,aov(charges ~ sex_smoker_interaction * age_group_standard),Does sex-smoking effect vary by age?,Medium,NA,NA,NA,Not Completed
+Interaction,bmi_smoker × sex,aov(charges ~ bmi_smoker_interaction * sex),Does BMI-smoking effect vary by sex?,High,NA,NA,NA,Not Completed

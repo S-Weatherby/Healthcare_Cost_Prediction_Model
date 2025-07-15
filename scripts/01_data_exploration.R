@@ -448,9 +448,9 @@ write_csv(dataset_summary, "data/processed/dataset_summary.csv")
 # 4. Start feature engineering\
 # 5. Begin modeling preparation\n
 
-# ==============================================================================
-# CREATE ANOVA ANALYSIS TABLES
-# ==============================================================================
+# ANOVA Tables ####
+  ## Keep up w/ variables and analysis relationships
+
 
 library(tidyverse)
 
@@ -604,25 +604,15 @@ engineered_anova_plan <- tibble(
 write_csv(regular_anova_plan, "outputs/tables/regular_anova_analysis_plan.csv")
 write_csv(engineered_anova_plan, "outputs/tables/engineered_features_anova_plan.csv")
 
-# Display tables
-print("📊 REGULAR VARIABLES ANOVA PLAN:")
-print(regular_anova_plan)
-
-print("📊 ENGINEERED FEATURES ANOVA PLAN:") 
-print(engineered_anova_plan)
 
 # Priority summary
 priority_summary <- regular_anova_plan %>%
   count(priority) %>%
   arrange(match(priority, c("Very High", "High", "Medium", "Low")))
 
-print("🎯 ANALYSIS PRIORITIES:")
-print(priority_summary)
-
 # Expected significance summary
 significance_summary <- engineered_anova_plan %>%
   count(expected_significance) %>%
   arrange(match(expected_significance, c("Very High", "High", "Medium", "Low")))
 
-print("📈 EXPECTED SIGNIFICANCE LEVELS:")
-print(significance_summary)
+

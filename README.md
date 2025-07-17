@@ -92,7 +92,7 @@ install.packages(c(
 
 ```r
 # 1. Clone the repository
-git clone https://github.com/yourusername/healthcare-cost-prediction.git
+git clone https:[//github.com/yourusername/healthcare-cost-prediction.git](https://github.com/S-Weatherby/Healthcare_Cost_Prediction_Model.git)]
 
 # 2. Set working directory
 setwd("healthcare-cost-prediction")

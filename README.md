@@ -1,4 +1,4 @@
-# Healthcare Cost Prediction - R Analytics Project
+# Healthcare Cost Prediction 
 
 A comprehensive machine learning analysis to predict healthcare insurance costs using R, featuring advanced feature engineering, external benchmarking, and business insights.
 

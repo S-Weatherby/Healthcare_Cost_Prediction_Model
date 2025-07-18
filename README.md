@@ -206,7 +206,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions or collaboration opportunities, please reach out via:
 - **Email**: shelita17smith@gmail.com
-- **LinkedIn**: [LinkedIn Profile]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/shelita-smith-b4092753/))
+- **LinkedIn**: [LinkedIn Profile([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/shelita-smith-b4092753/))]
 
 ---
 

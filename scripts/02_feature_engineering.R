@@ -325,6 +325,136 @@ missing_high_priority <- regular_anova_plan_updated %>%
   filter(priority %in% c("High", "Very High") & status == "Not Completed") %>%
   select(variables, business_question, anova_code, priority)
 
-# 6 Evidence Based Feature Engineering ####
-  ## 
+# 6 Non-linear transformations (Age and BMI)####
 
+insurance_with_benchmarks <- insurance_with_benchmarks %>%
+  mutate(
+    # Age non-linearity
+    age_squared = age^2,
+    age_cubed = age^3,
+    
+    # BMI non-linearity  
+    bmi_squared = bmi^2,
+    bmi_cubed = bmi^3,
+    
+    # Age decade grouping
+    age_decade = floor(age/10) * 10,
+    
+    # Advanced BMI categories
+    bmi_detailed = case_when(
+      bmi < 18.5 ~ "Underweight",
+      bmi < 25 ~ "Normal",
+      bmi < 30 ~ "Overweight",
+      bmi < 35 ~ "Obese_I",
+      bmi < 40 ~ "Obese_II",
+      TRUE ~ "Obese_III"
+    )
+  )
+
+
+# 7 Evidence Based Feature Engineering ####
+
+# High-priority interactions (Very High priority from ANOVA)
+insurance_with_benchmarks <- insurance_with_benchmarks %>%
+  mutate(
+    # Smoker interactions
+    smoker_age_interaction = ifelse(smoker == "yes", age, 0),
+    smoker_bmi_interaction = ifelse(smoker == "yes", bmi, 0),
+    smoker_age_numeric = as.numeric(smoker == "yes") * age,
+    
+    # BMI-Age interaction
+    age_bmi_interaction = age * bmi,
+    
+    # High-risk combinations
+    high_risk_combo = case_when(
+      smoker == "yes" & bmi >= 30 ~ "Smoker_Obese",
+      smoker == "yes" & bmi < 30 ~ "Smoker_Normal",
+      smoker == "no" & bmi >= 30 ~ "NonSmoker_Obese", 
+      TRUE ~ "NonSmoker_Normal"
+    ),
+    
+    # Complex risk scoring
+    risk_score = case_when(
+      smoker == "yes" & bmi >= 30 & age >= 50 ~ "Very High",
+      smoker == "yes" & (bmi >= 30 | age >= 50) ~ "High",
+      smoker == "no" & bmi >= 30 & age >= 50 ~ "Medium",
+      TRUE ~ "Low"
+    )
+  )
+
+# 7.2 Categorical encoding via fastDummies package for modeling
+
+# One-hot encoding for modeling
+model_ready_data <- insurance_with_benchmarks %>%
+  dummy_cols(
+    select_columns = c("sex", "region", "smoker", "bmi_category", "high_risk_combo"),
+    remove_first_dummy = TRUE,
+    remove_selected_columns = FALSE
+  )
+
+## feature scaling/normalization
+
+# numeric features for scaling
+numeric_features <- c("age", "bmi", "children", "cost_vs_national", 
+                      "age_squared", "bmi_squared", "age_bmi_interaction")
+
+# scaled versions
+scaled_features <- model_ready_data %>%
+  select(all_of(numeric_features)) %>%
+  scale() %>%
+  as_tibble() %>%
+  rename_with(~paste0(., "_scaled"))
+
+# combine with original data
+final_feature_data <- bind_cols(
+  model_ready_data,
+  scaled_features
+)
+
+# 7.3 Feature Egineering - actual ####
+
+# benchmark-derived features
+insurance_with_benchmarks <- insurance_with_benchmarks %>%
+  mutate(
+    # Additional benchmark features
+    cost_deviation = charges - avg_hcup_charges,
+    cost_percentile = percent_rank(cost_vs_national),
+    is_cost_outlier = cost_vs_national > 2 | cost_vs_national < 0.5,
+    
+    # Regional cost context
+    region_cost_rank = case_when(
+      region == "southeast" ~ 1,  # Adjust based on your data
+      region == "southwest" ~ 2,
+      region == "northwest" ~ 3,
+      region == "northeast" ~ 4
+    )
+  )
+
+# 7.4 Feature selection and validation ####
+
+correlation_matrix <- final_feature_data %>%
+  select(where(is.numeric)) %>%
+  cor(use = "complete.obs")
+
+# Remove highly correlated features (>0.9)
+high_corr_pairs <- findCorrelation(correlation_matrix, cutoff = 0.9)
+
+# Variance analysis
+near_zero_var <- nearZeroVar(final_feature_data)
+
+# Save for modeling
+write_csv(final_feature_data, "data/processed/engineered_features.csv")
+
+# Create feature documentation
+feature_summary <- final_feature_data %>%
+  summarise(across(where(is.numeric), 
+                   list(mean = mean, sd = sd, min = min, max = max),
+                   na.rm = TRUE))
+
+write_csv(feature_summary, "outputs/tables/feature_summary_stats.csv")
+
+# 8 Script 4 (Modeling) Agenda: ####
+# Data Splitting: Create train/validation/test sets
+# Baseline Models: Linear regression, basic tree models
+# Model Selection: Choose 4-5 algorithms to compare
+# Run ANOVA on new engineered features:

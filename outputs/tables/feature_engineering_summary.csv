@@ -1,0 +1,9 @@
+category,count
+Original Features,12
+Benchmark Features,1
+Non-linear Transformations,6
+Interaction Features,4
+Risk Score Features,6
+One-hot Encoded Features,25
+Scaled Features,11
+Total Features,60

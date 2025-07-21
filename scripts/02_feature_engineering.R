@@ -453,7 +453,7 @@ feature_summary <- final_feature_data %>%
 
 write_csv(feature_summary, "outputs/tables/feature_summary_stats.csv")
 
-# 8 Script 4 (Modeling) Agenda: ####
+# 8 Script 3 (Modeling) Agenda: ####
 # Data Splitting: Create train/validation/test sets
 # Baseline Models: Linear regression, basic tree models
 # Model Selection: Choose 4-5 algorithms to compare

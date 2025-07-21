@@ -1,0 +1,37 @@
+test_name,term,f_value,p_value
+smoker,smoker     ,2177.6148680565598,8.271435842111365e-283
+smoker,Residuals  ,NA,NA
+sex,sex        ,4.399701697437463,0.03613272100592978
+sex,Residuals  ,NA,NA
+age_group_standard,age_group_standard,92.01499641418556,4.046001302246794e-21
+age_group_standard,Residuals         ,NA,NA
+bmi_category,bmi_category,18.73063972881844,6.6627976806919644e-12
+bmi_category,Residuals   ,NA,NA
+region,region     ,2.9696266935891638,0.030893356070495485
+region,Residuals  ,NA,NA
+has_children,has_children,5.626674005248964,0.017830174683564327
+has_children,Residuals   ,NA,NA
+smoker_sex,smoker     ,2188.851370164177,1.3894674777269603e-283
+smoker_sex,sex        ,0.02560108788500715,0.872902619409569
+smoker_sex,smoker:sex ,8.86816467206946,0.0029542550354403514
+smoker_sex,Residuals  ,NA,NA
+smoker_age,smoker                   ,2783.1348744257566,0
+smoker_age,age_group_standard       ,372.199607064649,2.419841851034455e-73
+smoker_age,smoker:age_group_standard,1.2961704376506216,0.25511833881220003
+smoker_age,Residuals                ,NA,NA
+sex_age,sex                   ,4.6993973176160075,0.030349565247845923
+sex_age,age_group_standard    ,92.94868979916019,2.6084408482181557e-21
+sex_age,sex:age_group_standard,0.05596826475690231,0.8130219613047175
+sex_age,Residuals             ,NA,NA
+bmi_smoker,bmi_category       ,76.12234807419574,1.927227765950926e-45
+bmi_smoker,smoker             ,3508.742326927828,0
+bmi_smoker,bmi_category:smoker,194.23563428207507,1.87021825482983e-104
+bmi_smoker,Residuals          ,NA,NA
+bmi_sex,bmi_category    ,18.788445231499917,6.1496946938442924e-12
+bmi_sex,sex             ,3.1446659938652592,0.07640440123989976
+bmi_sex,bmi_category:sex,1.657417917775164,0.17438939164494774
+bmi_sex,Residuals       ,NA,NA
+sex_child,has_children    ,5.63759296212629,0.017720148320757106
+sex_child,sex             ,4.263809370695743,0.03912539015125401
+sex_child,has_children:sex,0.32879264863184593,0.5664675344284694
+sex_child,Residuals       ,NA,NA

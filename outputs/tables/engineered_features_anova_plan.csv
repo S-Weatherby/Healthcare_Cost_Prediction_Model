@@ -3,7 +3,7 @@ Continuous,age_smoker_interaction,aov(charges ~ age_smoker_interaction),Is the a
 Continuous,age_sex_interaction,aov(charges ~ age_sex_interaction),Is the age×sex interaction significant?,Medium,NA,NA,NA,Not Completed
 Continuous,bmi_smoker_interaction,aov(charges ~ bmi_smoker_interaction),Is the BMI×smoking interaction significant?,Very High,NA,NA,NA,Not Completed
 Continuous,bmi_sex_interaction,aov(charges ~ bmi_sex_interaction),Is the BMI×sex interaction significant?,High,NA,NA,NA,Not Completed
-Continuous,age_bmi_interaction,aov(charges ~ age_bmi_interaction),Is the age×BMI interaction significant?,Medium,NA,NA,NA,Not Completed
+Continuous,age_bmi_interaction,aov(charges ~ age_bmi_interaction),Is the age×BMI interaction significant?,Medium,168.606,< 0.001,***,Completed
 Continuous,health_risk_score,aov(charges ~ health_risk_score),Does composite risk score predict costs?,High,NA,NA,NA,Not Completed
 Continuous,cost_per_family_member,aov(charges ~ cost_per_family_member),Does per-person family cost matter?,Medium,NA,NA,NA,Not Completed
 Categorical,risk_level → charges,aov(charges ~ risk_level),Do risk categories differ significantly?,High,NA,NA,NA,Not Completed

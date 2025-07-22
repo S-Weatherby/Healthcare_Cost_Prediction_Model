@@ -1,6 +1,6 @@
 # Complete Feature Engineering Script - Script 02
-# Author: [Your Name]
-# Date: [Current Date]
+# Author: Shelita Smith
+# Date: July 22, 2025
 # Purpose: Feature engineering with ANOVA analysis and comprehensive documentation
 
 # Load required libraries
@@ -681,10 +681,10 @@ write_csv(missing_high_priority, "outputs/tables/missing_high_priority_tests.csv
 
 # 8  ANOVA on Engineered Features ####
 
-# Test the new engineered features that we created
+# Test the new engineered features created
 engineered_feature_tests <- list()
 
-# Test the features we actually created
+# Test the features actually created
 if("cost_vs_national" %in% names(insurance_with_benchmarks)) {
   engineered_feature_tests[["cost_vs_national"]] <- aov(charges ~ cost_vs_national, data = insurance_with_benchmarks)
 }

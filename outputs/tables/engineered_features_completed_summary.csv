@@ -1,2 +1,0 @@
-engineered_feature,what_it_tests,f_value,p_value,significance,expected_significance
-age_bmi_interaction,Is the age×BMI interaction significant?,168.606,< 0.001,***,Medium

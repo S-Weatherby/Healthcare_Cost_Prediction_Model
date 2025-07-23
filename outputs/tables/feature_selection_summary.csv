@@ -1,5 +1,0 @@
-metric,count,details
-Total Features,60,All features in dataset
-Numeric Features,48,Features suitable for correlation analysis
-High Correlation Features,22,"charges, age_bmi_interaction, cost_percentile, cost_deviation, cost_vs_national, smoker_bmi_interaction_scaled, smoker_bmi_interaction, smoker_age_interaction, smoker_age_numeric, smoker_yes, bmi, bmi_scaled, age_squared, age_squared_scaled, bmi_squared, bmi_squared_scaled, age_scaled, age, age_cubed, bmi_category_Overweight, bmi_detailed_Underweight, children_scaled"
-Near Zero Variance Features,6,"smoker_age_interaction, smoker_age_numeric, bmi_category_Underweight, risk_score_Very High, bmi_detailed_Underweight, smoker_age_interaction_scaled"

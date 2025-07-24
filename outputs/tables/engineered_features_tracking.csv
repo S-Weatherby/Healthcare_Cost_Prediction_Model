@@ -1,26 +1,33 @@
-feature_id,feature_name,feature_type,based_on_anova,priority_level,description,f_value,p_value,eta_squared,significant,created
-1,smoker_age_interaction,Statistical_Interaction,TRUE,High,Smoker status × age numeric interaction,NA,NA,NA,NA,FALSE
-2,smoker_region_interaction,Statistical_Interaction,TRUE,High,Smoker status × region combination,NA,NA,NA,NA,FALSE
-3,region_children_interaction,Statistical_Interaction,TRUE,High,Region × number of children interaction,NA,NA,NA,NA,FALSE
-4,has_children_age_interaction,Statistical_Interaction,TRUE,High,Having children × age interaction,NA,NA,NA,NA,FALSE
-5,smoker_benchmark_ratio,Statistical_Interaction,TRUE,High,Smoker cost premium vs benchmark,NA,NA,NA,NA,FALSE
-6,region_cost_premium,Statistical_Interaction,TRUE,High,Regional cost premium calculation,NA,NA,NA,NA,FALSE
-7,age_squared,Non_Linear_Transform,FALSE,Medium,Age squared for non-linear age effects,NA,NA,NA,NA,FALSE
-8,age_cubed,Non_Linear_Transform,FALSE,Medium,Age cubed for complex age relationships,NA,NA,NA,NA,FALSE
-9,bmi_squared,Non_Linear_Transform,FALSE,Medium,BMI squared for non-linear BMI effects,NA,NA,NA,NA,FALSE
-10,bmi_log,Non_Linear_Transform,FALSE,Medium,Log-transformed BMI,NA,NA,NA,NA,FALSE
-11,age_log,Non_Linear_Transform,FALSE,Medium,Log-transformed age,NA,NA,NA,NA,FALSE
-12,age_bmi_interaction,Polynomial_Interaction,FALSE,Medium,Age × BMI polynomial interaction,NA,NA,NA,NA,FALSE
-13,age_children_interaction,Polynomial_Interaction,FALSE,Medium,Age × children count interaction,NA,NA,NA,NA,FALSE
-14,bmi_children_interaction,Polynomial_Interaction,FALSE,Medium,BMI × children count interaction,NA,NA,NA,NA,FALSE
-15,health_risk_score,Risk_Score,FALSE,High,Composite health risk score (0-10),NA,NA,NA,NA,FALSE
-16,demographic_risk_level,Risk_Score,FALSE,High,Demographic risk categorization,NA,NA,NA,NA,FALSE
-17,compound_risk_score,Risk_Score,FALSE,High,Multi-factor compound risk score,NA,NA,NA,NA,FALSE
-18,cost_vs_benchmark_ratio,Benchmark_Comparison,FALSE,Medium,Individual cost vs national benchmark ratio,NA,NA,NA,NA,FALSE
-19,cost_deviation_category,Benchmark_Comparison,FALSE,Medium,Cost deviation category (low/normal/high),NA,NA,NA,NA,FALSE
-20,benchmark_outlier_flag,Benchmark_Comparison,FALSE,Medium,Flag for extreme cost outliers vs benchmark,NA,NA,NA,NA,FALSE
-21,family_cost_efficiency,Family_Lifestyle,FALSE,Medium,Family cost efficiency metric,NA,NA,NA,NA,FALSE
-22,large_family_flag,Family_Lifestyle,FALSE,Medium,Flag for families with 3+ children,NA,NA,NA,NA,FALSE
-23,cost_per_family_member,Family_Lifestyle,FALSE,Medium,Cost divided by family size,NA,NA,NA,NA,FALSE
-24,age_risk_bins,Categorical_Binning,FALSE,Medium,Age grouped into risk categories,NA,NA,NA,NA,FALSE
-25,bmi_clinical_categories,Categorical_Binning,FALSE,Medium,BMI grouped by clinical categories,NA,NA,NA,NA,FALSE
+feature_id,feature_name,feature_type,based_on_anova,anova_priority,uses_multipliers,multiplier_source,description,calculation_method,f_value,p_value,eta_squared,significant,created
+1,smoker_cost_multiplier,Standalone_Main_Effect,TRUE,Very_High,TRUE,smoker_mult,Direct smoker cost multiplier from ANOVA group means (non-smoker=1.0),Direct lookup from smoker multipliers table,NA,NA,NA,NA,FALSE
+2,sex_cost_premium,Standalone_Main_Effect,TRUE,Very_High,TRUE,sex_mult,Sex-based cost premium using male/female ratio from group means,Direct lookup from sex multipliers table,NA,NA,NA,NA,FALSE
+3,bmi_risk_factor,Standalone_Main_Effect,TRUE,Very_High,TRUE,bmi_mult,BMI category risk factor from ANOVA group cost analysis,Direct lookup from BMI category multipliers table,NA,NA,NA,NA,FALSE
+4,region_cost_index,Standalone_Main_Effect,TRUE,Very_High,TRUE,region_mult,Regional cost index using cheapest region as baseline from ANOVA,Direct lookup from region multipliers table,NA,NA,NA,NA,FALSE
+5,has_children_factor,Standalone_Main_Effect,TRUE,High,TRUE,children_mult,Children factor using no-children as baseline from group means,Direct lookup from children multipliers table,NA,NA,NA,NA,FALSE
+6,age_cost_curve,Standalone_Main_Effect,TRUE,High,TRUE,age_mult,Age group cost curve using youngest group as baseline,Direct lookup from age group multipliers table,NA,NA,NA,NA,FALSE
+7,age_squared,Non_Linear_Transform,FALSE,Medium,FALSE,NA,Age squared for capturing non-linear age effects on healthcare costs,age^2,NA,NA,NA,NA,FALSE
+8,bmi_squared,Non_Linear_Transform,FALSE,Medium,FALSE,NA,BMI squared for capturing obesity threshold effects and exponential risks,bmi^2,NA,NA,NA,NA,FALSE
+9,age_cubed,Non_Linear_Transform,FALSE,Medium,FALSE,NA,Age cubed for capturing extreme aging effects in elderly populations,age^3,NA,NA,NA,NA,FALSE
+10,age_log,Non_Linear_Transform,FALSE,Medium,FALSE,NA,Log-transformed age to capture diminishing age effects,log(age),NA,NA,NA,NA,FALSE
+11,bmi_log,Non_Linear_Transform,FALSE,Medium,FALSE,NA,Log-transformed BMI for improved distribution and curve fitting,log(bmi),NA,NA,NA,NA,FALSE
+12,health_risk_score,Risk_Score,FALSE,Medium,TRUE,smoker_mult + bmi_mult + age_mult,Composite 0-10 health risk score using ANOVA-derived multiplier weights,(smoker_mult * 4) + (bmi_mult * 3) + (age_mult * 3),NA,NA,NA,NA,FALSE
+13,demographic_risk_level,Risk_Score,FALSE,Medium,TRUE,health_risk_score,Categorical version of health risk score (Low/Medium/High/Very High),case_when logic based on health_risk_score thresholds,NA,NA,NA,NA,FALSE
+14,compound_risk_score,Risk_Score,FALSE,Medium,TRUE,smoker_mult * sex_mult * bmi_mult,ANOVA effect-size weighted compound risk using multiple multipliers,smoker_mult * sex_mult * bmi_mult,NA,NA,NA,NA,FALSE
+15,smoker_age_interaction,Statistical_Interaction,TRUE,Very_High,TRUE,smoker_mult * age_mult,Smoker effect amplified by age using both ANOVA-derived multipliers,smoker_cost_multiplier * age_cost_curve,NA,NA,NA,NA,FALSE
+16,smoker_sex_combo,Statistical_Interaction,TRUE,Very_High,TRUE,smoker_mult * sex_mult,Smoker-sex combination using joint multipliers from group means,smoker_cost_multiplier * sex_cost_premium,NA,NA,NA,NA,FALSE
+17,smoker_bmi_interaction,Statistical_Interaction,FALSE,Medium,TRUE,smoker_mult * bmi_mult,Smoker-BMI interaction using combined risk factors and multipliers,smoker_cost_multiplier * bmi_risk_factor,NA,NA,NA,NA,FALSE
+18,region_children_interaction,Statistical_Interaction,TRUE,Medium,TRUE,region_mult * children_mult,Regional differences in family healthcare costs using multipliers,region_cost_index * has_children_factor,NA,NA,NA,NA,FALSE
+19,has_children_age_interaction,Statistical_Interaction,TRUE,Medium,TRUE,children_mult * age_mult,Children effect varies by age group using combined multipliers,has_children_factor * age_cost_curve,NA,NA,NA,NA,FALSE
+20,region_cost_multiplier,Statistical_Interaction,TRUE,High,TRUE,region_mult,Region-specific cost multipliers (alias for region_cost_index),region_cost_index (direct copy),NA,NA,NA,NA,FALSE
+21,smoker_region_combo,Statistical_Interaction,TRUE,Medium,TRUE,smoker_mult * region_mult,Smoker effects vary by region using combined multipliers,smoker_cost_multiplier * region_cost_index,NA,NA,NA,NA,FALSE
+22,sex_bmi_interaction,Statistical_Interaction,FALSE,Medium,TRUE,sex_mult * bmi_mult,Sex-BMI interaction effects using both multipliers,sex_cost_premium * bmi_risk_factor,NA,NA,NA,NA,FALSE
+23,age_region_interaction,Statistical_Interaction,TRUE,Medium,TRUE,age_mult * region_mult,Age effects vary by region using combined multipliers,age_cost_curve * region_cost_index,NA,NA,NA,NA,FALSE
+24,smoker_encoded,Categorical_Encoding,FALSE,Medium,FALSE,NA,Binary encoding of smoker status (0/1),as.numeric(smoker == 'yes'),NA,NA,NA,NA,FALSE
+25,sex_encoded,Categorical_Encoding,FALSE,Medium,FALSE,NA,"Binary encoding of sex (0=female, 1=male)",as.numeric(sex == 'male'),NA,NA,NA,NA,FALSE
+26,region_encoded,Categorical_Encoding,FALSE,Medium,FALSE,NA,One-hot encoding of region categories,model.matrix approach or factor conversion,NA,NA,NA,NA,FALSE
+27,bmi_category_encoded,Categorical_Encoding,FALSE,Medium,FALSE,NA,Ordinal encoding of BMI categories,as.numeric(as.factor(bmi_category)),NA,NA,NA,NA,FALSE
+28,age_bins,Categorical_Binning,FALSE,Medium,FALSE,NA,Age grouped into 5-year bins for risk modeling,"cut(age, breaks = seq(15, 70, by = 5))",NA,NA,NA,NA,FALSE
+29,charges_percentile_rank,Categorical_Binning,FALSE,Medium,FALSE,NA,Charges converted to percentile ranks (0-1 scale),percent_rank(charges),NA,NA,NA,NA,FALSE
+30,smoker_years_estimate,Advanced_Standalone,FALSE,Medium,FALSE,NA,Estimated smoking duration effect using age and smoking interaction,smoker_encoded * age (proxy for smoking duration),NA,NA,NA,NA,FALSE
+31,bmi_health_category,Advanced_Standalone,FALSE,Medium,FALSE,NA,Medical BMI risk category with clinical thresholds,Clinical BMI categorization with medical thresholds,NA,NA,NA,NA,FALSE
+32,regional_market_tier,Advanced_Standalone,FALSE,Medium,FALSE,NA,Healthcare market tier classification by regional cost patterns,Regional cost tier assignment based on multiplier ranges,NA,NA,NA,NA,FALSE

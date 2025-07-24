@@ -41,6 +41,7 @@ write_csv(hcup_age_summary, "outputs/tables/hcup_benchmark_summary.csv")
 # Display benchmarks
 print(hcup_age_summary)
 
+
 # 2 Merge Insurance w/ Benchmarks ####
 
 insurance_with_benchmarks <- insurance_clean %>%
@@ -54,6 +55,7 @@ glimpse(insurance_with_benchmarks)
 # How many people got benchmarks?
 merge_success_count <- sum(!is.na(insurance_with_benchmarks$avg_hcup_charges))
 cat("Records successfully merged with benchmarks:", merge_success_count, "\n")
+
 
 # 3 Regular ANOVA Analysis ####
 
@@ -292,7 +294,6 @@ effect_size_ranking <- anova_results %>%
 
 
 # 4 Engineered Features ####
-
 # 4.1 Engineered features table for organization ####
 
 engineered_features_table <- tibble(
@@ -675,146 +676,218 @@ write_csv(multipliers_table, "outputs/tables/feature_multipliers.csv")
 # 4.3 Update Engineered features table ####
 
 engineered_features_table <- tibble(
-  feature_id = 1:34,
+  feature_id = 1:32,  
   
   feature_name = c(
-    # Standalone Features (multipliers)
+    # Standalone Features (multipliers) - 6 features
     "smoker_cost_multiplier", "sex_cost_premium", "bmi_risk_factor", 
     "region_cost_index", "has_children_factor", "age_cost_curve",
     
-    # Polynomial / Non-linear features
+    # Non-linear/Polynomial features - 5 features
     "age_squared", "bmi_squared", "age_cubed", "age_log", "bmi_log",
     
-    # Risk Scores
+    # Risk Scores - 3 features
     "health_risk_score", "demographic_risk_level", "compound_risk_score",
     
-    # High/Medium Priority Interactions
+    # High/Medium Priority Interactions - 9 features
     "smoker_age_interaction", "smoker_sex_combo", "smoker_bmi_interaction",
     "region_children_interaction", "has_children_age_interaction", "region_cost_multiplier",
     "smoker_region_combo", "sex_bmi_interaction", "age_region_interaction",
     
-    # Encoded features
+    # Encoded features - 4 features
     "smoker_encoded", "sex_encoded", "region_encoded", "bmi_category_encoded",
     
-    # Binned Features
+    # Binned Features - 2 features
     "age_bins", "charges_percentile_rank",
     
-    # Advanced Standalone
+    # Advanced Standalone - 3 features
     "smoker_years_estimate", "bmi_health_category", "regional_market_tier"
   ),
   
   feature_type = c(
+    # Standalone Features (6)
     rep("Standalone_Main_Effect", 6),
+    # Non-linear (5)
     rep("Non_Linear_Transform", 5),
+    # Risk scores (3)
     rep("Risk_Score", 3),
+    # Interactions (9)
     rep("Statistical_Interaction", 9),
+    # Encodings (4)
     rep("Categorical_Encoding", 4),
+    # Binning (2)
     rep("Categorical_Binning", 2),
+    # Advanced (3)
     rep("Advanced_Standalone", 3)
   ),
   
   based_on_anova = c(
-    rep(TRUE, 6),            # multipliers from ANOVA group means
-    rep(FALSE, 5),           # non-linear
-    rep(FALSE, 3),           # risk scores
-    c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE),  # interactions (copied from original)
-    rep(FALSE, 4),           # encodings
-    rep(FALSE, 2),           # binning
-    rep(FALSE, 3)            # advanced
+    # Standalone - all based on ANOVA (6)
+    rep(TRUE, 6),            
+    # Non-linear - not directly from ANOVA (5)
+    rep(FALSE, 5),           
+    # Risk scores - composite features (3)
+    rep(FALSE, 3),           
+    # Interactions - mixed ANOVA basis (9)
+    c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE),  
+    # Encodings - not ANOVA based (4)
+    rep(FALSE, 4),           
+    # Binning - not ANOVA based (2)
+    rep(FALSE, 2),           
+    # Advanced - not ANOVA based (3)
+    rep(FALSE, 3)            
   ),
   
   anova_priority = c(
-    "Very_High", "Very_High", "Very_High", "Very_High", "High", "High",  # multipliers
-    rep("Medium", 5),          # non-linear
-    rep("Medium", 3),          # risk scores
-    c("Very_High", "Very_High", "Medium", "Medium", "Medium", "High", "Medium", "Medium", "Medium"),  # interactions
-    rep("Medium", 4),          # encodings
-    rep("Medium", 2),          # binning
-    rep("Medium", 3)           # advanced
+    # Standalone - high priority from ANOVA results (6)
+    "Very_High", "Very_High", "Very_High", "Very_High", "High", "High",  
+    # Non-linear - medium priority (5)
+    rep("Medium", 5),          
+    # Risk scores - medium priority (3)
+    rep("Medium", 3),          
+    # Interactions - mixed priority (9)
+    c("Very_High", "Very_High", "Medium", "Medium", "Medium", "High", "Medium", "Medium", "Medium"),  
+    # Encodings - medium priority (4)
+    rep("Medium", 4),          
+    # Binning - medium priority (2)
+    rep("Medium", 2),          
+    # Advanced - medium priority (3)
+    rep("Medium", 3)           
+  ),
+  
+  uses_multipliers = c(
+    # Standalone - all use multipliers directly (6)
+    rep(TRUE, 6),
+    # Non-linear - don't use multipliers (5)
+    rep(FALSE, 5),
+    # Risk scores - use multipliers in calculations (3)
+    rep(TRUE, 3),
+    # Interactions - most use multipliers (9)
+    c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE),
+    # Encodings - don't use multipliers (4)
+    rep(FALSE, 4),
+    # Binning - don't use multipliers (2)
+    rep(FALSE, 2),
+    # Advanced - don't use multipliers directly (3)
+    rep(FALSE, 3)
+  ),
+  
+  multiplier_source = c(
+    # Standalone - specify which multiplier table (6)
+    "smoker_mult", "sex_mult", "bmi_mult", "region_mult", "children_mult", "age_mult",
+    # Non-linear - no multipliers (5)
+    rep(NA_character_, 5),
+    # Risk scores - multiple multipliers (3)
+    "smoker_mult + bmi_mult + age_mult", "health_risk_score", "smoker_mult * sex_mult * bmi_mult",
+    # Interactions - combination of multipliers (9)
+    "smoker_mult * age_mult", "smoker_mult * sex_mult", "smoker_mult * bmi_mult",
+    "region_mult * children_mult", "children_mult * age_mult", "region_mult",
+    "smoker_mult * region_mult", "sex_mult * bmi_mult", "age_mult * region_mult",
+    # Encodings - no multipliers (4)
+    rep(NA_character_, 4),
+    # Binning - no multipliers (2)
+    rep(NA_character_, 2),
+    # Advanced - no direct multipliers (3)
+    rep(NA_character_, 3)
   ),
   
   description = c(
-    "Direct smoker cost multiplier from ANOVA group means",
-    "Sex-based cost premium using male/female ratio", 
-    "BMI category risk factor from group cost analysis",
-    "Regional cost index using cheapest region as baseline",
-    "Children factor using no-children as baseline",
-    "Age group cost curve using youngest as baseline",
+    # Standalone (6)
+    "Direct smoker cost multiplier from ANOVA group means (non-smoker=1.0)",
+    "Sex-based cost premium using male/female ratio from group means", 
+    "BMI category risk factor from ANOVA group cost analysis",
+    "Regional cost index using cheapest region as baseline from ANOVA",
+    "Children factor using no-children as baseline from group means",
+    "Age group cost curve using youngest group as baseline",
     
-    "Age squared for non-linear age effects",
-    "BMI squared for obesity threshold effects", 
-    "Age cubed for extreme aging effects",
-    "Log-transformed age to capture diminishing effects",
-    "Log-transformed BMI for improved curve fitting",
+    # Non-linear (5)
+    "Age squared for capturing non-linear age effects on healthcare costs",
+    "BMI squared for capturing obesity threshold effects and exponential risks", 
+    "Age cubed for capturing extreme aging effects in elderly populations",
+    "Log-transformed age to capture diminishing age effects",
+    "Log-transformed BMI for improved distribution and curve fitting",
     
-    "0-10 health risk score using multiplier weights",
-    "Categorical version of health risk score",
-    "ANOVA effect-size weighted compound risk",
+    # Risk scores (3)
+    "Composite 0-10 health risk score using ANOVA-derived multiplier weights",
+    "Categorical version of health risk score (Low/Medium/High/Very High)",
+    "ANOVA effect-size weighted compound risk using multiple multipliers",
     
-    "Smoker effect amplified by age using both multipliers",
-    "Smoker-sex combination using joint multipliers",
-    "Smoker-BMI interaction using combined risk factors",
-    "Regional differences in family healthcare costs",
-    "Children effect varies by age group",
-    "Region-specific cost multipliers",
-    "Smoker effects vary by region",
-    "Sex-BMI interaction effects", 
-    "Age effects vary by region",
+    # Interactions (9)
+    "Smoker effect amplified by age using both ANOVA-derived multipliers",
+    "Smoker-sex combination using joint multipliers from group means",
+    "Smoker-BMI interaction using combined risk factors and multipliers",
+    "Regional differences in family healthcare costs using multipliers",
+    "Children effect varies by age group using combined multipliers",
+    "Region-specific cost multipliers (alias for region_cost_index)",
+    "Smoker effects vary by region using combined multipliers",
+    "Sex-BMI interaction effects using both multipliers", 
+    "Age effects vary by region using combined multipliers",
     
-    "Binary encoding of smoker status",
-    "Binary encoding of sex",
-    "One-hot encoding of region", 
+    # Encodings (4)
+    "Binary encoding of smoker status (0/1)",
+    "Binary encoding of sex (0=female, 1=male)",
+    "One-hot encoding of region categories", 
     "Ordinal encoding of BMI categories",
     
-    "Age grouped into 5-year bins",
-    "Charges converted to percentile ranks",
+    # Binning (2)
+    "Age grouped into 5-year bins for risk modeling",
+    "Charges converted to percentile ranks (0-1 scale)",
     
-    "Estimated smoking duration effect",
-    "Medical BMI risk category (e.g., Obese Class I–III)",
-    "Healthcare market tier by regional cost"
+    # Advanced (3)
+    "Estimated smoking duration effect using age and smoking interaction",
+    "Medical BMI risk category with clinical thresholds",
+    "Healthcare market tier classification by regional cost patterns"
   ),
   
-  what_it_calculates = c(
-    "Baseline cost multiplier: non-smoker=1.0, smoker=2.0-2.5x",
-    "Sex-based adjustment: typically male costs ~10% more than female",
-    "BMI health penalty: normal=1.0, overweight=1.15, obese=1.4x", 
-    "Geographic cost adjustment: Northeast=1.2x, Southeast=0.9x baseline",
-    "Children effect: 0 kids=1.0x, 1+ kids=1.1-1.2x cost",
-    "Age cost progression: linear increase ~$200-500 per year of age",
+  calculation_method = c(
+    # Standalone (6)
+    "Direct lookup from smoker multipliers table",
+    "Direct lookup from sex multipliers table",
+    "Direct lookup from BMI category multipliers table",
+    "Direct lookup from region multipliers table",
+    "Direct lookup from children multipliers table",
+    "Direct lookup from age group multipliers table",
     
-    "Quadratic age effect: captures exponential elderly cost increases",
-    "Quadratic BMI effect: captures obesity threshold effects", 
-    "Cubic age effect: captures extreme acceleration after 70+",
-    "Log age: diminishing age impact after early adulthood",
-    "Log BMI: diminishing cost effect after certain BMI",
+    # Non-linear (5)
+    "age^2",
+    "bmi^2",
+    "age^3",
+    "log(age)",
+    "log(bmi)",
     
-    "0-10 score: 0=lowest risk, 10=highest risk",
-    "Low/Medium/High/Very High risk group assignment",
-    "Weighted score using ANOVA effect sizes as multipliers",
+    # Risk scores (3)
+    "(smoker_mult * 4) + (bmi_mult * 3) + (age_mult * 3)",
+    "case_when logic based on health_risk_score thresholds",
+    "smoker_mult * sex_mult * bmi_mult",
     
-    "Older smokers have significantly higher costs",
-    "Smoker males have highest combined health cost",
-    "Obese smokers face compounding risks",
-    "Family costs vary significantly by region",
-    "Older parents have different healthcare needs",
-    "Regional cost multiplier (relative to cheapest region)",
-    "Smoking risks vary by region",
-    "Combined effects of sex and BMI on cost",
-    "Age-based regional cost shifts",
+    # Interactions (9)
+    "smoker_cost_multiplier * age_cost_curve",
+    "smoker_cost_multiplier * sex_cost_premium",
+    "smoker_cost_multiplier * bmi_risk_factor",
+    "region_cost_index * has_children_factor",
+    "has_children_factor * age_cost_curve",
+    "region_cost_index (direct copy)",
+    "smoker_cost_multiplier * region_cost_index",
+    "sex_cost_premium * bmi_risk_factor",
+    "age_cost_curve * region_cost_index",
     
-    "0/1 encoding for smoker status",
-    "0/1 encoding for sex",
-    "One-hot encoded region variables",
-    "Ordinal BMI: Underweight < Normal < Overweight < Obese",
+    # Encodings (4)
+    "as.numeric(smoker == 'yes')",
+    "as.numeric(sex == 'male')",
+    "model.matrix approach or factor conversion",
+    "as.numeric(as.factor(bmi_category))",
     
-    "Grouped 5-year age bands for risk modeling",
-    "Normalized cost ranking across population",
+    # Binning (2)
+    "cut(age, breaks = seq(15, 70, by = 5))",
+    "percent_rank(charges)",
     
-    "Years estimated from smoker × age interaction",
-    "Clinical BMI risk label (e.g., Obese II)",
-    "Region-based tier: Premium, Standard, or Economy"
+    # Advanced (3)
+    "smoker_encoded * age (proxy for smoking duration)",
+    "Clinical BMI categorization with medical thresholds",
+    "Regional cost tier assignment based on multiplier ranges"
   ),
   
+  # Initialize tracking columns
   f_value = NA_real_,
   p_value = NA_real_,
   eta_squared = NA_real_,
@@ -824,10 +897,6 @@ engineered_features_table <- tibble(
 
 # Save to file
 write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
-
-
-write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
-
 
 # 4.4 Engineered features creation ####
 
@@ -879,6 +948,8 @@ create_engineered_features <- function(data, multipliers) {
       age_squared = age^2,
       bmi_squared = bmi^2, 
       age_cubed = age^3,
+      age_log = log(age),
+      bmi_log = log(bmi),
       
       # Risk Score Features (multiplier-weighted)
       health_risk_score = (smoker_cost_multiplier * 4) + 
@@ -907,10 +978,24 @@ create_engineered_features <- function(data, multipliers) {
       sex_bmi_interaction = sex_cost_premium * bmi_risk_factor,
       age_region_interaction = age_cost_curve * region_cost_index,
       
-      # Categorical Encodings (no multipliers needed)
+      # Categorical Encodings - CORRECTED
       smoker_encoded = as.numeric(smoker == "yes"),
       sex_encoded = as.numeric(sex == "male"),
       bmi_category_encoded = as.numeric(as.factor(bmi_category)),
+      
+      # Region Encoding - ADDED (One-hot encoding)
+      region_northeast = as.numeric(region == "northeast"),
+      region_northwest = as.numeric(region == "northwest"), 
+      region_southeast = as.numeric(region == "southeast"),
+      region_southwest = as.numeric(region == "southwest"),
+      
+      # Alternative: Single ordinal encoding for region (by cost level)
+      region_encoded = case_when(
+        region == "southeast" ~ 1,    # Lowest cost region
+        region == "southwest" ~ 2,
+        region == "northwest" ~ 3, 
+        region == "northeast" ~ 4     # Highest cost region
+      ),
       
       # Binned Features
       age_bins = cut(age, breaks = seq(15, 70, by = 5), include.lowest = TRUE),
@@ -924,162 +1009,313 @@ insurance_with_engineered_features <- create_engineered_features(insurance_with_
 
 write_csv(insurance_with_engineered_features, "outputs/tables/insurance_with_engineered_features.csv")
 
-# 4.5 Explore cost comparisons ####
-# # Create simple ratio: How does each person compare to the national average?
-# insurance_with_benchmarks <- insurance_with_benchmarks %>%
-#   mutate(
-#     cost_vs_national = charges / avg_hcup_charges
-#   )
-# 
-# # Look at new feature
-# summary(insurance_with_benchmarks$cost_vs_national)
-# 
-# # What does this mean?
-# # cost_vs_national = 1.5 means person costs 50% more than national average
-# # cost_vs_national = 0.8 means person costs 20% less than national average
-# 
-# # Examples
-# cost_comparison_examples <- insurance_with_benchmarks %>%
-#   select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national) %>%
-#   head(10)
-# 
-# # Save examples table
-# write_csv(cost_comparison_examples, "outputs/tables/cost_comparison_examples.csv")
-# 
-# # Save step 1 data
-# write_csv(insurance_with_benchmarks, "data/processed/insurance_step1.csv")
-# 
-# 
-# 
-# highest_cost_ratios <- insurance_with_benchmarks %>%
-#   select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national, smoker) %>%
-#   arrange(desc(cost_vs_national)) %>%  # Highest ratios first
-#   head(10)
-# 
-# # Save highest cost ratios table
-# write_csv(highest_cost_ratios, "outputs/tables/highest_cost_ratios.csv")
-# 
-# # Distribution analysis
-# cost_ratio_stats <- insurance_with_benchmarks %>%
-#   summarise(
-#     mean_ratio = mean(cost_vs_national, na.rm = TRUE),
-#     median_ratio = median(cost_vs_national, na.rm = TRUE),
-#     sd_ratio = sd(cost_vs_national, na.rm = TRUE),
-#     min_ratio = min(cost_vs_national, na.rm = TRUE),
-#     max_ratio = max(cost_vs_national, na.rm = TRUE),
-#     q25 = quantile(cost_vs_national, 0.25, na.rm = TRUE),
-#     q75 = quantile(cost_vs_national, 0.75, na.rm = TRUE)
-#   )
-# 
-# write_csv(cost_ratio_stats, "outputs/tables/cost_ratio_distribution_stats.csv")
-# 
-# # Create histogram
-# png("outputs/plots/cost_ratio_histogram.png", width = 800, height = 600)
-# hist(insurance_with_benchmarks$cost_vs_national, 
-#      main = "Individual Insurance Costs vs National Hospital Averages",
-#      xlab = "Cost Ratio",
-#      breaks = 30,
-#      col = "lightblue",
-#      border = "black")
-# dev.off()
-# 
-# # Smokers vs non-smokers comparison
-# smoker_cost_comparison <- insurance_with_benchmarks %>%
-#   group_by(smoker) %>%
-#   summarise(
-#     count = n(),
-#     avg_ratio = mean(cost_vs_national, na.rm = TRUE),
-#     median_ratio = median(cost_vs_national, na.rm = TRUE),
-#     sd_ratio = sd(cost_vs_national, na.rm = TRUE),
-#     .groups = "drop"
-#   )
-# 
-# write_csv(smoker_cost_comparison, "outputs/tables/smoker_cost_comparison.csv")
-# 
-# 
-# 
-# # Save updated tables (overwrite existing)
-# 
-# write_csv(engineered_anova_plan_updated, "outputs/tables/engineered_features_anova_plan.csv")
+# 4.5 Basic cost comparisons ####
 
-# 6 Engineered Features ANOVA ####
+# 1. Basic Descriptive Statistics
+basic_cost_summary <- insurance_with_engineered_features %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    sd_cost = sd(charges),
+    min_cost = min(charges),
+    max_cost = max(charges),
+    q25_cost = quantile(charges, 0.25),
+    q75_cost = quantile(charges, 0.75),
+    n_observations = n()
+  )
 
-# # 7 Evidence Based Feature Engineering ####
-# 
-# # High-priority interactions (Very High priority from ANOVA)
-# insurance_with_benchmarks <- insurance_with_benchmarks %>%
-#   mutate(
-#     # ALIGNED interaction features with your table
-#     age_smoker_interaction = age * as.numeric(smoker == "yes"),
-#     age_sex_interaction = age * as.numeric(sex == "male"),
-#     
-#     # Original smoker interactions
-#     smoker_bmi_interaction = ifelse(smoker == "yes", bmi, 0),
-#     smoker_age_numeric = as.numeric(smoker == "yes") * age,
-#     
-#     # BMI-Age interaction
-#     age_bmi_interaction = age * bmi,
-#     
-#     # High-risk combinations
-#     high_risk_combo = case_when(
-#       smoker == "yes" & bmi >= 30 ~ "Smoker_Obese",
-#       smoker == "yes" & bmi < 30 ~ "Smoker_Normal",
-#       smoker == "no" & bmi >= 30 ~ "NonSmoker_Obese", 
-#       TRUE ~ "NonSmoker_Normal"
-#     ),
-#     
-#     # Complex risk scoring
-#     risk_score = case_when(
-#       smoker == "yes" & bmi >= 30 & age >= 50 ~ "Very High",
-#       smoker == "yes" & (bmi >= 30 | age >= 50) ~ "High",
-#       smoker == "no" & bmi >= 30 & age >= 50 ~ "Medium",
-#       TRUE ~ "Low"
-#     ),
-#     
-#     # Additional benchmark features
-#     cost_deviation = charges - avg_hcup_charges,
-#     cost_percentile = percent_rank(cost_vs_national),
-#     is_cost_outlier = cost_vs_national > 2 | cost_vs_national < 0.5,
-#     
-#     # Regional cost context (adjust based on your data)
-#     region_cost_rank = case_when(
-#       region == "southeast" ~ 1,
-#       region == "southwest" ~ 2,
-#       region == "northwest" ~ 3,
-#       region == "northeast" ~ 4,
-#       TRUE ~ 2  # default
-#     )
-#   )
-# 
-# # One-hot encoding for modeling
-# model_ready_data <- insurance_with_benchmarks %>%
-#   dummy_cols(
-#     select_columns = c("sex", "region", "smoker", "bmi_category", "high_risk_combo", "risk_score", "bmi_detailed"),
-#     remove_first_dummy = TRUE,
-#     remove_selected_columns = FALSE
-#   )
-# 
-# # Feature scaling/normalization
-# # Numeric features for scaling
-# numeric_features <- c("age", "bmi", "children", "cost_vs_national", 
-#                       "age_squared", "bmi_squared", "age_bmi_interaction",
-#                       "age_smoker_interaction", "age_sex_interaction", 
-#                       "cost_deviation", "cost_percentile")
-# 
-# # Create scaled versions
-# scaled_features <- model_ready_data %>%
-#   select(all_of(numeric_features)) %>%
-#   scale() %>%
-#   as_tibble() %>%
-#   rename_with(~paste0(., "_scaled"))
-# 
-# # Combine with original data
-# final_feature_data <- bind_cols(
-#   model_ready_data,
-#   scaled_features
-# )
-# 
-# # 7.4 Feature selection and validation ####
+# 2. Cost by Major Categories (Validate Multipliers)
+cost_by_smoker <- insurance_with_engineered_features %>%
+  group_by(smoker) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  )
+
+cost_by_sex <- insurance_with_engineered_features %>%
+  group_by(sex) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  )
+
+cost_by_region <- insurance_with_engineered_features %>%
+  group_by(region) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  ) %>%
+  arrange(mean_cost)
+
+cost_by_bmi_category <- insurance_with_engineered_features %>%
+  group_by(bmi_category) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  ) %>%
+  arrange(mean_cost)
+
+cost_by_children <- insurance_with_engineered_features %>%
+  mutate(has_children = if_else(children > 0, "Has Children", "No Children")) %>%
+  group_by(has_children) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  )
+
+# 3. Cross-Category Comparisons (Key Interactions)
+smoker_sex_costs <- insurance_with_engineered_features %>%
+  group_by(smoker, sex) %>%
+  summarise(
+    mean_cost = mean(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_cost))
+
+smoker_bmi_costs <- insurance_with_engineered_features %>%
+  group_by(smoker, bmi_category) %>%
+  summarise(
+    mean_cost = mean(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_cost))
+
+region_smoker_costs <- insurance_with_engineered_features %>%
+  group_by(region, smoker) %>%
+  summarise(
+    mean_cost = mean(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_cost))
+
+# 4. Age Group Analysis
+cost_by_age_group <- insurance_with_engineered_features %>%
+  group_by(age_group_standard) %>%
+  summarise(
+    mean_cost = mean(charges),
+    median_cost = median(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    cost_ratio = mean_cost / min(mean_cost),
+    vs_baseline = paste0(round(cost_ratio, 2), "x")
+  ) %>%
+  arrange(mean_cost)
+
+# 5. Multiplier Validation Check
+multiplier_validation <- tibble(
+  category = c("Smoker", "Sex", "BMI", "Region", "Children", "Age"),
+  observed_max_ratio = c(
+    max(cost_by_smoker$cost_ratio),
+    max(cost_by_sex$cost_ratio), 
+    max(cost_by_bmi_category$cost_ratio),
+    max(cost_by_region$cost_ratio),
+    max(cost_by_children$cost_ratio),
+    max(cost_by_age_group$cost_ratio)
+  ),
+  multiplier_max_ratio = c(
+    max(multipliers_table$multiplier[multipliers_table$feature == "smoker"]),
+    max(multipliers_table$multiplier[multipliers_table$feature == "sex"]),
+    max(multipliers_table$multiplier[multipliers_table$feature == "bmi_category"]),
+    max(multipliers_table$multiplier[multipliers_table$feature == "region"]),
+    max(multipliers_table$multiplier[multipliers_table$feature == "has_children"]),
+    max(multipliers_table$multiplier[multipliers_table$feature == "age_group_standard"])
+  )
+) %>%
+  mutate(
+    difference = abs(observed_max_ratio - multiplier_max_ratio),
+    match_quality = case_when(
+      difference < 0.01 ~ "Perfect",
+      difference < 0.05 ~ "Excellent", 
+      difference < 0.10 ~ "Good",
+      TRUE ~ "Needs Review"
+    )
+  )
+
+# 6. Extreme Values Analysis
+high_cost_analysis <- insurance_with_engineered_features %>%
+  filter(charges > quantile(charges, 0.9)) %>%
+  group_by(smoker, sex, bmi_category) %>%
+  summarise(
+    mean_cost = mean(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(mean_cost))
+
+low_cost_analysis <- insurance_with_engineered_features %>%
+  filter(charges < quantile(charges, 0.1)) %>%
+  group_by(smoker, sex, bmi_category) %>%
+  summarise(
+    mean_cost = mean(charges),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  arrange(mean_cost)
+
+# Combine all results into summary
+basic_cost_comparisons <- list(
+  overall_summary = basic_cost_summary,
+  by_smoker = cost_by_smoker,
+  by_sex = cost_by_sex,
+  by_region = cost_by_region,
+  by_bmi = cost_by_bmi_category,
+  by_children = cost_by_children,
+  by_age_group = cost_by_age_group,
+  smoker_sex_cross = smoker_sex_costs,
+  smoker_bmi_cross = smoker_bmi_costs,
+  region_smoker_cross = region_smoker_costs,
+  multiplier_validation = multiplier_validation,
+  high_cost_profiles = high_cost_analysis,
+  low_cost_profiles = low_cost_analysis
+)
+
+# Save tables
+write_csv(cost_by_smoker, "outputs/tables/cost_comparison_smoker.csv")
+write_csv(cost_by_region, "outputs/tables/cost_comparison_region.csv") 
+write_csv(cost_by_bmi_category, "outputs/tables/cost_comparison_bmi.csv")
+write_csv(multiplier_validation, "outputs/tables/multiplier_validation.csv")
+write_csv(smoker_sex_costs, "outputs/tables/cost_comparison_smoker_sex.csv")
+
+# Return the summary for inspection
+basic_cost_comparisons
+
+
+# 5 Engineered Features ANOVA ####
+
+engineered_tests <- list(
+  # Standalone multiplier features
+  smoker_cost_multiplier = aov(charges ~ smoker_cost_multiplier, data = insurance_with_engineered_features),
+  sex_cost_premium = aov(charges ~ sex_cost_premium, data = insurance_with_engineered_features),
+  bmi_risk_factor = aov(charges ~ bmi_risk_factor, data = insurance_with_engineered_features),
+  region_cost_index = aov(charges ~ region_cost_index, data = insurance_with_engineered_features),
+  has_children_factor = aov(charges ~ has_children_factor, data = insurance_with_engineered_features),
+  age_cost_curve = aov(charges ~ age_cost_curve, data = insurance_with_engineered_features),
+  
+  # Non-linear features (use lm for continuous)
+  age_squared = lm(charges ~ age_squared, data = insurance_with_engineered_features),
+  bmi_squared = lm(charges ~ bmi_squared, data = insurance_with_engineered_features),
+  age_cubed = lm(charges ~ age_cubed, data = insurance_with_engineered_features),
+  
+  # Risk scores (use lm for continuous)
+  health_risk_score = lm(charges ~ health_risk_score, data = insurance_with_engineered_features),
+  compound_risk_score = lm(charges ~ compound_risk_score, data = insurance_with_engineered_features),
+  
+  # Interaction features
+  smoker_age_interaction = aov(charges ~ smoker_age_interaction, data = insurance_with_engineered_features),
+  smoker_sex_combo = aov(charges ~ smoker_sex_combo, data = insurance_with_engineered_features),
+  smoker_bmi_interaction = aov(charges ~ smoker_bmi_interaction, data = insurance_with_engineered_features),
+  region_children_interaction = aov(charges ~ region_children_interaction, data = insurance_with_engineered_features),
+  has_children_age_interaction = aov(charges ~ has_children_age_interaction, data = insurance_with_engineered_features),
+  smoker_region_combo = aov(charges ~ smoker_region_combo, data = insurance_with_engineered_features),
+  sex_bmi_interaction = aov(charges ~ sex_bmi_interaction, data = insurance_with_engineered_features),
+  age_region_interaction = aov(charges ~ age_region_interaction, data = insurance_with_engineered_features),
+  
+  # Encoded features
+  smoker_encoded = aov(charges ~ smoker_encoded, data = insurance_with_engineered_features),
+  sex_encoded = aov(charges ~ sex_encoded, data = insurance_with_engineered_features),
+  
+  # Binned features
+  charges_percentile_rank = lm(charges ~ charges_percentile_rank, data = insurance_with_engineered_features)
+)
+
+# Function to extract statistics from both aov and lm objects
+extract_unified_stats <- function(model) {
+  if (inherits(model, "aov")) {
+    # Handle ANOVA objects
+    summary_result <- summary(model)
+    f_value <- summary_result[[1]]$`F value`[1]
+    p_value <- summary_result[[1]]$`Pr(>F)`[1]
+    
+    # Calculate eta-squared for ANOVA
+    ss_effect <- summary_result[[1]]$`Sum Sq`[1]
+    ss_total <- sum(summary_result[[1]]$`Sum Sq`)
+    eta_squared <- ss_effect / ss_total
+    
+  } else if (inherits(model, "lm")) {
+    # Handle linear model objects
+    anova_result <- anova(model)
+    f_value <- anova_result$`F value`[1]
+    p_value <- anova_result$`Pr(>F)`[1]
+    
+    # Calculate eta-squared for lm
+    ss_effect <- anova_result$`Sum Sq`[1]
+    ss_total <- sum(anova_result$`Sum Sq`)
+    eta_squared <- ss_effect / ss_total
+  }
+  
+  # Determine significance and effect size
+  significant <- p_value < 0.05
+  effect_size_interpretation <- case_when(
+    eta_squared >= 0.14 ~ "Large",
+    eta_squared >= 0.06 ~ "Medium", 
+    eta_squared >= 0.01 ~ "Small",
+    TRUE ~ "Negligible"
+  )
+  
+  return(list(
+    f_value = f_value,
+    p_value = p_value,
+    eta_squared = eta_squared,
+    significant = significant,
+    effect_size_interpretation = effect_size_interpretation
+  ))
+}
+
+# Update engineered features table with ANOVA results
+engineered_features_table_updated <- engineered_features_table %>%
+  select(-f_value, -p_value, -eta_squared, -significant) %>%  # Remove existing columns to avoid duplicates
+  left_join(
+    engineered_anova_results %>% 
+      select(feature_name, f_value, p_value, eta_squared, significant),
+    by = "feature_name"
+  ) %>%
+  mutate(
+    created = feature_name %in% names(insurance_with_engineered_features)
+  ) %>%
+  arrange(desc(coalesce(eta_squared, 0)))  # Use coalesce to handle NAs
+
+write_csv(engineered_anova_results, "outputs/tables/engineered_features_anova_results.csv")
+write_csv(engineered_features_table_updated, "outputs/tables/engineered_features_table.csv")
+
+# Return results for further use
+engineered_anova_results
+
+# 5.1 OR 6 Feature selection and validation ####
 # 
 # # Correlation analysis
 # numeric_only_data <- final_feature_data %>%

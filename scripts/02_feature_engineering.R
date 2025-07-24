@@ -1,4 +1,4 @@
-# Complete Feature Engineering Script - Script 02 (FIXED)
+# Complete Feature Engineering Script - Script 02
 # Author: Shelita Smith
 # Date: July 23, 2025
 # Purpose: Feature engineering with ANOVA analysis and comprehensive documentation
@@ -45,6 +45,8 @@ print(hcup_age_summary)
 
 insurance_with_benchmarks <- insurance_clean %>%
   left_join(hcup_age_summary, by = "age_group_standard")
+
+write.csv(insurance_with_benchmarks, "outputs/tables/insurance_with_benchmarks.csv")
 
 # Check if the merge worked
 glimpse(insurance_with_benchmarks)
@@ -288,12 +290,13 @@ effect_size_ranking <- anova_results %>%
   mutate(rank = row_number()) %>%
   select(rank, variables, eta_squared, effect_size_interpretation, significant)
 
+
 # 4 Engineered Features ####
 
-# 4.1 Engineered features table
+# 4.1 Engineered features table for organization ####
 
 engineered_features_table <- tibble(
-  feature_id = 1:34,  # Corrected to match actual number of features
+  feature_id = 1:34,  
   feature_name = c(
     # STANDALONE FEATURES (Main effects from ANOVA - the "base calculators")
     "smoker_cost_multiplier", "sex_cost_premium", "bmi_risk_factor", 
@@ -492,436 +495,839 @@ engineered_features_table <- tibble(
 # View the table
 View(engineered_features_table)
 
-# 4.2 Engineered features creation ####
+# 4.2 Multipliers/ Coefficients creation and extraction ####
+  ## ANOVA Group Means method
 
-
-# Create simple ratio: How does each person compare to the national average?
-insurance_with_benchmarks <- insurance_with_benchmarks %>%
-  mutate(
-    cost_vs_national = charges / avg_hcup_charges
+extract_multipliers <- function(data) {
+  
+  # Create multipliers table to store all results
+  multipliers_table <- tibble(
+    feature = character(),
+    category = character(),
+    baseline_cost = numeric(),
+    group_cost = numeric(),
+    multiplier = numeric(),
+    sample_size = numeric(),
+    statistical_basis = character()
   )
-
-# Look at new feature
-summary(insurance_with_benchmarks$cost_vs_national)
-
-# What does this mean?
-# cost_vs_national = 1.5 means person costs 50% more than national average
-# cost_vs_national = 0.8 means person costs 20% less than national average
-
-# Examples
-cost_comparison_examples <- insurance_with_benchmarks %>%
-  select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national) %>%
-  head(10)
-
-# Save examples table
-write_csv(cost_comparison_examples, "outputs/tables/cost_comparison_examples.csv")
-
-# Save step 1 data
-write_csv(insurance_with_benchmarks, "data/processed/insurance_step1.csv")
-
-
-# 4.3 Explore cost comparisons ####
-highest_cost_ratios <- insurance_with_benchmarks %>%
-  select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national, smoker) %>%
-  arrange(desc(cost_vs_national)) %>%  # Highest ratios first
-  head(10)
-
-# Save highest cost ratios table
-write_csv(highest_cost_ratios, "outputs/tables/highest_cost_ratios.csv")
-
-# Distribution analysis
-cost_ratio_stats <- insurance_with_benchmarks %>%
-  summarise(
-    mean_ratio = mean(cost_vs_national, na.rm = TRUE),
-    median_ratio = median(cost_vs_national, na.rm = TRUE),
-    sd_ratio = sd(cost_vs_national, na.rm = TRUE),
-    min_ratio = min(cost_vs_national, na.rm = TRUE),
-    max_ratio = max(cost_vs_national, na.rm = TRUE),
-    q25 = quantile(cost_vs_national, 0.25, na.rm = TRUE),
-    q75 = quantile(cost_vs_national, 0.75, na.rm = TRUE)
-  )
-
-write_csv(cost_ratio_stats, "outputs/tables/cost_ratio_distribution_stats.csv")
-
-# Create histogram
-png("outputs/plots/cost_ratio_histogram.png", width = 800, height = 600)
-hist(insurance_with_benchmarks$cost_vs_national, 
-     main = "Individual Insurance Costs vs National Hospital Averages",
-     xlab = "Cost Ratio",
-     breaks = 30,
-     col = "lightblue",
-     border = "black")
-dev.off()
-
-# Smokers vs non-smokers comparison
-smoker_cost_comparison <- insurance_with_benchmarks %>%
-  group_by(smoker) %>%
-  summarise(
-    count = n(),
-    avg_ratio = mean(cost_vs_national, na.rm = TRUE),
-    median_ratio = median(cost_vs_national, na.rm = TRUE),
-    sd_ratio = sd(cost_vs_national, na.rm = TRUE),
-    .groups = "drop"
-  )
-
-write_csv(smoker_cost_comparison, "outputs/tables/smoker_cost_comparison.csv")
-
-
-
-# Save updated tables (overwrite existing)
-
-write_csv(engineered_anova_plan_updated, "outputs/tables/engineered_features_anova_plan.csv")
-
-# 6 Non-linear transformations (Age and BMI) ####
-
-insurance_with_benchmarks <- insurance_with_benchmarks %>%
-  mutate(
-    # Age non-linearity
-    age_squared = age^2,
-    age_cubed = age^3,
-    
-    # BMI non-linearity  
-    bmi_squared = bmi^2,
-    bmi_cubed = bmi^3,
-    
-    # Age decade grouping
-    age_decade = floor(age/10) * 10,
-    
-    # Advanced BMI categories
-    bmi_detailed = case_when(
-      bmi < 18.5 ~ "Underweight",
-      bmi < 25 ~ "Normal",
-      bmi < 30 ~ "Overweight",
-      bmi < 35 ~ "Obese_I",
-      bmi < 40 ~ "Obese_II",
-      TRUE ~ "Obese_III"
+  
+  # 1. SMOKER MULTIPLIERS (Highest ANOVA significance)
+  smoker_stats <- data %>%
+    group_by(smoker) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
     )
-  )
-
-# 7 Evidence Based Feature Engineering ####
-
-# High-priority interactions (Very High priority from ANOVA)
-insurance_with_benchmarks <- insurance_with_benchmarks %>%
-  mutate(
-    # ALIGNED interaction features with your table
-    age_smoker_interaction = age * as.numeric(smoker == "yes"),
-    age_sex_interaction = age * as.numeric(sex == "male"),
-    
-    # Original smoker interactions
-    smoker_bmi_interaction = ifelse(smoker == "yes", bmi, 0),
-    smoker_age_numeric = as.numeric(smoker == "yes") * age,
-    
-    # BMI-Age interaction
-    age_bmi_interaction = age * bmi,
-    
-    # High-risk combinations
-    high_risk_combo = case_when(
-      smoker == "yes" & bmi >= 30 ~ "Smoker_Obese",
-      smoker == "yes" & bmi < 30 ~ "Smoker_Normal",
-      smoker == "no" & bmi >= 30 ~ "NonSmoker_Obese", 
-      TRUE ~ "NonSmoker_Normal"
-    ),
-    
-    # Complex risk scoring
-    risk_score = case_when(
-      smoker == "yes" & bmi >= 30 & age >= 50 ~ "Very High",
-      smoker == "yes" & (bmi >= 30 | age >= 50) ~ "High",
-      smoker == "no" & bmi >= 30 & age >= 50 ~ "Medium",
-      TRUE ~ "Low"
-    ),
-    
-    # Additional benchmark features
-    cost_deviation = charges - avg_hcup_charges,
-    cost_percentile = percent_rank(cost_vs_national),
-    is_cost_outlier = cost_vs_national > 2 | cost_vs_national < 0.5,
-    
-    # Regional cost context (adjust based on your data)
-    region_cost_rank = case_when(
-      region == "southeast" ~ 1,
-      region == "southwest" ~ 2,
-      region == "northwest" ~ 3,
-      region == "northeast" ~ 4,
-      TRUE ~ 2  # default
+  
+  nonsmoker_baseline <- smoker_stats$mean_cost[smoker_stats$smoker == "no"]
+  smoker_multiplier <- smoker_stats$mean_cost[smoker_stats$smoker == "yes"] / nonsmoker_baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "smoker",
+        category = c("no", "yes"),
+        baseline_cost = nonsmoker_baseline,
+        group_cost = smoker_stats$mean_cost,
+        multiplier = c(1.0, smoker_multiplier),
+        sample_size = smoker_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
     )
-  )
+  
+  # 2. SEX MULTIPLIERS (Very high ANOVA significance)
+  sex_stats <- data %>%
+    group_by(sex) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
+    )
+  
+  female_baseline <- sex_stats$mean_cost[sex_stats$sex == "female"]
+  male_multiplier <- sex_stats$mean_cost[sex_stats$sex == "male"] / female_baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "sex",
+        category = c("female", "male"),
+        baseline_cost = female_baseline,
+        group_cost = sex_stats$mean_cost,
+        multiplier = c(1.0, male_multiplier),
+        sample_size = sex_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
+    )
+  
+  # 3. BMI CATEGORY MULTIPLIERS (Very high ANOVA significance)
+  bmi_stats <- data %>%
+    group_by(bmi_category) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
+    ) %>%
+    arrange(mean_cost)  # Order by cost for logical baseline
+  
+  bmi_baseline <- min(bmi_stats$mean_cost)  # Lowest cost category as baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "bmi_category",
+        category = bmi_stats$bmi_category,
+        baseline_cost = bmi_baseline,
+        group_cost = bmi_stats$mean_cost,
+        multiplier = bmi_stats$mean_cost / bmi_baseline,
+        sample_size = bmi_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
+    )
+  
+  # 4. REGION MULTIPLIERS (Very high ANOVA significance)
+  region_stats <- data %>%
+    group_by(region) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
+    ) %>%
+    arrange(mean_cost)
+  
+  region_baseline <- min(region_stats$mean_cost)  # lowest cost region as baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "region",
+        category = region_stats$region,
+        baseline_cost = region_baseline,
+        group_cost = region_stats$mean_cost,
+        multiplier = region_stats$mean_cost / region_baseline,
+        sample_size = region_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
+    )
+  
+  # 5. HAS_CHILDREN MULTIPLIERS (High ANOVA significance)
+  children_stats <- data %>%
+    mutate(has_children = if_else(children > 0, "yes", "no")) %>%
+    group_by(has_children) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
+    )
+  
+  no_children_baseline <- children_stats$mean_cost[children_stats$has_children == "no"]
+  children_multiplier <- children_stats$mean_cost[children_stats$has_children == "yes"] / no_children_baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "has_children",
+        category = c("no", "yes"),
+        baseline_cost = no_children_baseline,
+        group_cost = children_stats$mean_cost,
+        multiplier = c(1.0, children_multiplier),
+        sample_size = children_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
+    )
+  
+  # 6. AGE MULTIPLIERS (High ANOVA significance) - Using age groups
+  age_stats <- data %>%
+    group_by(age_group_standard) %>%
+    summarise(
+      mean_cost = mean(charges, na.rm = TRUE),
+      n = n(),
+      .groups = "drop"
+    ) %>%
+    arrange(mean_cost)
+  
+  age_baseline <- min(age_stats$mean_cost)  # Youngest group as baseline
+  
+  multipliers_table <- multipliers_table %>%
+    bind_rows(
+      tibble(
+        feature = "age_group_standard",
+        category = age_stats$age_group_standard,
+        baseline_cost = age_baseline,
+        group_cost = age_stats$mean_cost,
+        multiplier = age_stats$mean_cost / age_baseline,
+        sample_size = age_stats$n,
+        statistical_basis = "ANOVA group means"
+      )
+    )
+  
+  return(multipliers_table)
+}
 
-# One-hot encoding for modeling
-model_ready_data <- insurance_with_benchmarks %>%
-  dummy_cols(
-    select_columns = c("sex", "region", "smoker", "bmi_category", "high_risk_combo", "risk_score", "bmi_detailed"),
-    remove_first_dummy = TRUE,
-    remove_selected_columns = FALSE
-  )
+# Step 3: Generate Multipliers Table
+multipliers_table <- extract_multipliers(insurance_with_benchmarks)
 
-# Feature scaling/normalization
-# Numeric features for scaling
-numeric_features <- c("age", "bmi", "children", "cost_vs_national", 
-                      "age_squared", "bmi_squared", "age_bmi_interaction",
-                      "age_smoker_interaction", "age_sex_interaction", 
-                      "cost_deviation", "cost_percentile")
+# Save multipliers for future reference
+write_csv(multipliers_table, "outputs/tables/feature_multipliers.csv")
 
-# Create scaled versions
-scaled_features <- model_ready_data %>%
-  select(all_of(numeric_features)) %>%
-  scale() %>%
-  as_tibble() %>%
-  rename_with(~paste0(., "_scaled"))
 
-# Combine with original data
-final_feature_data <- bind_cols(
-  model_ready_data,
-  scaled_features
+# 4.3 Update Engineered features table ####
+
+engineered_features_table <- tibble(
+  feature_id = 1:34,
+  
+  feature_name = c(
+    # Standalone Features (multipliers)
+    "smoker_cost_multiplier", "sex_cost_premium", "bmi_risk_factor", 
+    "region_cost_index", "has_children_factor", "age_cost_curve",
+    
+    # Polynomial / Non-linear features
+    "age_squared", "bmi_squared", "age_cubed", "age_log", "bmi_log",
+    
+    # Risk Scores
+    "health_risk_score", "demographic_risk_level", "compound_risk_score",
+    
+    # High/Medium Priority Interactions
+    "smoker_age_interaction", "smoker_sex_combo", "smoker_bmi_interaction",
+    "region_children_interaction", "has_children_age_interaction", "region_cost_multiplier",
+    "smoker_region_combo", "sex_bmi_interaction", "age_region_interaction",
+    
+    # Encoded features
+    "smoker_encoded", "sex_encoded", "region_encoded", "bmi_category_encoded",
+    
+    # Binned Features
+    "age_bins", "charges_percentile_rank",
+    
+    # Advanced Standalone
+    "smoker_years_estimate", "bmi_health_category", "regional_market_tier"
+  ),
+  
+  feature_type = c(
+    rep("Standalone_Main_Effect", 6),
+    rep("Non_Linear_Transform", 5),
+    rep("Risk_Score", 3),
+    rep("Statistical_Interaction", 9),
+    rep("Categorical_Encoding", 4),
+    rep("Categorical_Binning", 2),
+    rep("Advanced_Standalone", 3)
+  ),
+  
+  based_on_anova = c(
+    rep(TRUE, 6),            # multipliers from ANOVA group means
+    rep(FALSE, 5),           # non-linear
+    rep(FALSE, 3),           # risk scores
+    c(TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE),  # interactions (copied from original)
+    rep(FALSE, 4),           # encodings
+    rep(FALSE, 2),           # binning
+    rep(FALSE, 3)            # advanced
+  ),
+  
+  anova_priority = c(
+    "Very_High", "Very_High", "Very_High", "Very_High", "High", "High",  # multipliers
+    rep("Medium", 5),          # non-linear
+    rep("Medium", 3),          # risk scores
+    c("Very_High", "Very_High", "Medium", "Medium", "Medium", "High", "Medium", "Medium", "Medium"),  # interactions
+    rep("Medium", 4),          # encodings
+    rep("Medium", 2),          # binning
+    rep("Medium", 3)           # advanced
+  ),
+  
+  description = c(
+    "Direct smoker cost multiplier from ANOVA group means",
+    "Sex-based cost premium using male/female ratio", 
+    "BMI category risk factor from group cost analysis",
+    "Regional cost index using cheapest region as baseline",
+    "Children factor using no-children as baseline",
+    "Age group cost curve using youngest as baseline",
+    
+    "Age squared for non-linear age effects",
+    "BMI squared for obesity threshold effects", 
+    "Age cubed for extreme aging effects",
+    "Log-transformed age to capture diminishing effects",
+    "Log-transformed BMI for improved curve fitting",
+    
+    "0-10 health risk score using multiplier weights",
+    "Categorical version of health risk score",
+    "ANOVA effect-size weighted compound risk",
+    
+    "Smoker effect amplified by age using both multipliers",
+    "Smoker-sex combination using joint multipliers",
+    "Smoker-BMI interaction using combined risk factors",
+    "Regional differences in family healthcare costs",
+    "Children effect varies by age group",
+    "Region-specific cost multipliers",
+    "Smoker effects vary by region",
+    "Sex-BMI interaction effects", 
+    "Age effects vary by region",
+    
+    "Binary encoding of smoker status",
+    "Binary encoding of sex",
+    "One-hot encoding of region", 
+    "Ordinal encoding of BMI categories",
+    
+    "Age grouped into 5-year bins",
+    "Charges converted to percentile ranks",
+    
+    "Estimated smoking duration effect",
+    "Medical BMI risk category (e.g., Obese Class I–III)",
+    "Healthcare market tier by regional cost"
+  ),
+  
+  what_it_calculates = c(
+    "Baseline cost multiplier: non-smoker=1.0, smoker=2.0-2.5x",
+    "Sex-based adjustment: typically male costs ~10% more than female",
+    "BMI health penalty: normal=1.0, overweight=1.15, obese=1.4x", 
+    "Geographic cost adjustment: Northeast=1.2x, Southeast=0.9x baseline",
+    "Children effect: 0 kids=1.0x, 1+ kids=1.1-1.2x cost",
+    "Age cost progression: linear increase ~$200-500 per year of age",
+    
+    "Quadratic age effect: captures exponential elderly cost increases",
+    "Quadratic BMI effect: captures obesity threshold effects", 
+    "Cubic age effect: captures extreme acceleration after 70+",
+    "Log age: diminishing age impact after early adulthood",
+    "Log BMI: diminishing cost effect after certain BMI",
+    
+    "0-10 score: 0=lowest risk, 10=highest risk",
+    "Low/Medium/High/Very High risk group assignment",
+    "Weighted score using ANOVA effect sizes as multipliers",
+    
+    "Older smokers have significantly higher costs",
+    "Smoker males have highest combined health cost",
+    "Obese smokers face compounding risks",
+    "Family costs vary significantly by region",
+    "Older parents have different healthcare needs",
+    "Regional cost multiplier (relative to cheapest region)",
+    "Smoking risks vary by region",
+    "Combined effects of sex and BMI on cost",
+    "Age-based regional cost shifts",
+    
+    "0/1 encoding for smoker status",
+    "0/1 encoding for sex",
+    "One-hot encoded region variables",
+    "Ordinal BMI: Underweight < Normal < Overweight < Obese",
+    
+    "Grouped 5-year age bands for risk modeling",
+    "Normalized cost ranking across population",
+    
+    "Years estimated from smoker × age interaction",
+    "Clinical BMI risk label (e.g., Obese II)",
+    "Region-based tier: Premium, Standard, or Economy"
+  ),
+  
+  f_value = NA_real_,
+  p_value = NA_real_,
+  eta_squared = NA_real_,
+  significant = NA,
+  created = FALSE
 )
 
-# 7.4 Feature selection and validation ####
+# Save to file
+write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
 
-# Correlation analysis
-numeric_only_data <- final_feature_data %>%
-  select(where(is.numeric))
 
-correlation_matrix <- cor(numeric_only_data, use = "complete.obs")
+write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
 
-# Save correlation matrix
-write_csv(as.data.frame(correlation_matrix), "outputs/tables/correlation_matrix.csv")
 
-# Find highly correlated features (>0.9)
-high_corr_pairs <- findCorrelation(correlation_matrix, cutoff = 0.9, names = TRUE)
+# 4.4 Engineered features creation ####
 
-# Variance analysis
-near_zero_var_indices <- nearZeroVar(final_feature_data)
-near_zero_var_names <- names(final_feature_data)[near_zero_var_indices]
-
-# Create feature selection summary
-feature_selection_summary <- data.frame(
-  metric = c("Total Features", "Numeric Features", "High Correlation Features", "Near Zero Variance Features"),
-  count = c(ncol(final_feature_data), ncol(numeric_only_data), length(high_corr_pairs), length(near_zero_var_names)),
-  details = c("All features in dataset", "Features suitable for correlation analysis", 
-              paste(high_corr_pairs, collapse = ", "), paste(near_zero_var_names, collapse = ", "))
-)
-
-write_csv(feature_selection_summary, "outputs/tables/feature_selection_summary.csv")
-
-# Save final data for modeling
-write_csv(final_feature_data, "data/processed/engineered_features.csv")
-
-# Create comprehensive feature documentation
-feature_summary <- final_feature_data %>%
-  summarise(across(where(is.numeric), 
-                   list(mean = ~mean(.x, na.rm = TRUE), 
-                        sd = ~sd(.x, na.rm = TRUE), 
-                        min = ~min(.x, na.rm = TRUE), 
-                        max = ~max(.x, na.rm = TRUE),
-                        missing = ~sum(is.na(.x))),
-                   .names = "{.col}_{.fn}"))
-
-# Transpose for better readability
-feature_summary_t <- feature_summary %>%
-  pivot_longer(everything(), names_to = "feature_stat", values_to = "value") %>%
-  separate(feature_stat, into = c("feature", "statistic"), sep = "_(?=[^_]*$)") %>%
-  pivot_wider(names_from = statistic, values_from = value) %>%
-  arrange(feature)
-
-write_csv(feature_summary_t, "outputs/tables/feature_summary_stats.csv")
-
-# 8 ANOVA on Engineered Features ####
-
-# Test all engineered features that were created - ALIGNED WITH TABLE
-engineered_feature_tests <- list()
-
-# Test features that exist in the dataset
-if("cost_vs_national" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["cost_vs_national"]] <- aov(charges ~ cost_vs_national, data = insurance_with_benchmarks)
-}
-
-if("age_smoker_interaction" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["age_smoker_interaction"]] <- aov(charges ~ age_smoker_interaction, data = insurance_with_benchmarks)
-}
-
-if("age_sex_interaction" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["age_sex_interaction"]] <- aov(charges ~ age_sex_interaction, data = insurance_with_benchmarks)
-}
-
-if("high_risk_combo" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["high_risk_combo"]] <- aov(charges ~ high_risk_combo, data = insurance_with_benchmarks)
-}
-
-if("risk_score" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["risk_score"]] <- aov(charges ~ risk_score, data = insurance_with_benchmarks)
-}
-
-if("age_squared" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["age_squared"]] <- aov(charges ~ age_squared, data = insurance_with_benchmarks)
-}
-
-if("bmi_squared" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["bmi_squared"]] <- aov(charges ~ bmi_squared, data = insurance_with_benchmarks)
-}
-
-if("age_bmi_interaction" %in% names(insurance_with_benchmarks)) {
-  engineered_feature_tests[["age_bmi_interaction"]] <- aov(charges ~ age_bmi_interaction, data = insurance_with_benchmarks)
-}
-
-# Extract results from engineered feature tests using your existing function
-engineered_test_results <- data.frame()
-
-for(test_name in names(engineered_feature_tests)) {
-  result <- extract_anova_results_enhanced(engineered_feature_tests[[test_name]], test_name)
-  engineered_test_results <- rbind(engineered_test_results, result)
-}
-
-# Save engineered feature ANOVA results
-write_csv(engineered_test_results, "outputs/tables/engineered_features_anova_results.csv")
-
-# 8.1 Update Engineered Features ANOVA Plan with Results ####
-
-# Function to properly update engineered features plan with actual results - FIXED
-update_engineered_plan_with_results <- function(plan, results) {
-  # Create a copy of the plan to update
-  plan_updated <- plan %>%
+create_engineered_features <- function(data, multipliers) {
+  
+  # Convert multipliers to named vectors for easy lookup
+  smoker_mult <- multipliers %>% 
+    filter(feature == "smoker") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  sex_mult <- multipliers %>% 
+    filter(feature == "sex") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  bmi_mult <- multipliers %>% 
+    filter(feature == "bmi_category") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  region_mult <- multipliers %>% 
+    filter(feature == "region") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  children_mult <- multipliers %>% 
+    filter(feature == "has_children") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  age_mult <- multipliers %>% 
+    filter(feature == "age_group_standard") %>% 
+    select(category, multiplier) %>%
+    deframe()
+  
+  # Apply multipliers to create engineered features
+  data_engineered <- data %>%
     mutate(
-      f_value = NA_real_,
-      p_value = NA_character_,
-      significance = NA_character_,
-      status = "Not Completed"
+      # Standalone Multiplier Features
+      smoker_cost_multiplier = smoker_mult[smoker],
+      sex_cost_premium = sex_mult[sex],
+      bmi_risk_factor = bmi_mult[bmi_category],
+      region_cost_index = region_mult[region],
+      has_children_factor = children_mult[if_else(children > 0, "yes", "no")],
+      age_cost_curve = age_mult[age_group_standard],
+      
+      # Non-linear transformation/ Polynomial Features
+      age_squared = age^2,
+      bmi_squared = bmi^2, 
+      age_cubed = age^3,
+      
+      # Risk Score Features (multiplier-weighted)
+      health_risk_score = (smoker_cost_multiplier * 4) + 
+        (bmi_risk_factor * 3) + 
+        (age_cost_curve * 3),
+      demographic_risk_level = case_when(
+        health_risk_score <= 3 ~ "Low",
+        health_risk_score <= 6 ~ "Medium", 
+        health_risk_score <= 9 ~ "High",
+        TRUE ~ "Very_High"
+      ),
+      compound_risk_score = smoker_cost_multiplier * sex_cost_premium * bmi_risk_factor,
+      
+      # High-Priority Interactions (using multipliers)
+      smoker_age_interaction = smoker_cost_multiplier * age_cost_curve,
+      smoker_sex_combo = smoker_cost_multiplier * sex_cost_premium,
+      smoker_bmi_interaction = smoker_cost_multiplier * bmi_risk_factor,
+      
+      # Medium-Priority Interactions  
+      region_children_interaction = region_cost_index * has_children_factor,
+      has_children_age_interaction = has_children_factor * age_cost_curve,
+      region_cost_multiplier = region_cost_index,  # Alias for clarity
+      
+      # Lower-Priority Interactions
+      smoker_region_combo = smoker_cost_multiplier * region_cost_index,
+      sex_bmi_interaction = sex_cost_premium * bmi_risk_factor,
+      age_region_interaction = age_cost_curve * region_cost_index,
+      
+      # Categorical Encodings (no multipliers needed)
+      smoker_encoded = as.numeric(smoker == "yes"),
+      sex_encoded = as.numeric(sex == "male"),
+      bmi_category_encoded = as.numeric(as.factor(bmi_category)),
+      
+      # Binned Features
+      age_bins = cut(age, breaks = seq(15, 70, by = 5), include.lowest = TRUE),
+      charges_percentile_rank = percent_rank(charges)
     )
   
-  # Create a mapping between plan anova_code and test results
-  variable_mapping <- list(
-    "cost_vs_national" = "cost_vs_national",
-    "age_smoker_interaction" = "age_smoker_interaction",
-    "age_sex_interaction" = "age_sex_interaction", 
-    "high_risk_combo" = "high_risk_combo",
-    "risk_score" = "risk_score",
-    "age_squared" = "age_squared",
-    "bmi_squared" = "bmi_squared",
-    "age_bmi_interaction" = "age_bmi_interaction"
-  )
-  
-  # Loop through each row in the plan
-  for(i in 1:nrow(plan_updated)) {
-    # Use anova_code column instead of variables
-    plan_variable <- plan_updated$anova_code[i]
-    
-    # Check if plan_variable has a valid value
-    if(length(plan_variable) > 0 && !is.na(plan_variable) && plan_variable %in% names(variable_mapping)) {
-      test_variable <- variable_mapping[[plan_variable]]
-      
-      # Find matching result in results data
-      matching_result <- results %>% 
-        filter(test_name == test_variable & term == test_variable) %>%
-        slice_head(n = 1)
-      
-      if(nrow(matching_result) > 0 && !is.na(matching_result$f_value)) {
-        # Update plan with results
-        plan_updated$f_value[i] <- round(matching_result$f_value, 3)
-        
-        # Format p-value
-        p_val <- matching_result$p_value
-        plan_updated$p_value[i] <- if_else(p_val < 0.001, "< 0.001", 
-                                           as.character(round(p_val, 4)))
-        
-        # Assign significance codes
-        plan_updated$significance[i] <- case_when(
-          p_val < 0.001 ~ "***",
-          p_val < 0.01 ~ "**", 
-          p_val < 0.05 ~ "*",
-          p_val < 0.1 ~ ".",
-          TRUE ~ "ns"
-        )
-        
-        plan_updated$status[i] <- "Completed"
-      }
-    }
-  }
-  
-  return(plan_updated)
+  return(data_engineered)
 }
 
-# Apply the update function
-engineered_anova_plan_final <- update_engineered_plan_with_results(
-  engineered_anova_plan_updated, 
-  engineered_test_results
-)
+insurance_with_engineered_features <- create_engineered_features(insurance_with_benchmarks, multipliers_table)
 
-# Save the updated plan
-write_csv(engineered_anova_plan_final, "outputs/tables/engineered_features_anova_plan.csv")
+write_csv(insurance_with_engineered_features, "outputs/tables/insurance_with_engineered_features.csv")
 
-## 8.2 Create Summary Reports for Engineered Features ####
+# 4.5 Explore cost comparisons ####
+# # Create simple ratio: How does each person compare to the national average?
+# insurance_with_benchmarks <- insurance_with_benchmarks %>%
+#   mutate(
+#     cost_vs_national = charges / avg_hcup_charges
+#   )
+# 
+# # Look at new feature
+# summary(insurance_with_benchmarks$cost_vs_national)
+# 
+# # What does this mean?
+# # cost_vs_national = 1.5 means person costs 50% more than national average
+# # cost_vs_national = 0.8 means person costs 20% less than national average
+# 
+# # Examples
+# cost_comparison_examples <- insurance_with_benchmarks %>%
+#   select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national) %>%
+#   head(10)
+# 
+# # Save examples table
+# write_csv(cost_comparison_examples, "outputs/tables/cost_comparison_examples.csv")
+# 
+# # Save step 1 data
+# write_csv(insurance_with_benchmarks, "data/processed/insurance_step1.csv")
+# 
+# 
+# 
+# highest_cost_ratios <- insurance_with_benchmarks %>%
+#   select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national, smoker) %>%
+#   arrange(desc(cost_vs_national)) %>%  # Highest ratios first
+#   head(10)
+# 
+# # Save highest cost ratios table
+# write_csv(highest_cost_ratios, "outputs/tables/highest_cost_ratios.csv")
+# 
+# # Distribution analysis
+# cost_ratio_stats <- insurance_with_benchmarks %>%
+#   summarise(
+#     mean_ratio = mean(cost_vs_national, na.rm = TRUE),
+#     median_ratio = median(cost_vs_national, na.rm = TRUE),
+#     sd_ratio = sd(cost_vs_national, na.rm = TRUE),
+#     min_ratio = min(cost_vs_national, na.rm = TRUE),
+#     max_ratio = max(cost_vs_national, na.rm = TRUE),
+#     q25 = quantile(cost_vs_national, 0.25, na.rm = TRUE),
+#     q75 = quantile(cost_vs_national, 0.75, na.rm = TRUE)
+#   )
+# 
+# write_csv(cost_ratio_stats, "outputs/tables/cost_ratio_distribution_stats.csv")
+# 
+# # Create histogram
+# png("outputs/plots/cost_ratio_histogram.png", width = 800, height = 600)
+# hist(insurance_with_benchmarks$cost_vs_national, 
+#      main = "Individual Insurance Costs vs National Hospital Averages",
+#      xlab = "Cost Ratio",
+#      breaks = 30,
+#      col = "lightblue",
+#      border = "black")
+# dev.off()
+# 
+# # Smokers vs non-smokers comparison
+# smoker_cost_comparison <- insurance_with_benchmarks %>%
+#   group_by(smoker) %>%
+#   summarise(
+#     count = n(),
+#     avg_ratio = mean(cost_vs_national, na.rm = TRUE),
+#     median_ratio = median(cost_vs_national, na.rm = TRUE),
+#     sd_ratio = sd(cost_vs_national, na.rm = TRUE),
+#     .groups = "drop"
+#   )
+# 
+# write_csv(smoker_cost_comparison, "outputs/tables/smoker_cost_comparison.csv")
+# 
+# 
+# 
+# # Save updated tables (overwrite existing)
+# 
+# write_csv(engineered_anova_plan_updated, "outputs/tables/engineered_features_anova_plan.csv")
 
-# Summary of completed engineered feature tests
-engineered_completed_summary <- engineered_anova_plan_final %>%
-  filter(status == "Completed" & !is.na(f_value)) %>%
-  arrange(desc(f_value)) %>%
-  select(anova_code, what_it_tests, f_value, p_value, significance, expected_significance)
+# 6 Engineered Features ANOVA ####
 
-write_csv(engineered_completed_summary, "outputs/tables/engineered_features_completed_summary.csv")
-
-# Summary by significance level
-engineered_significance_summary <- engineered_anova_plan_final %>%
-  filter(status == "Completed") %>%
-  count(significance, expected_significance) %>%
-  arrange(expected_significance, significance)
-
-write_csv(engineered_significance_summary, "outputs/tables/engineered_features_significance_summary.csv")
-
-# 9 Final Data Quality Checks ####
-
-# Check for missing values
-missing_values_summary <- final_feature_data %>%
-  summarise(across(everything(), ~sum(is.na(.x)))) %>%
-  pivot_longer(everything(), names_to = "feature", values_to = "missing_count") %>%
-  filter(missing_count > 0) %>%
-  arrange(desc(missing_count))
-
-write_csv(missing_values_summary, "outputs/tables/final_missing_values_summary.csv")
-
-# Data types summary
-data_types_summary <- final_feature_data %>%
-  summarise(across(everything(), ~class(.x)[1])) %>%
-  pivot_longer(everything(), names_to = "feature", values_to = "data_type") %>%
-  count(data_type, sort = TRUE)
-
-write_csv(data_types_summary, "outputs/tables/final_data_types_summary.csv")
-
-# Feature count by category
-feature_count_summary <- data.frame(
-  category = c("Original", "Benchmark", "Non-linear", "Interaction", "Risk-related",
-               "Encoded (one-hot)", "Scaled", "Total"),
-  count = c(
-    ncol(insurance_clean),
-    1,
-    6,  # age_squared, age_cubed, bmi_squared, bmi_cubed, age_decade, bmi_detailed
-    4,  # age_smoker_interaction, age_sex_interaction, age_bmi_interaction, smoker_bmi_interaction
-    6,  # high_risk_combo, risk_score, cost_deviation, cost_percentile, is_cost_outlier, region_cost_rank
-    sum(str_detect(names(final_feature_data), "^(sex|region|smoker|bmi_category|high_risk_combo|risk_score|bmi_detailed)_")),
-    sum(str_detect(names(final_feature_data), "_scaled$")),
-    ncol(final_feature_data)
-  )
-)
-
-write_csv(feature_count_summary, "outputs/tables/final_feature_count_summary.csv")
-
-# 10 Final Summary Report ####
-
-# Merge summaries of both original and engineered ANOVA results
-all_completed_tests <- bind_rows(
-  regular_anova_plan_updated %>%
-    select(anova_code, what_it_tests, expected_significance, f_value, p_value, significance, status) %>%
-    mutate(source = "original"),
-  engineered_anova_plan_final %>%
-    select(anova_code, what_it_tests, expected_significance, f_value, p_value, significance, status) %>%
-    mutate(source = "engineered")
-)
-
-# Top statistically significant features (p < 0.05)
-significant_features <- all_completed_tests %>%
-  filter(significance %in% c("***", "**", "*")) %>%
-  arrange(p_value)
-
-write_csv(significant_features, "outputs/tables/final_significant_features.csv")
-
-# Save complete test summary
-write_csv(all_completed_tests, "outputs/tables/final_all_anova_tests_summary.csv")
-
-# Save final feature dataset (cleaned and processed)
-write_csv(final_feature_data, "data/processed/final_model_ready_data.csv")
+# # 7 Evidence Based Feature Engineering ####
+# 
+# # High-priority interactions (Very High priority from ANOVA)
+# insurance_with_benchmarks <- insurance_with_benchmarks %>%
+#   mutate(
+#     # ALIGNED interaction features with your table
+#     age_smoker_interaction = age * as.numeric(smoker == "yes"),
+#     age_sex_interaction = age * as.numeric(sex == "male"),
+#     
+#     # Original smoker interactions
+#     smoker_bmi_interaction = ifelse(smoker == "yes", bmi, 0),
+#     smoker_age_numeric = as.numeric(smoker == "yes") * age,
+#     
+#     # BMI-Age interaction
+#     age_bmi_interaction = age * bmi,
+#     
+#     # High-risk combinations
+#     high_risk_combo = case_when(
+#       smoker == "yes" & bmi >= 30 ~ "Smoker_Obese",
+#       smoker == "yes" & bmi < 30 ~ "Smoker_Normal",
+#       smoker == "no" & bmi >= 30 ~ "NonSmoker_Obese", 
+#       TRUE ~ "NonSmoker_Normal"
+#     ),
+#     
+#     # Complex risk scoring
+#     risk_score = case_when(
+#       smoker == "yes" & bmi >= 30 & age >= 50 ~ "Very High",
+#       smoker == "yes" & (bmi >= 30 | age >= 50) ~ "High",
+#       smoker == "no" & bmi >= 30 & age >= 50 ~ "Medium",
+#       TRUE ~ "Low"
+#     ),
+#     
+#     # Additional benchmark features
+#     cost_deviation = charges - avg_hcup_charges,
+#     cost_percentile = percent_rank(cost_vs_national),
+#     is_cost_outlier = cost_vs_national > 2 | cost_vs_national < 0.5,
+#     
+#     # Regional cost context (adjust based on your data)
+#     region_cost_rank = case_when(
+#       region == "southeast" ~ 1,
+#       region == "southwest" ~ 2,
+#       region == "northwest" ~ 3,
+#       region == "northeast" ~ 4,
+#       TRUE ~ 2  # default
+#     )
+#   )
+# 
+# # One-hot encoding for modeling
+# model_ready_data <- insurance_with_benchmarks %>%
+#   dummy_cols(
+#     select_columns = c("sex", "region", "smoker", "bmi_category", "high_risk_combo", "risk_score", "bmi_detailed"),
+#     remove_first_dummy = TRUE,
+#     remove_selected_columns = FALSE
+#   )
+# 
+# # Feature scaling/normalization
+# # Numeric features for scaling
+# numeric_features <- c("age", "bmi", "children", "cost_vs_national", 
+#                       "age_squared", "bmi_squared", "age_bmi_interaction",
+#                       "age_smoker_interaction", "age_sex_interaction", 
+#                       "cost_deviation", "cost_percentile")
+# 
+# # Create scaled versions
+# scaled_features <- model_ready_data %>%
+#   select(all_of(numeric_features)) %>%
+#   scale() %>%
+#   as_tibble() %>%
+#   rename_with(~paste0(., "_scaled"))
+# 
+# # Combine with original data
+# final_feature_data <- bind_cols(
+#   model_ready_data,
+#   scaled_features
+# )
+# 
+# # 7.4 Feature selection and validation ####
+# 
+# # Correlation analysis
+# numeric_only_data <- final_feature_data %>%
+#   select(where(is.numeric))
+# 
+# correlation_matrix <- cor(numeric_only_data, use = "complete.obs")
+# 
+# # Save correlation matrix
+# write_csv(as.data.frame(correlation_matrix), "outputs/tables/correlation_matrix.csv")
+# 
+# # Find highly correlated features (>0.9)
+# high_corr_pairs <- findCorrelation(correlation_matrix, cutoff = 0.9, names = TRUE)
+# 
+# # Variance analysis
+# near_zero_var_indices <- nearZeroVar(final_feature_data)
+# near_zero_var_names <- names(final_feature_data)[near_zero_var_indices]
+# 
+# # Create feature selection summary
+# feature_selection_summary <- data.frame(
+#   metric = c("Total Features", "Numeric Features", "High Correlation Features", "Near Zero Variance Features"),
+#   count = c(ncol(final_feature_data), ncol(numeric_only_data), length(high_corr_pairs), length(near_zero_var_names)),
+#   details = c("All features in dataset", "Features suitable for correlation analysis", 
+#               paste(high_corr_pairs, collapse = ", "), paste(near_zero_var_names, collapse = ", "))
+# )
+# 
+# write_csv(feature_selection_summary, "outputs/tables/feature_selection_summary.csv")
+# 
+# # Save final data for modeling
+# write_csv(final_feature_data, "data/processed/engineered_features.csv")
+# 
+# # Create comprehensive feature documentation
+# feature_summary <- final_feature_data %>%
+#   summarise(across(where(is.numeric), 
+#                    list(mean = ~mean(.x, na.rm = TRUE), 
+#                         sd = ~sd(.x, na.rm = TRUE), 
+#                         min = ~min(.x, na.rm = TRUE), 
+#                         max = ~max(.x, na.rm = TRUE),
+#                         missing = ~sum(is.na(.x))),
+#                    .names = "{.col}_{.fn}"))
+# 
+# # Transpose for better readability
+# feature_summary_t <- feature_summary %>%
+#   pivot_longer(everything(), names_to = "feature_stat", values_to = "value") %>%
+#   separate(feature_stat, into = c("feature", "statistic"), sep = "_(?=[^_]*$)") %>%
+#   pivot_wider(names_from = statistic, values_from = value) %>%
+#   arrange(feature)
+# 
+# write_csv(feature_summary_t, "outputs/tables/feature_summary_stats.csv")
+# 
+# # 8 ANOVA on Engineered Features ####
+# 
+# # Test all engineered features that were created - ALIGNED WITH TABLE
+# engineered_feature_tests <- list()
+# 
+# # Test features that exist in the dataset
+# if("cost_vs_national" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["cost_vs_national"]] <- aov(charges ~ cost_vs_national, data = insurance_with_benchmarks)
+# }
+# 
+# if("age_smoker_interaction" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["age_smoker_interaction"]] <- aov(charges ~ age_smoker_interaction, data = insurance_with_benchmarks)
+# }
+# 
+# if("age_sex_interaction" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["age_sex_interaction"]] <- aov(charges ~ age_sex_interaction, data = insurance_with_benchmarks)
+# }
+# 
+# if("high_risk_combo" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["high_risk_combo"]] <- aov(charges ~ high_risk_combo, data = insurance_with_benchmarks)
+# }
+# 
+# if("risk_score" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["risk_score"]] <- aov(charges ~ risk_score, data = insurance_with_benchmarks)
+# }
+# 
+# if("age_squared" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["age_squared"]] <- aov(charges ~ age_squared, data = insurance_with_benchmarks)
+# }
+# 
+# if("bmi_squared" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["bmi_squared"]] <- aov(charges ~ bmi_squared, data = insurance_with_benchmarks)
+# }
+# 
+# if("age_bmi_interaction" %in% names(insurance_with_benchmarks)) {
+#   engineered_feature_tests[["age_bmi_interaction"]] <- aov(charges ~ age_bmi_interaction, data = insurance_with_benchmarks)
+# }
+# 
+# # Extract results from engineered feature tests using your existing function
+# engineered_test_results <- data.frame()
+# 
+# for(test_name in names(engineered_feature_tests)) {
+#   result <- extract_anova_results_enhanced(engineered_feature_tests[[test_name]], test_name)
+#   engineered_test_results <- rbind(engineered_test_results, result)
+# }
+# 
+# # Save engineered feature ANOVA results
+# write_csv(engineered_test_results, "outputs/tables/engineered_features_anova_results.csv")
+# 
+# # 8.1 Update Engineered Features ANOVA Plan with Results ####
+# 
+# # Function to properly update engineered features plan with actual results - FIXED
+# update_engineered_plan_with_results <- function(plan, results) {
+#   # Create a copy of the plan to update
+#   plan_updated <- plan %>%
+#     mutate(
+#       f_value = NA_real_,
+#       p_value = NA_character_,
+#       significance = NA_character_,
+#       status = "Not Completed"
+#     )
+#   
+#   # Create a mapping between plan anova_code and test results
+#   variable_mapping <- list(
+#     "cost_vs_national" = "cost_vs_national",
+#     "age_smoker_interaction" = "age_smoker_interaction",
+#     "age_sex_interaction" = "age_sex_interaction", 
+#     "high_risk_combo" = "high_risk_combo",
+#     "risk_score" = "risk_score",
+#     "age_squared" = "age_squared",
+#     "bmi_squared" = "bmi_squared",
+#     "age_bmi_interaction" = "age_bmi_interaction"
+#   )
+#   
+#   # Loop through each row in the plan
+#   for(i in 1:nrow(plan_updated)) {
+#     # Use anova_code column instead of variables
+#     plan_variable <- plan_updated$anova_code[i]
+#     
+#     # Check if plan_variable has a valid value
+#     if(length(plan_variable) > 0 && !is.na(plan_variable) && plan_variable %in% names(variable_mapping)) {
+#       test_variable <- variable_mapping[[plan_variable]]
+#       
+#       # Find matching result in results data
+#       matching_result <- results %>% 
+#         filter(test_name == test_variable & term == test_variable) %>%
+#         slice_head(n = 1)
+#       
+#       if(nrow(matching_result) > 0 && !is.na(matching_result$f_value)) {
+#         # Update plan with results
+#         plan_updated$f_value[i] <- round(matching_result$f_value, 3)
+#         
+#         # Format p-value
+#         p_val <- matching_result$p_value
+#         plan_updated$p_value[i] <- if_else(p_val < 0.001, "< 0.001", 
+#                                            as.character(round(p_val, 4)))
+#         
+#         # Assign significance codes
+#         plan_updated$significance[i] <- case_when(
+#           p_val < 0.001 ~ "***",
+#           p_val < 0.01 ~ "**", 
+#           p_val < 0.05 ~ "*",
+#           p_val < 0.1 ~ ".",
+#           TRUE ~ "ns"
+#         )
+#         
+#         plan_updated$status[i] <- "Completed"
+#       }
+#     }
+#   }
+#   
+#   return(plan_updated)
+# }
+# 
+# # Apply the update function
+# engineered_anova_plan_final <- update_engineered_plan_with_results(
+#   engineered_anova_plan_updated, 
+#   engineered_test_results
+# )
+# 
+# # Save the updated plan
+# write_csv(engineered_anova_plan_final, "outputs/tables/engineered_features_anova_plan.csv")
+# 
+# ## 8.2 Create Summary Reports for Engineered Features ####
+# 
+# # Summary of completed engineered feature tests
+# engineered_completed_summary <- engineered_anova_plan_final %>%
+#   filter(status == "Completed" & !is.na(f_value)) %>%
+#   arrange(desc(f_value)) %>%
+#   select(anova_code, what_it_tests, f_value, p_value, significance, expected_significance)
+# 
+# write_csv(engineered_completed_summary, "outputs/tables/engineered_features_completed_summary.csv")
+# 
+# # Summary by significance level
+# engineered_significance_summary <- engineered_anova_plan_final %>%
+#   filter(status == "Completed") %>%
+#   count(significance, expected_significance) %>%
+#   arrange(expected_significance, significance)
+# 
+# write_csv(engineered_significance_summary, "outputs/tables/engineered_features_significance_summary.csv")
+# 
+# # 9 Final Data Quality Checks ####
+# 
+# # Check for missing values
+# missing_values_summary <- final_feature_data %>%
+#   summarise(across(everything(), ~sum(is.na(.x)))) %>%
+#   pivot_longer(everything(), names_to = "feature", values_to = "missing_count") %>%
+#   filter(missing_count > 0) %>%
+#   arrange(desc(missing_count))
+# 
+# write_csv(missing_values_summary, "outputs/tables/final_missing_values_summary.csv")
+# 
+# # Data types summary
+# data_types_summary <- final_feature_data %>%
+#   summarise(across(everything(), ~class(.x)[1])) %>%
+#   pivot_longer(everything(), names_to = "feature", values_to = "data_type") %>%
+#   count(data_type, sort = TRUE)
+# 
+# write_csv(data_types_summary, "outputs/tables/final_data_types_summary.csv")
+# 
+# # Feature count by category
+# feature_count_summary <- data.frame(
+#   category = c("Original", "Benchmark", "Non-linear", "Interaction", "Risk-related",
+#                "Encoded (one-hot)", "Scaled", "Total"),
+#   count = c(
+#     ncol(insurance_clean),
+#     1,
+#     6,  # age_squared, age_cubed, bmi_squared, bmi_cubed, age_decade, bmi_detailed
+#     4,  # age_smoker_interaction, age_sex_interaction, age_bmi_interaction, smoker_bmi_interaction
+#     6,  # high_risk_combo, risk_score, cost_deviation, cost_percentile, is_cost_outlier, region_cost_rank
+#     sum(str_detect(names(final_feature_data), "^(sex|region|smoker|bmi_category|high_risk_combo|risk_score|bmi_detailed)_")),
+#     sum(str_detect(names(final_feature_data), "_scaled$")),
+#     ncol(final_feature_data)
+#   )
+# )
+# 
+# write_csv(feature_count_summary, "outputs/tables/final_feature_count_summary.csv")
+# 
+# # 10 Final Summary Report ####
+# 
+# # Merge summaries of both original and engineered ANOVA results
+# all_completed_tests <- bind_rows(
+#   regular_anova_plan_updated %>%
+#     select(anova_code, what_it_tests, expected_significance, f_value, p_value, significance, status) %>%
+#     mutate(source = "original"),
+#   engineered_anova_plan_final %>%
+#     select(anova_code, what_it_tests, expected_significance, f_value, p_value, significance, status) %>%
+#     mutate(source = "engineered")
+# )
+# 
+# # Top statistically significant features (p < 0.05)
+# significant_features <- all_completed_tests %>%
+#   filter(significance %in% c("***", "**", "*")) %>%
+#   arrange(p_value)
+# 
+# write_csv(significant_features, "outputs/tables/final_significant_features.csv")
+# 
+# # Save complete test summary
+# write_csv(all_completed_tests, "outputs/tables/final_all_anova_tests_summary.csv")
+# 
+# # Save final feature dataset (cleaned and processed)
+# write_csv(final_feature_data, "data/processed/final_model_ready_data.csv")

@@ -492,7 +492,7 @@ engineered_features_table <- tibble(
 # View the table
 View(engineered_features_table)
 
-# 4.2 Engineered features creation
+# 4.2 Engineered features creation ####
 
 
 # Create simple ratio: How does each person compare to the national average?
@@ -519,11 +519,8 @@ write_csv(cost_comparison_examples, "outputs/tables/cost_comparison_examples.csv
 # Save step 1 data
 write_csv(insurance_with_benchmarks, "data/processed/insurance_step1.csv")
 
-# 4 Engineered feature table for organization 
 
-
-
-# 4 Explore cost comparisons ####
+# 4.3 Explore cost comparisons ####
 highest_cost_ratios <- insurance_with_benchmarks %>%
   select(age, age_group_standard, charges, avg_hcup_charges, cost_vs_national, smoker) %>%
   arrange(desc(cost_vs_national)) %>%  # Highest ratios first

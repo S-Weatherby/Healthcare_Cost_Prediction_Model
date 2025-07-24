@@ -1,0 +1,26 @@
+feature_id,feature_name,feature_type,based_on_anova,priority_level,description,f_value,p_value,eta_squared,significant,created
+1,smoker_age_interaction,Statistical_Interaction,TRUE,High,Smoker status × age numeric interaction,NA,NA,NA,NA,FALSE
+2,smoker_region_interaction,Statistical_Interaction,TRUE,High,Smoker status × region combination,NA,NA,NA,NA,FALSE
+3,region_children_interaction,Statistical_Interaction,TRUE,High,Region × number of children interaction,NA,NA,NA,NA,FALSE
+4,has_children_age_interaction,Statistical_Interaction,TRUE,High,Having children × age interaction,NA,NA,NA,NA,FALSE
+5,smoker_benchmark_ratio,Statistical_Interaction,TRUE,High,Smoker cost premium vs benchmark,NA,NA,NA,NA,FALSE
+6,region_cost_premium,Statistical_Interaction,TRUE,High,Regional cost premium calculation,NA,NA,NA,NA,FALSE
+7,age_squared,Non_Linear_Transform,FALSE,Medium,Age squared for non-linear age effects,NA,NA,NA,NA,FALSE
+8,age_cubed,Non_Linear_Transform,FALSE,Medium,Age cubed for complex age relationships,NA,NA,NA,NA,FALSE
+9,bmi_squared,Non_Linear_Transform,FALSE,Medium,BMI squared for non-linear BMI effects,NA,NA,NA,NA,FALSE
+10,bmi_log,Non_Linear_Transform,FALSE,Medium,Log-transformed BMI,NA,NA,NA,NA,FALSE
+11,age_log,Non_Linear_Transform,FALSE,Medium,Log-transformed age,NA,NA,NA,NA,FALSE
+12,age_bmi_interaction,Polynomial_Interaction,FALSE,Medium,Age × BMI polynomial interaction,NA,NA,NA,NA,FALSE
+13,age_children_interaction,Polynomial_Interaction,FALSE,Medium,Age × children count interaction,NA,NA,NA,NA,FALSE
+14,bmi_children_interaction,Polynomial_Interaction,FALSE,Medium,BMI × children count interaction,NA,NA,NA,NA,FALSE
+15,health_risk_score,Risk_Score,FALSE,High,Composite health risk score (0-10),NA,NA,NA,NA,FALSE
+16,demographic_risk_level,Risk_Score,FALSE,High,Demographic risk categorization,NA,NA,NA,NA,FALSE
+17,compound_risk_score,Risk_Score,FALSE,High,Multi-factor compound risk score,NA,NA,NA,NA,FALSE
+18,cost_vs_benchmark_ratio,Benchmark_Comparison,FALSE,Medium,Individual cost vs national benchmark ratio,NA,NA,NA,NA,FALSE
+19,cost_deviation_category,Benchmark_Comparison,FALSE,Medium,Cost deviation category (low/normal/high),NA,NA,NA,NA,FALSE
+20,benchmark_outlier_flag,Benchmark_Comparison,FALSE,Medium,Flag for extreme cost outliers vs benchmark,NA,NA,NA,NA,FALSE
+21,family_cost_efficiency,Family_Lifestyle,FALSE,Medium,Family cost efficiency metric,NA,NA,NA,NA,FALSE
+22,large_family_flag,Family_Lifestyle,FALSE,Medium,Flag for families with 3+ children,NA,NA,NA,NA,FALSE
+23,cost_per_family_member,Family_Lifestyle,FALSE,Medium,Cost divided by family size,NA,NA,NA,NA,FALSE
+24,age_risk_bins,Categorical_Binning,FALSE,Medium,Age grouped into risk categories,NA,NA,NA,NA,FALSE
+25,bmi_clinical_categories,Categorical_Binning,FALSE,Medium,BMI grouped by clinical categories,NA,NA,NA,NA,FALSE

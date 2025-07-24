@@ -1,0 +1,13 @@
+analysis_type,variables,anova_code,business_question,priority,f_value,p_value,df,eta_squared,sig_level,significant,effect_size_interpretation
+One-way,smoker → charges,aov(charges ~ smoker),Do smokers cost significantly more?,High,2177.615,0,1,0.62,***,TRUE,Very Large
+One-way,sex → charges,aov(charges ~ sex),Do men and women have different healthcare costs?,High,4.4,0.036,1,0.003,*,TRUE,Small
+One-way,region → charges,aov(charges ~ region),Do costs vary significantly by region?,Medium,92.015,0,1,0.064,***,TRUE,Large
+One-way,bmi_category → charges,aov(charges ~ bmi_category),Do BMI categories have different costs?,High,18.731,0,3,0.04,***,TRUE,Medium
+One-way,age_group_standard → charges,aov(charges ~ age_group_standard),Do age groups cost differently?,High,2.97,0.031,3,0.007,*,TRUE,Small
+One-way,has_children → charges,aov(charges ~ has_children),Do people with children cost more/less?,Medium,5.627,0.018,1,0.004,*,TRUE,Small
+One-way,high_cost → other_variables,aov(sex ~ high_cost),Are men or women more likely to be high cost?,Medium,2188.851,0,1,0.62,***,TRUE,Very Large
+Two-way,smoker × sex → charges,aov(charges ~ smoker * sex),Does smoking impact differ between men and women?,Very High,1.296,0.255,1,0,,FALSE,Small
+Two-way,smoker × region → charges,aov(charges ~ smoker * region),Does smoking impact vary by region?,Medium,0.056,0.813,1,0,,FALSE,Small
+Two-way,smoker × age_group → charges,aov(charges ~ smoker * age_group_standard),Does smoking impact change with age?,Very High,194.236,0,3,0.103,***,TRUE,Large
+Two-way,sex × age_group → charges,aov(charges ~ sex * age_group_standard),Do age effects differ between men and women?,High,1.657,0.174,3,0.004,,FALSE,Small
+Two-way,sex × region → charges,aov(charges ~ sex * region),Do regional effects differ between men and women?,Medium,0.329,0.566,1,0,,FALSE,Small

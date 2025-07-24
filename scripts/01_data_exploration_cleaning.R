@@ -604,7 +604,6 @@ engineered_anova_plan <- tibble(
 write_csv(regular_anova_plan, "outputs/tables/regular_anova_analysis_plan.csv")
 write_csv(engineered_anova_plan, "outputs/tables/engineered_features_anova_plan.csv")
 
-
 # Priority summary
 priority_summary <- regular_anova_plan %>%
   count(priority) %>%

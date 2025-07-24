@@ -11,3 +11,10 @@ bmi_category,factor,Derived from bmi,WHO BMI categories for health analysis,"Und
 has_children,factor,Derived from children,Indicator of whether beneficiary has dependents,"Yes, No",0,0,Binary indicator for family status
 high_cost,factor,Derived from charges,High vs low cost classification,"High, Low",0,0,Split at median charges value
 age_group_standard,character,Standardized from age,Standardized age groups for cross-dataset merging,"18-44, 45-64",0,0,Matches HCUP and CMS age group standards
+f_value,numeric,ANOVA Analysis Results,F-statistic from ANOVA test - measures ratio of between-group to within-group variance,0.056 to 2188.851,0,0,Higher F-values indicate stronger effects. Rounded to 3 decimal places.
+p_value,numeric,ANOVA Analysis Results,P-value from ANOVA test - probability of observing this result by chance,0 to 0.813,0,0,Values < 0.05 considered statistically significant. Rounded to 3 decimal places.
+df,integer,ANOVA Analysis Results,Degrees of freedom for the effect being tested,1 to 3,0,0,Higher df indicates more categories in the factor being tested
+eta_squared,numeric,ANOVA Analysis Results,Effect size measure - proportion of total variance explained by the factor,0 to 0.62,0,0,"0.01=small, 0.06=medium, 0.14=large effect sizes. Rounded to 3 decimal places."
+sig_level,character,ANOVA Analysis Results,Significance level notation using standard statistical symbols,"*** (p<0.001), ** (p<0.01), * (p<0.05), . (p<0.1), '' (p>=0.1)",0,0,Standard statistical notation for significance levels
+significant,logical,ANOVA Analysis Results,Boolean indicator of statistical significance (p < 0.05),"TRUE, FALSE",0,0,TRUE indicates statistically significant result at alpha = 0.05
+effect_size_interpretation,character,ANOVA Analysis Results,Qualitative interpretation of eta-squared effect size,"Small, Medium, Large, Very Large",0,0,"Based on Cohen's conventions: <0.01=Small, 0.01-0.06=Medium, 0.06-0.14=Large, >0.14=Very Large"

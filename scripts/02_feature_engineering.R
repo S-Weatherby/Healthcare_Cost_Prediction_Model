@@ -59,7 +59,7 @@ cat("Records successfully merged with benchmarks:", merge_success_count, "\n")
 
 # 3 Regular ANOVA Analysis ####
 
-# 3.1 Core variables tests ####
+## 3.1 Core variables tests ####
 smoker_test <- aov(charges ~ smoker, data = insurance_with_benchmarks)#high priority
 sex_test <- aov(charges ~ sex, data = insurance_with_benchmarks) #high priority
 age_test <- aov(charges ~ age_group_standard, data = insurance_with_benchmarks) #high priority
@@ -75,7 +75,7 @@ summary(bmi_test)
 summary(region_test)
 summary(child_test)
 
-# 3.2 Core variable interactions tests ####
+## 3.2 Core variable interactions tests ####
 
 smoker_sex_test <- aov(charges ~ smoker * sex, data = insurance_with_benchmarks) # very high priority
 smoker_age_test <- aov(charges ~ smoker * age_group_standard, data = insurance_with_benchmarks) # very high priority
@@ -92,7 +92,7 @@ summary(bmi_smoker_test)
 summary(bmi_sex_test)
 summary(sex_child_test)
 
-# 3.3 Extracting Regular ANOVA results ####
+## 3.3 Extracting Regular ANOVA results ####
 
 # Function to extract ANOVA statistics
 extract_anova_stats <- function(anova_model, effect_name = NULL) {
@@ -231,7 +231,7 @@ effect_size_ranking <- anova_results %>%
   mutate(rank = row_number()) %>%
   select(rank, variables, eta_squared, effect_size_interpretation, significant)
 
-# 3.4 Add ANOVA results to data dictionary ####
+## 3.4 Add ANOVA results to data dictionary ####
 
 add_anova_to_dictionary <- function() {
   
@@ -293,8 +293,9 @@ effect_size_ranking <- anova_results %>%
   select(rank, variables, eta_squared, effect_size_interpretation, significant)
 
 
-# 4 Engineered Features ####
-# 4.1 Engineered features table for organization ####
+
+# 4 Feature Engineering ####
+## 4.1 Engineered features table for organization ####
 
 engineered_features_table <- tibble(
   feature_id = 1:34,  
@@ -493,10 +494,9 @@ engineered_features_table <- tibble(
   created = FALSE
 )
 
-# View the table
 View(engineered_features_table)
 
-# 4.2 Multipliers/ Coefficients creation and extraction ####
+## 4.2 Multipliers/ Coefficients creation and extraction ####
   ## ANOVA Group Means method
 
 extract_multipliers <- function(data) {
@@ -673,7 +673,7 @@ multipliers_table <- extract_multipliers(insurance_with_benchmarks)
 write_csv(multipliers_table, "outputs/tables/feature_multipliers.csv")
 
 
-# 4.3 Update Engineered features table ####
+## 4.3 Update Engineered features table ####
 
 engineered_features_table <- tibble(
   feature_id = 1:32,  
@@ -898,7 +898,7 @@ engineered_features_table <- tibble(
 # Save to file
 write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
 
-# 4.4 Engineered features creation ####
+## 4.4 Engineered Features + Encoding ####
 
 create_engineered_features <- function(data, multipliers) {
   
@@ -1009,7 +1009,8 @@ insurance_with_engineered_features <- create_engineered_features(insurance_with_
 
 write_csv(insurance_with_engineered_features, "outputs/tables/insurance_with_engineered_features.csv")
 
-# 4.5 Basic cost comparisons ####
+
+## 4.5 Basic cost comparisons ####
 
 # 1. Basic Descriptive Statistics
 basic_cost_summary <- insurance_with_engineered_features %>%
@@ -1215,7 +1216,7 @@ write_csv(smoker_sex_costs, "outputs/tables/cost_comparison_smoker_sex.csv")
 basic_cost_comparisons
 
 
-# 5 Engineered Features ANOVA ####
+# 5 Advanced/Missing ANOVA for FE ####
 
 engineered_tests <- list(
   # Standalone multiplier features
@@ -1249,7 +1250,7 @@ engineered_tests <- list(
   smoker_encoded = aov(charges ~ smoker_encoded, data = insurance_with_engineered_features),
   sex_encoded = aov(charges ~ sex_encoded, data = insurance_with_engineered_features),
   
-  # Binned features
+  # Binned/continuous features
   charges_percentile_rank = lm(charges ~ charges_percentile_rank, data = insurance_with_engineered_features)
 )
 
@@ -1312,8 +1313,194 @@ engineered_features_table_updated <- engineered_features_table %>%
 write_csv(engineered_anova_results, "outputs/tables/engineered_features_anova_results.csv")
 write_csv(engineered_features_table_updated, "outputs/tables/engineered_features_table.csv")
 
-# Return results for further use
 engineered_anova_results
+
+## 5.1 Missing ANOVA Tests arggghhh ####
+
+insurance_with_engineered_features <- read_csv("outputs/tables/insurance_with_engineered_features.csv")
+existing_anova_results <- read_csv("outputs/tables/engineered_features_anova_results.csv")
+engineered_features_table <- read_csv("outputs/tables/engineered_features_table.csv")
+
+# Function to determine appropriate statistical test and extract results
+perform_feature_test <- function(data, feature_name, target_var = "charges") {
+  
+  # Validate feature existence
+  if (!feature_name %in% colnames(data)) {
+    warning(paste("Feature", feature_name, "not found in dataset"))
+    return(NULL)
+  }
+  
+  feature_data <- data[[feature_name]]
+  target_data <- data[[target_var]]
+  
+  # Skip features with only one category (from previous error)
+  if (length(unique(feature_data)) <= 1) {
+    warning(paste("Feature", feature_name, "has <=1 unique value. Skipping test."))
+    return(NULL)
+  }
+  
+  # Determine appropriate statistical test
+  if (is.numeric(feature_data)) {
+    # Continuous variables: Linear Regression
+    model <- lm(target_data ~ feature_data)
+    model_summary <- summary(model)
+    anova_result <- anova(model)
+    
+    f_value <- anova_result$`F value`[1]
+    p_value <- anova_result$`Pr(>F)`[1]
+    effect_size <- model_summary$r.squared  # R-squared for linear regression
+    test_type <- "Linear Regression"
+    
+  } else {
+    # Categorical variables: ANOVA
+    if (length(unique(feature_data)) <= 10) {
+      # Direct ANOVA for reasonable number of categories
+      model <- aov(target_data ~ feature_data)
+      anova_summary <- summary(model)
+      
+      f_value <- anova_summary[[1]]$`F value`[1]
+      p_value <- anova_summary[[1]]$`Pr(>F)`[1]
+      
+      # Eta-squared for ANOVA
+      ss_between <- anova_summary[[1]]$`Sum Sq`[1]
+      ss_total <- sum(anova_summary[[1]]$`Sum Sq`)
+      effect_size <- ss_between / ss_total
+      test_type <- "ANOVA"
+      
+    } else {
+      # Too many categories: bin and use ANOVA
+      feature_binned <- cut(as.numeric(as.factor(feature_data)), 
+                            breaks = 5, labels = FALSE)
+      model <- aov(target_data ~ factor(feature_binned))
+      anova_summary <- summary(model)
+      
+      f_value <- anova_summary[[1]]$`F value`[1]
+      p_value <- anova_summary[[1]]$`Pr(>F)`[1]
+      
+      ss_between <- anova_summary[[1]]$`Sum Sq`[1]
+      ss_total <- sum(anova_summary[[1]]$`Sum Sq`)
+      effect_size <- ss_between / ss_total
+      test_type <- "ANOVA (Binned)"
+    }
+  }
+  
+  # Effect size interpretation
+  effect_size_interpretation <- case_when(
+    effect_size >= 0.14 ~ "Large",
+    effect_size >= 0.06 ~ "Medium", 
+    effect_size >= 0.01 ~ "Small",
+    TRUE ~ "Negligible"
+  )
+  
+  return(tibble(
+    feature_name = feature_name,
+    test_type = test_type,
+    f_value = f_value,
+    p_value = p_value,
+    eta_squared = effect_size,
+    effect_size_interpretation = effect_size_interpretation,
+    significant = p_value < 0.05,
+    highly_significant = p_value < 0.001
+  ))
+}
+
+## Test missing features
+
+missing_features <- c(
+  "demographic_risk_level",
+  "age_bins",
+  "region_encoded", 
+  "bmi_category_encoded",
+  "age_log",
+  "bmi_log"
+)
+
+missing_feature_results <- map_dfr(missing_features, 
+                                   ~perform_feature_test(insurance_with_engineered_features, .x))
+
+## 5.2 Update Tables ####
+### 5.2.1 Update ANOVA Results Table ####
+
+# Combine existing and new results
+updated_anova_results <- bind_rows(
+  existing_anova_results,
+  missing_feature_results %>% select(-test_type)  # Remove test_type to match existing structure
+) %>%
+  distinct(feature_name, .keep_all = TRUE) %>%  # Remove any duplicates
+  arrange(desc(eta_squared))
+
+# Save updated ANOVA results
+write_csv(updated_anova_results, "outputs/tables/engineered_features_anova_results.csv")
+
+### 5.2.2 Update FE Tracking Tables ####
+
+updated_features_table <- engineered_features_table %>%
+  left_join(
+    updated_anova_results %>% 
+      select(feature_name, f_value, p_value, eta_squared, significant),
+    by = "feature_name"
+  ) %>%
+  mutate(
+    # Update statistical columns - use new values where available, keep existing otherwise
+    f_value = coalesce(f_value.y, f_value.x),
+    p_value = coalesce(p_value.y, p_value.x),
+    eta_squared = coalesce(eta_squared.y, eta_squared.x),
+    significant = coalesce(significant.y, significant.x),
+    
+    # Update creation status
+    created = feature_name %in% names(insurance_with_engineered_features)
+  ) %>%
+  select(-ends_with(".x"), -ends_with(".y")) %>%  # Clean up join artifacts (yay, yay, yay!!)
+  arrange(desc(coalesce(eta_squared, 0)))
+
+# Save updated features table
+write_csv(updated_features_table, "outputs/tables/engineered_features_table.csv")
+
+## 5.3 Analysis Summary ####
+
+# Summary of all feature analysis results
+complete_feature_analysis <- updated_anova_results %>%
+  mutate(
+    test_method = case_when(
+      feature_name %in% missing_features ~ "Missing Feature Test",
+      TRUE ~ "Original ANOVA Analysis"
+    )
+  ) %>%
+  select(feature_name, f_value, p_value, eta_squared, effect_size_interpretation, 
+         significant, highly_significant, test_method) %>%
+  arrange(desc(eta_squared))
+
+write_csv(complete_feature_analysis, "outputs/tables/complete_feature_analysis_results.csv")
+
+# Summary statistics for feature engineering completion
+feature_summary <- tibble(
+  total_features_planned = nrow(updated_features_table),
+  features_created = sum(updated_features_table$created, na.rm = TRUE),
+  features_tested = sum(!is.na(updated_features_table$eta_squared)),
+  significant_features = sum(updated_features_table$significant, na.rm = TRUE),
+  large_effect_features = sum(updated_features_table$eta_squared >= 0.14, na.rm = TRUE),
+  medium_effect_features = sum(updated_features_table$eta_squared >= 0.06 & 
+                                 updated_features_table$eta_squared < 0.14, na.rm = TRUE),
+  completion_rate = round(features_created / total_features_planned * 100, 1)
+)
+
+write_csv(feature_summary, "outputs/tables/feature_engineering_completion_summary.csv")
+
+## 5.4 Analysis Notes ####
+### Second round of ANOVA analysis and FE didn't result in more large effect-size engineered features, going to proceed to encoding, normalization, & scaling
+
+# 6 Advanced FE ####
+## Deemed unnecessary, see above at 5.4
+
+# 7 Encoding ####
+## Encoding took place in step 4.4
+
+
+  
+
+# 8 Scaling & Normalization ####
+
+# 9 Model Selection ####
 
 # 5.1 OR 6 Feature selection and validation ####
 # 

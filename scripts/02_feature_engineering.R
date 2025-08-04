@@ -2,7 +2,7 @@
 # Author: Shelita Smith
 # Date: July 23, 2025
 # Purpose: Feature engineering with ANOVA analysis and comprehensive documentation, setup for 
-# Goals: ANOVA'd features, Analysis table guides, updated data dictionary in preparation for modeling
+# Goals: ANOVA'd Features, Feature Tables, Analytics, Model Prep via Scaling/Normalization and Splits, and Feature Selection
 
 # .5 Set-Up ####
 
@@ -37,7 +37,6 @@ hcup_age_summary <- hcup_age_final %>%
     .groups = "drop"
   )
 
-# Save benchmark summary
 write_csv(hcup_age_summary, "outputs/tables/hcup_benchmark_summary.csv")
 
 # Display benchmarks

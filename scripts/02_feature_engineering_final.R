@@ -1262,3 +1262,328 @@ feature_selection_summary <- tibble(
 
 write_csv(feature_selection_summary, "outputs/tables/feature_selection_summary.csv")
 
+
+
+# .1 Data Dictionary Update ####
+## Data Dictionary Update for Feature Engineering (Script 2)
+
+insurance_advanced <- read_csv("data/processed/insurance_advanced_features.csv")
+cost_efficiency_segments <- read_csv("outputs/tables/cost_efficiency_analysis.csv")
+
+# Function to bulk add engineered features to dictionary
+add_engineered_features_to_dictionary <- function() {
+  
+  # DERIVED/CLEANED VARIABLES FROM SCRIPT 1
+  add_to_dictionary("age_group_standard", "character", "Script 1 - Data Cleaning", 
+                    "Standardized age groups for analysis", "18-25, 26-35, 36-45, 46-55, 56-65")
+  
+  add_to_dictionary("bmi_category", "character", "Script 1 - Data Cleaning",
+                    "BMI classification categories", "underweight, normal, overweight, obese")
+  
+  add_to_dictionary("has_children", "character", "Script 1 - Data Cleaning",
+                    "Binary indicator for having children", "yes, no")
+  
+  # BENCHMARK DATA
+  add_to_dictionary("avg_hcup_charges", "numeric", "Script 2 - External Benchmarking",
+                    "Average hospital charges by age group from HCUP data", "National benchmark values")
+  
+  # STANDALONE MULTIPLIER FEATURES
+  add_to_dictionary("smoker_cost_multiplier", "numeric", "Script 2 - Feature Engineering",
+                    "Cost multiplier based on smoking status derived from ANOVA group means", "1.0 to 4.0+")
+  
+  add_to_dictionary("sex_cost_premium", "numeric", "Script 2 - Feature Engineering", 
+                    "Cost multiplier based on biological sex derived from ANOVA group means", "0.9 to 1.1")
+  
+  add_to_dictionary("bmi_risk_factor", "numeric", "Script 2 - Feature Engineering",
+                    "Cost multiplier based on BMI category derived from ANOVA group means", "0.8 to 1.5")
+  
+  add_to_dictionary("region_cost_index", "numeric", "Script 2 - Feature Engineering",
+                    "Cost multiplier based on geographic region derived from ANOVA group means", "0.9 to 1.2")
+  
+  add_to_dictionary("has_children_factor", "numeric", "Script 2 - Feature Engineering",
+                    "Cost multiplier based on having children derived from ANOVA group means", "0.9 to 1.1")
+  
+  add_to_dictionary("age_cost_curve", "numeric", "Script 2 - Feature Engineering",
+                    "Cost multiplier based on age group derived from ANOVA group means", "0.5 to 2.5")
+  
+  # NON-LINEAR TRANSFORMATIONS
+  add_to_dictionary("age_squared", "numeric", "Script 2 - Feature Engineering",
+                    "Age squared to capture non-linear age effects", "324 to 4225")
+  
+  add_to_dictionary("bmi_squared", "numeric", "Script 2 - Feature Engineering", 
+                    "BMI squared to capture non-linear BMI effects", "225 to 2500+")
+  
+  add_to_dictionary("age_cubed", "numeric", "Script 2 - Feature Engineering",
+                    "Age cubed for extreme non-linear age effects", "5832 to 274625")
+  
+  add_to_dictionary("age_log", "numeric", "Script 2 - Feature Engineering",
+                    "Natural logarithm of age for log-linear relationships", "2.89 to 4.19")
+  
+  add_to_dictionary("bmi_log", "numeric", "Script 2 - Feature Engineering",
+                    "Natural logarithm of BMI for log-linear relationships", "2.71 to 3.91")
+  
+  # RISK SCORING FEATURES
+  add_to_dictionary("health_risk_score", "numeric", "Script 2 - Feature Engineering",
+                    "Composite health risk score: (smoker_multiplier*4) + (bmi_factor*3) + (age_curve*3)", "3 to 30+")
+  
+  add_to_dictionary("demographic_risk_level", "character", "Script 2 - Feature Engineering",
+                    "Categorical risk level based on health_risk_score", "Low, Medium, High, Very_High")
+  
+  add_to_dictionary("compound_risk_score", "numeric", "Script 2 - Feature Engineering",
+                    "Product of smoker, sex, and BMI multipliers", "0.7 to 6.0+")
+  
+  # STATISTICAL INTERACTION FEATURES
+  add_to_dictionary("smoker_age_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of smoker cost multiplier and age cost curve", "0.5 to 10.0+", 
+                    notes = "Based on significant ANOVA interaction (F=245.67, p<0.001)")
+  
+  add_to_dictionary("smoker_sex_combo", "numeric", "Script 2 - Feature Engineering",
+                    "Product of smoker and sex cost multipliers", "0.9 to 4.4+",
+                    notes = "Based on significant ANOVA interaction (F=8.03, p=0.005)")
+  
+  add_to_dictionary("smoker_bmi_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of smoker and BMI risk factors", "0.8 to 6.0+")
+  
+  add_to_dictionary("region_children_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of region cost index and children factor", "0.81 to 1.32")
+  
+  add_to_dictionary("has_children_age_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of children factor and age cost curve", "0.45 to 2.75")
+  
+  add_to_dictionary("region_cost_multiplier", "numeric", "Script 2 - Feature Engineering",
+                    "Same as region_cost_index (duplicate for interaction features)", "0.9 to 1.2")
+  
+  add_to_dictionary("smoker_region_combo", "numeric", "Script 2 - Feature Engineering",
+                    "Product of smoker multiplier and region cost index", "0.9 to 4.8+")
+  
+  add_to_dictionary("sex_bmi_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of sex premium and BMI risk factor", "0.72 to 1.65")
+  
+  add_to_dictionary("age_region_interaction", "numeric", "Script 2 - Feature Engineering",
+                    "Product of age cost curve and region cost index", "0.45 to 3.0")
+  
+  # CATEGORICAL ENCODING
+  add_to_dictionary("smoker_encoded", "numeric", "Script 2 - Feature Engineering",
+                    "Binary encoding: 1 for smoker, 0 for non-smoker", "0, 1")
+  
+  add_to_dictionary("sex_encoded", "numeric", "Script 2 - Feature Engineering",
+                    "Binary encoding: 1 for male, 0 for female", "0, 1")
+  
+  add_to_dictionary("bmi_category_encoded", "numeric", "Script 2 - Feature Engineering",
+                    "Numeric encoding of BMI categories as factors", "1 to 4")
+  
+  add_to_dictionary("region_encoded", "numeric", "Script 2 - Feature Engineering",
+                    "Numeric encoding: southeast=1, southwest=2, northwest=3, northeast=4", "1, 2, 3, 4")
+  
+  # BINNING FEATURES
+  add_to_dictionary("age_bins", "factor", "Script 2 - Feature Engineering",
+                    "Age grouped into 5-year bins", "(15,20], (20,25], ..., (65,70]")
+  
+  add_to_dictionary("charges_percentile_rank", "numeric", "Script 2 - Feature Engineering",
+                    "Percentile rank of charges within the dataset", "0.0 to 1.0")
+  
+  # ADVANCED STANDALONE FEATURES
+  add_to_dictionary("smoker_years_estimate", "numeric", "Script 2 - Feature Engineering",
+                    "Estimated smoking years: smoker_encoded * age", "0 to 65")
+  
+  add_to_dictionary("bmi_health_category", "character", "Script 2 - Feature Engineering",
+                    "Health categories based on BMI thresholds", "underweight, normal, overweight, obese")
+  
+  add_to_dictionary("regional_market_tier", "character", "Script 2 - Feature Engineering",
+                    "Market tier classification by region", "economy, standard, premium")
+  
+  # ADVANCED FEATURES FROM SECTION 6
+  add_to_dictionary("smoker_age_severity_index", "numeric", "Script 2 - Advanced Features",
+                    "Age-adjusted smoking severity with literature-based multipliers", "0 to 162.5")
+  
+  add_to_dictionary("metabolic_syndrome_risk", "numeric", "Script 2 - Advanced Features",
+                    "Compound risk score for metabolic syndrome based on BMI and age", "1.0 to 3.5")
+  
+  add_to_dictionary("family_cost_optimization", "numeric", "Script 2 - Advanced Features",
+                    "Family size economies of scale factor", "0.65 to 1.0")
+  
+  add_to_dictionary("compound_lifestyle_risk", "numeric", "Script 2 - Advanced Features",
+                    "Comprehensive lifestyle risk: smoking * BMI_risk * age_risk", "0.8 to 4.875")
+  
+  add_to_dictionary("individual_vs_cohort_ratio", "numeric", "Script 2 - Advanced Features",
+                    "Individual charges divided by expected cohort average", "0.1 to 5.0+")
+  
+  add_to_dictionary("cost_efficiency_quintiles", "numeric", "Script 2 - Advanced Features",
+                    "Quintile ranking of cost efficiency (charges/compound_lifestyle_risk)", "1, 2, 3, 4, 5")
+  
+  add_to_dictionary("outlier_detection_flags", "character", "Script 2 - Advanced Features",
+                    "Outlier classification based on multiple criteria", 
+                    "Normal, High_Cost_Outlier, Low_Cost_Outlier, Risk_Cost_Mismatch, Low_Risk_High_Cost")
+  
+  # ENCODING FEATURES FROM SECTION 7
+  add_to_dictionary("is_smoker", "numeric", "Script 2 - Encoding",
+                    "Binary flag for smoking status", "0, 1")
+  
+  add_to_dictionary("is_male", "numeric", "Script 2 - Encoding",
+                    "Binary flag for male sex", "0, 1")
+  
+  add_to_dictionary("is_obese", "numeric", "Script 2 - Encoding",
+                    "Binary flag for obesity (BMI ≥30)", "0, 1")
+  
+  add_to_dictionary("has_children_flag", "numeric", "Script 2 - Encoding",
+                    "Binary flag for having any children", "0, 1")
+  
+  add_to_dictionary("smoker_male", "numeric", "Script 2 - Encoding",
+                    "Interaction: is_smoker * is_male", "0, 1")
+  
+  add_to_dictionary("smoker_obese", "numeric", "Script 2 - Encoding",
+                    "Interaction: is_smoker * is_obese", "0, 1")
+  
+  add_to_dictionary("high_risk_combo", "numeric", "Script 2 - Encoding",
+                    "Triple interaction: is_smoker * is_obese * is_male", "0, 1")
+  
+  add_to_dictionary("bmi_risk_ordinal", "numeric", "Script 2 - Encoding",
+                    "Ordinal encoding of BMI categories", "1, 2, 3, 4")
+  
+  add_to_dictionary("region_cost_ordinal", "numeric", "Script 2 - Encoding",
+                    "Ordinal encoding of regions by cost", "1, 2, 3, 4")
+  
+  add_to_dictionary("age_group_ordinal", "numeric", "Script 2 - Encoding",
+                    "Ordinal encoding of age groups", "1, 2, 3, 4, 5")
+  
+  add_to_dictionary("is_young_adult", "numeric", "Script 2 - Encoding",
+                    "Binary flag for 18-25 age group", "0, 1")
+  
+  add_to_dictionary("is_senior", "numeric", "Script 2 - Encoding",
+                    "Binary flag for 56-65 age group", "0, 1")
+  
+  add_to_dictionary("is_middle_aged", "numeric", "Script 2 - Encoding",
+                    "Binary flag for 36-55 age groups", "0, 1")
+  
+  add_to_dictionary("region_northeast", "numeric", "Script 2 - Encoding",
+                    "Binary flag for northeast region", "0, 1")
+  
+  add_to_dictionary("region_northwest", "numeric", "Script 2 - Encoding",
+                    "Binary flag for northwest region", "0, 1")
+  
+  add_to_dictionary("region_southeast", "numeric", "Script 2 - Encoding",
+                    "Binary flag for southeast region", "0, 1")
+  
+  add_to_dictionary("region_southwest", "numeric", "Script 2 - Encoding",
+                    "Binary flag for southwest region", "0, 1")
+  
+  # BUSINESS ANALYSIS FEATURES FROM SECTION 8
+  add_to_dictionary("cost_per_risk_point", "numeric", "Script 2 - Business Analysis",
+                    "Charges divided by compound lifestyle risk score", "500 to 50000+")
+  
+  add_to_dictionary("benchmark_deviation_quartile", "numeric", "Script 2 - Business Analysis",
+                    "Quartile of absolute deviation from cohort ratio", "1, 2, 3, 4")
+  
+  add_to_dictionary("regional_cost_opportunity", "character", "Script 2 - Business Analysis",
+                    "Market pricing opportunity classification", 
+                    "Appropriately_Priced, Overpriced_Market, Underpriced_Market")
+  
+  add_to_dictionary("family_efficiency_category", "character", "Script 2 - Business Analysis",
+                    "Family cost efficiency classification", 
+                    "Individual, Efficient_Family, Inefficient_Family, Standard_Family")
+  
+  add_to_dictionary("high_value_low_risk", "character", "Script 2 - Business Analysis",
+                    "Value-risk profile classification", 
+                    "Standard_Profile, High_Value_Low_Risk, Low_Value_High_Risk")
+  
+  add_to_dictionary("intervention_priority", "character", "Script 2 - Business Analysis",
+                    "Healthcare intervention priority classification",
+                    "Standard_Care, High_Priority, Smoking_Cessation_Target, Weight_Management_Target, Care_Coordination_Target")
+  
+  add_to_dictionary("market_opportunity", "character", "Script 2 - Business Analysis",
+                    "Market expansion opportunity classification",
+                    "Saturated_Market, Premium_Market_Opportunity, Value_Market_Opportunity")
+  
+  add_to_dictionary("subsidization_role", "character", "Script 2 - Business Analysis",
+                    "Risk pool contribution classification",
+                    "Balanced_Contributor, Cross_Subsidizer, Subsidized_Member")
+  
+  # TARGET ENCODED FEATURES (if created)
+  add_to_dictionary("brand_target_encoded", "numeric", "Script 2 - Target Encoding",
+                    "Mean charges by brand category", "Varies by brand", 
+                    notes = "Target encoding - use with caution for overfitting")
+  
+  add_to_dictionary("brand_frequency_encoded", "numeric", "Script 2 - Frequency Encoding",
+                    "Frequency count of brand occurrences", "Varies by brand frequency")
+  
+  cat("✅ All engineered features added to data dictionary!\n")
+  cat("📊 Total features added: ~70+ engineered variables\n")
+  cat("📁 Dictionary saved to: data/data_dictionary.csv\n")
+}
+
+# Function to add ANOVA results as metadata
+add_anova_metadata_to_dictionary <- function() {
+  
+  # Load ANOVA results
+  if(file.exists("outputs/tables/complete_feature_analysis_final.csv")) {
+    anova_results <- read_csv("outputs/tables/complete_feature_analysis_final.csv")
+    
+    # Update dictionary with ANOVA statistics for relevant features
+    for(i in 1:nrow(anova_results)) {
+      feature_name <- anova_results$feature_name[i]
+      eta_squared <- round(anova_results$eta_squared[i], 3)
+      p_value <- round(anova_results$p_value[i], 3)
+      
+      # Create ANOVA note
+      anova_note <- paste0("ANOVA: η²=", eta_squared, ", p=", p_value)
+      
+      # Update dictionary
+      tryCatch({
+        update_dictionary(feature_name, 
+                          notes = anova_note)
+      }, error = function(e) {
+        # Feature might not exist in dictionary yet
+      })
+    }
+    
+    cat("✅ ANOVA metadata added to relevant features\n")
+  }
+}
+
+# Function to generate comprehensive data dictionary summary
+generate_dictionary_summary <- function() {
+  
+  dict <- read_csv("data/data_dictionary.csv", show_col_types = FALSE)
+  
+  summary_stats <- dict %>%
+    group_by(source) %>%
+    summarise(
+      n_variables = n(),
+      n_numeric = sum(data_type %in% c("numeric", "integer")),
+      n_categorical = sum(data_type %in% c("character", "factor")),
+      total_missing = sum(missing_count),
+      avg_missing_pct = round(mean(missing_percent), 2),
+      .groups = "drop"
+    ) %>%
+    arrange(desc(n_variables))
+  
+  cat("\n📊 DATA DICTIONARY SUMMARY\n")
+  cat("═══════════════════════════\n")
+  print(summary_stats)
+  
+  cat("\n🔢 TOTAL VARIABLES:", nrow(dict), "\n")
+  cat("📈 NUMERIC VARIABLES:", sum(dict$data_type %in% c("numeric", "integer")), "\n")
+  cat("📝 CATEGORICAL VARIABLES:", sum(dict$data_type %in% c("character", "factor")), "\n")
+  cat("❌ VARIABLES WITH MISSING DATA:", sum(dict$missing_count > 0), "\n")
+  
+  return(summary_stats)
+}
+
+# Execute the updates
+cat("🚀 Starting data dictionary updates...\n\n")
+
+# Add all engineered features
+add_engineered_features_to_dictionary()
+
+# Add ANOVA metadata
+add_anova_metadata_to_dictionary()
+
+# Generate summary
+summary_stats <- generate_dictionary_summary()
+
+# Save summary
+write_csv(summary_stats, "outputs/tables/data_dictionary_summary.csv")
+
+cat("\n✅ Data dictionary update complete!\n")
+cat("📁 Full dictionary: data/data_dictionary.csv\n")
+cat("📊 Summary report: outputs/tables/data_dictionary_summary.csv\n")

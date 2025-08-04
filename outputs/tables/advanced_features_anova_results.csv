@@ -1,0 +1,8 @@
+feature_name,test_type,f_value,p_value,eta_squared,significant,error_message
+smoker_age_severity_index,Linear_Regression,1380.1247612234474,4.425498428696534e-208,0.5081227419766138,TRUE,Success
+metabolic_syndrome_risk,ANOVA,25.56784322844934,7.229007582575081e-29,0.10334568163245728,TRUE,Success
+family_cost_optimization,ANOVA,3.657294945597849,0.0057054826117120885,0.01085549348579232,TRUE,Success
+compound_lifestyle_risk,Linear_Regression,4618.743634273023,0,0.7756410549212319,TRUE,Success
+individual_vs_cohort_ratio,Linear_Regression,727.1376071196705,3.152800243868018e-128,0.3524426119762416,TRUE,Success
+cost_efficiency_quintiles,ANOVA,723.8314859363691,0,0.6847452117612247,TRUE,Success
+outlier_detection_flags,ANOVA,505.31709906313716,3.113582129600301e-265,0.6025959039266946,TRUE,Success

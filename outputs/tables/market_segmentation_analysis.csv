@@ -1,0 +1,3 @@
+high_value_low_risk,segment_size,avg_premium_potential,avg_claims_ratio,profitability_index,avg_family_size,supplemental_product_potential,cost_volatility,retention_risk
+High_Value_Low_Risk,80,27740.393396531246,0.8695652173913044,0.1499999999999998,3.2625,Dental_Vision_Life,0.19595112217098326,Low_Churn_Risk
+Standard_Profile,1258,14467.3825656998,0.8695652173913044,0.1499999999999999,3.0842607313195547,Dental_Vision_Life,0.9624771758245362,High_Churn_Risk

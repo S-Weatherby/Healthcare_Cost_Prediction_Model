@@ -1,8 +1,10 @@
-# Complete Feature Engineering Script - Script 02
+# Feature Engineering Script - Script 02
 # Author: Shelita Smith
 # Date: July 23, 2025
-# Purpose: Feature engineering with ANOVA analysis and comprehensive documentation
+# Purpose: Feature engineering with ANOVA analysis and comprehensive documentation, setup for 
 # Goals: ANOVA'd features, Analysis table guides, updated data dictionary in preparation for modeling
+
+# .5 Set-Up ####
 
 # Load required libraries
 library(tidyverse)
@@ -211,10 +213,8 @@ anova_results <- tibble(
 
 # Update the original regular_anova_plan with results
 regular_anova_plan_updated <- regular_anova_plan %>%
-  slice(1:12) %>%  # Only keep the analyses we've run
-  bind_cols(
-    select(anova_results, f_value, p_value, df, eta_squared, sig_level, significant, effect_size_interpretation)
-  )
+  as_tibble() %>%  # Convert to tibble first
+  slice(1:12) %>%
 
 # Save reg ANOVA tables w/ results/values (overwriting original)
 write_csv(regular_anova_plan_updated, "outputs/tables/regular_anova_analysis_plan.csv")
@@ -291,8 +291,6 @@ effect_size_ranking <- anova_results %>%
   arrange(desc(eta_squared)) %>%
   mutate(rank = row_number()) %>%
   select(rank, variables, eta_squared, effect_size_interpretation, significant)
-
-
 
 # 4 Feature Engineering ####
 ## 4.1 Engineered features table for organization ####
@@ -898,7 +896,7 @@ engineered_features_table <- tibble(
 # Save to file
 write_csv(engineered_features_table, "outputs/tables/engineered_features_tracking.csv")
 
-## 4.4 Engineered Features + Encoding ####
+## 4.4 Engineered Features + Simultaneous Encoding ####
 
 create_engineered_features <- function(data, multipliers) {
   
@@ -1205,7 +1203,6 @@ basic_cost_comparisons <- list(
   low_cost_profiles = low_cost_analysis
 )
 
-# Save tables
 write_csv(cost_by_smoker, "outputs/tables/cost_comparison_smoker.csv")
 write_csv(cost_by_region, "outputs/tables/cost_comparison_region.csv") 
 write_csv(cost_by_bmi_category, "outputs/tables/cost_comparison_bmi.csv")
@@ -1214,7 +1211,6 @@ write_csv(smoker_sex_costs, "outputs/tables/cost_comparison_smoker_sex.csv")
 
 # Return the summary for inspection
 basic_cost_comparisons
-
 
 # 5 Advanced/Missing ANOVA for FE ####
 
@@ -1297,7 +1293,15 @@ extract_unified_stats <- function(model) {
   ))
 }
 
-# Update engineered features table with ANOVA results
+# Process the engineered tests to create engineered_anova_results
+engineered_anova_results <- map_dfr(names(engineered_tests), function(test_name) {
+  model <- engineered_tests[[test_name]]
+  result <- extract_unified_stats(model)
+  result$feature_name <- test_name
+  return(as_tibble(result))
+})
+
+# Update engineered features table with ANOVA results  
 engineered_features_table_updated <- engineered_features_table %>%
   select(-f_value, -p_value, -eta_squared, -significant) %>%  # Remove existing columns to avoid duplicates
   left_join(
@@ -1487,213 +1491,259 @@ feature_summary <- tibble(
 write_csv(feature_summary, "outputs/tables/feature_engineering_completion_summary.csv")
 
 ## 5.4 Analysis Notes ####
-### Second round of ANOVA analysis and FE didn't result in more large effect-size engineered features, going to proceed to encoding, normalization, & scaling
+### Second round of ANOVA analysis and FE didn't result in more large effect-size engineered features; did result in a few more medium effect size features - adding those to the insurance w/ engineered feature table and then going to proceed to encoding, normalization, & scaling
 
 # 6 Advanced FE ####
-## Deemed unnecessary, see above at 5.4
+## Mostly unnecessary (see 5.4), continuity/ organization
+
+insurance_advanced <- insurance_with_engineered_features %>%
+  mutate(
+    # Smoking Duration Impact Modeling (Literature-Based)
+    smoker_age_severity_index = case_when(
+      smoker == "no" ~ 0,
+      smoker == "yes" & age < 30 ~ age * 0.8,
+      smoker == "yes" & age < 45 ~ age * 1.2,
+      smoker == "yes" & age < 60 ~ age * 1.8,
+      smoker == "yes" & age >= 60 ~ age * 2.5
+    ),
+    
+    # Metabolic Syndrome Risk (BMI + Age Compound Effects)
+    metabolic_syndrome_risk = case_when(
+      bmi < 25 & age < 40 ~ 1.0,
+      bmi >= 25 & bmi < 30 & age < 40 ~ 1.3,
+      bmi >= 30 & age < 40 ~ 1.8,
+      bmi < 25 & age >= 40 ~ 1.2,
+      bmi >= 25 & bmi < 30 & age >= 40 & age < 55 ~ 1.6,
+      bmi >= 30 & age >= 40 & age < 55 ~ 2.2,
+      bmi >= 25 & age >= 55 ~ 2.8,
+      bmi >= 30 & age >= 55 ~ 3.5,
+      TRUE ~ 1.0
+    ),
+    
+    # Family Cost Optimization (Economies of Scale)
+    family_cost_optimization = case_when(
+      children == 0 ~ 1.0,
+      children == 1 ~ 0.85,
+      children == 2 ~ 0.75,
+      children == 3 ~ 0.70,
+      children >= 4 ~ 0.65,
+      TRUE ~ 1.0
+    ),
+    
+    # Regional Market Adjustment (Healthcare Market Tiers)
+    regional_market_adjustment = case_when(
+      region == "southeast" ~ 0.85,
+      region == "southwest" ~ 0.92,
+      region == "northwest" ~ 1.08,
+      region == "northeast" ~ 1.15,
+      TRUE ~ 1.0
+    ),
+    
+    # Age Cost Acceleration (Exponential Healthcare Costs)
+    age_cost_acceleration = case_when(
+      age < 25 ~ age^1.5,
+      age < 40 ~ age^2.0,
+      age < 55 ~ age^2.5,
+      age >= 55 ~ age^3.0
+    ),
+    
+    # BMI Threshold Effects (Obesity Tipping Points)
+    bmi_threshold_effects = case_when(
+      bmi < 18.5 ~ (18.5 - bmi)^2 * 1.2,
+      bmi >= 18.5 & bmi < 25 ~ 1.0,
+      bmi >= 25 & bmi < 30 ~ (bmi - 25)^1.5 * 0.8,
+      bmi >= 30 & bmi < 35 ~ (bmi - 25)^2.0 * 1.5,
+      bmi >= 35 & bmi < 40 ~ (bmi - 25)^2.5 * 2.0,
+      bmi >= 40 ~ (bmi - 25)^3.0 * 2.5
+    ),
+    
+    # Compound Lifestyle Risk Score
+    compound_lifestyle_risk = (
+      ifelse(smoker == "yes", 2.5, 1.0) *
+        case_when(
+          bmi < 18.5 ~ 1.3,
+          bmi >= 18.5 & bmi < 25 ~ 1.0,
+          bmi >= 25 & bmi < 30 ~ 1.2,
+          bmi >= 30 ~ 1.5,
+          TRUE ~ 1.0
+        ) *
+        case_when(
+          age < 30 ~ 0.8,
+          age >= 30 & age < 50 ~ 1.0,
+          age >= 50 ~ 1.3,
+          TRUE ~ 1.0
+        )
+    ),
+    
+    # Individual vs Cohort Performance Ratio
+    individual_vs_cohort_ratio = charges / case_when(
+      age < 25 & smoker == "no" ~ 3000,
+      age < 25 & smoker == "yes" ~ 7500,
+      age >= 25 & age < 35 & smoker == "no" ~ 4500,
+      age >= 25 & age < 35 & smoker == "yes" ~ 11000,
+      age >= 35 & age < 45 & smoker == "no" ~ 6500,
+      age >= 35 & age < 45 & smoker == "yes" ~ 16000,
+      age >= 45 & age < 55 & smoker == "no" ~ 9500,
+      age >= 45 & age < 55 & smoker == "yes" ~ 23000,
+      age >= 55 & smoker == "no" ~ 15000,
+      age >= 55 & smoker == "yes" ~ 35000,
+      TRUE ~ mean(charges)
+    ),
+    
+    # Cost Efficiency Quintiles
+    cost_efficiency_quintiles = ntile(charges / compound_lifestyle_risk, 5),
+    
+    # Outlier Detection Flags
+    outlier_detection_flags = case_when(
+      charges > quantile(charges, 0.95) ~ "High_Cost_Outlier",
+      charges < quantile(charges, 0.05) ~ "Low_Cost_Outlier", 
+      abs(individual_vs_cohort_ratio - 1) > 2 ~ "Cohort_Deviation_Outlier",
+      compound_lifestyle_risk > 4 & charges < 10000 ~ "Risk_Cost_Mismatch",
+      compound_lifestyle_risk < 1.5 & charges > 20000 ~ "Low_Risk_High_Cost",
+      TRUE ~ "Normal"
+    )
+  ) %>%
+  
+  # Cross-domain interactions and composite scores
+  mutate(
+    smoker_metabolic_interaction = smoker_age_severity_index * metabolic_syndrome_risk,
+    age_bmi_compound_risk = age_cost_acceleration * bmi_threshold_effects,
+    regional_lifestyle_adjustment = regional_market_adjustment * compound_lifestyle_risk,
+    family_risk_optimization = family_cost_optimization * compound_lifestyle_risk,
+    
+    comprehensive_health_risk_score = (
+      smoker_age_severity_index * 0.4 +
+        metabolic_syndrome_risk * 0.3 +
+        compound_lifestyle_risk * 0.2 +
+        regional_market_adjustment * 0.1
+    ),
+    
+    healthcare_utilization_predictor = (
+      age_cost_acceleration * 0.35 +
+        smoker_age_severity_index * 0.30 +
+        metabolic_syndrome_risk * 0.20 +
+        bmi_threshold_effects * 0.15
+    ),
+    
+    market_competitiveness_index = individual_vs_cohort_ratio * regional_market_adjustment,
+    value_based_care_score = cost_efficiency_quintiles / compound_lifestyle_risk
+  )
+
+write_csv(insurance_advanced, "data/processed/insurance_advanced_features.csv")
+
+## 6.1 Validate Advanced Features ####
+
+new_advanced_features <- c(
+  "smoker_age_severity_index", "metabolic_syndrome_risk", 
+  "family_cost_optimization", "regional_market_adjustment",
+  "age_cost_acceleration", "bmi_threshold_effects", "compound_lifestyle_risk",
+  "individual_vs_cohort_ratio", "cost_efficiency_quintiles", "outlier_detection_flags",
+  "smoker_metabolic_interaction", "age_bmi_compound_risk", 
+  "comprehensive_health_risk_score", "healthcare_utilization_predictor",
+  "market_competitiveness_index", "value_based_care_score"
+)
+
+advanced_feature_results <- map_dfr(new_advanced_features, 
+                                    ~perform_feature_test(insurance_advanced, .x))
+
+# Combine all feature results
+final_feature_results <- bind_rows(
+  complete_feature_analysis,
+  advanced_feature_results
+) %>%
+  arrange(desc(eta_sqaured))
+
+write_csv(final_feature_results, "outputs/tables/final_complete_feature_analysis.csv")
 
 # 7 Encoding ####
-## Encoding took place in step 4.4
+## A good level of encoding took place in step 4.4, post-advanced-FE encoding for continuity and a more "outlined" version of encoding
 
+# Strategy 1: One-Hot Encoding
+categorical_vars <- c("sex", "region", "smoker", "bmi_category", 
+                      "outlier_detection_flags")
 
-  
+insurance_onehot <- insurance_advanced %>%
+  dummy_cols(
+    select_columns = categorical_vars,
+    remove_first_dummy = TRUE,
+    remove_selected_columns = FALSE
+  )
+
+# Strategy 2: Ordinal Encoding
+insurance_ordinal <- insurance_advanced %>%
+  mutate(
+    bmi_risk_ordinal = case_when(
+      bmi_category == "underweight" ~ 1,
+      bmi_category == "normal" ~ 2, 
+      bmi_category == "overweight" ~ 3,
+      bmi_category == "obese" ~ 4
+    ),
+    
+    region_cost_ordinal = case_when(
+      region == "southeast" ~ 1,
+      region == "southwest" ~ 2,
+      region == "northwest" ~ 3,
+      region == "northeast" ~ 4
+    ),
+    
+    cost_efficiency_ordinal = cost_efficiency_quintiles,
+    
+    outlier_ordinal = case_when(
+      outlier_detection_flags == "Normal" ~ 1,
+      outlier_detection_flags == "Low_Cost_Outlier" ~ 2,
+      outlier_detection_flags == "High_Cost_Outlier" ~ 3,
+      outlier_detection_flags == "Risk_Cost_Mismatch" ~ 4,
+      outlier_detection_flags == "Low_Risk_High_Cost" ~ 5,
+      TRUE ~ 1
+    )
+  )
+
+# Strategy 3: Binary Encoding
+insurance_binary <- insurance_advanced %>%
+  mutate(
+    is_smoker = as.numeric(smoker == "yes"),
+    is_male = as.numeric(sex == "male"),
+    is_obese = as.numeric(bmi_category == "obese"),
+    has_children = as.numeric(children > 0),
+    is_high_risk_region = as.numeric(region %in% c("northeast", "northwest")),
+    
+    smoker_male = is_smoker * is_male,
+    smoker_obese = is_smoker * is_obese,
+    older_smoker = as.numeric(age >= 40 & smoker == "yes"),
+    high_compound_risk = as.numeric(comprehensive_health_risk_score >= 4),
+    is_cost_outlier = as.numeric(outlier_detection_flags != "Normal")
+  )
+
+# Strategy 4: Target Encoding
+target_encoding_mappings <- insurance_advanced %>%
+  group_by(region) %>%
+  summarise(region_mean_cost = mean(charges), .groups = 'drop')
+
+insurance_target_encoded <- insurance_advanced %>%
+  left_join(target_encoding_mappings, by = "region") %>%
+  mutate(
+    region_target_encoded = region_mean_cost,
+    region_vs_global_ratio = region_mean_cost / mean(charges)
+  )
+
+write_csv(insurance_onehot, "data/processed/insurance_onehot_encoded.csv")
+write_csv(insurance_ordinal, "data/processed/insurance_ordinal_encoded.csv") 
+write_csv(insurance_binary, "data/processed/insurance_binary_encoded.csv")
+write_csv(insurance_target_encoded, "data/processed/insurance_target_encoded.csv")
 
 # 8 Scaling & Normalization ####
+## Notes 
+### one-hot AND ordinal region encoding - Choose one approach for final modeling to avoid redundancy
 
-# 9 Model Selection ####
+# Verify  encoded features are numeric
+str(insurance_with_engineered_features)
 
-# 5.1 OR 6 Feature selection and validation ####
-# 
-# # Correlation analysis
-# numeric_only_data <- final_feature_data %>%
-#   select(where(is.numeric))
-# 
-# correlation_matrix <- cor(numeric_only_data, use = "complete.obs")
-# 
-# # Save correlation matrix
-# write_csv(as.data.frame(correlation_matrix), "outputs/tables/correlation_matrix.csv")
-# 
-# # Find highly correlated features (>0.9)
-# high_corr_pairs <- findCorrelation(correlation_matrix, cutoff = 0.9, names = TRUE)
-# 
-# # Variance analysis
-# near_zero_var_indices <- nearZeroVar(final_feature_data)
-# near_zero_var_names <- names(final_feature_data)[near_zero_var_indices]
-# 
-# # Create feature selection summary
-# feature_selection_summary <- data.frame(
-#   metric = c("Total Features", "Numeric Features", "High Correlation Features", "Near Zero Variance Features"),
-#   count = c(ncol(final_feature_data), ncol(numeric_only_data), length(high_corr_pairs), length(near_zero_var_names)),
-#   details = c("All features in dataset", "Features suitable for correlation analysis", 
-#               paste(high_corr_pairs, collapse = ", "), paste(near_zero_var_names, collapse = ", "))
-# )
-# 
-# write_csv(feature_selection_summary, "outputs/tables/feature_selection_summary.csv")
-# 
-# # Save final data for modeling
-# write_csv(final_feature_data, "data/processed/engineered_features.csv")
-# 
-# # Create comprehensive feature documentation
-# feature_summary <- final_feature_data %>%
-#   summarise(across(where(is.numeric), 
-#                    list(mean = ~mean(.x, na.rm = TRUE), 
-#                         sd = ~sd(.x, na.rm = TRUE), 
-#                         min = ~min(.x, na.rm = TRUE), 
-#                         max = ~max(.x, na.rm = TRUE),
-#                         missing = ~sum(is.na(.x))),
-#                    .names = "{.col}_{.fn}"))
-# 
-# # Transpose for better readability
-# feature_summary_t <- feature_summary %>%
-#   pivot_longer(everything(), names_to = "feature_stat", values_to = "value") %>%
-#   separate(feature_stat, into = c("feature", "statistic"), sep = "_(?=[^_]*$)") %>%
-#   pivot_wider(names_from = statistic, values_from = value) %>%
-#   arrange(feature)
-# 
-# write_csv(feature_summary_t, "outputs/tables/feature_summary_stats.csv")
-# 
-# # 8 ANOVA on Engineered Features ####
-# 
-# # Test all engineered features that were created - ALIGNED WITH TABLE
-# engineered_feature_tests <- list()
-# 
-# # Test features that exist in the dataset
-# if("cost_vs_national" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["cost_vs_national"]] <- aov(charges ~ cost_vs_national, data = insurance_with_benchmarks)
-# }
-# 
-# if("age_smoker_interaction" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["age_smoker_interaction"]] <- aov(charges ~ age_smoker_interaction, data = insurance_with_benchmarks)
-# }
-# 
-# if("age_sex_interaction" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["age_sex_interaction"]] <- aov(charges ~ age_sex_interaction, data = insurance_with_benchmarks)
-# }
-# 
-# if("high_risk_combo" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["high_risk_combo"]] <- aov(charges ~ high_risk_combo, data = insurance_with_benchmarks)
-# }
-# 
-# if("risk_score" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["risk_score"]] <- aov(charges ~ risk_score, data = insurance_with_benchmarks)
-# }
-# 
-# if("age_squared" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["age_squared"]] <- aov(charges ~ age_squared, data = insurance_with_benchmarks)
-# }
-# 
-# if("bmi_squared" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["bmi_squared"]] <- aov(charges ~ bmi_squared, data = insurance_with_benchmarks)
-# }
-# 
-# if("age_bmi_interaction" %in% names(insurance_with_benchmarks)) {
-#   engineered_feature_tests[["age_bmi_interaction"]] <- aov(charges ~ age_bmi_interaction, data = insurance_with_benchmarks)
-# }
-# 
-# # Extract results from engineered feature tests using your existing function
-# engineered_test_results <- data.frame()
-# 
-# for(test_name in names(engineered_feature_tests)) {
-#   result <- extract_anova_results_enhanced(engineered_feature_tests[[test_name]], test_name)
-#   engineered_test_results <- rbind(engineered_test_results, result)
-# }
-# 
-# # Save engineered feature ANOVA results
-# write_csv(engineered_test_results, "outputs/tables/engineered_features_anova_results.csv")
-# 
-# # 8.1 Update Engineered Features ANOVA Plan with Results ####
-# 
-# # Function to properly update engineered features plan with actual results - FIXED
-# update_engineered_plan_with_results <- function(plan, results) {
-#   # Create a copy of the plan to update
-#   plan_updated <- plan %>%
-#     mutate(
-#       f_value = NA_real_,
-#       p_value = NA_character_,
-#       significance = NA_character_,
-#       status = "Not Completed"
-#     )
-#   
-#   # Create a mapping between plan anova_code and test results
-#   variable_mapping <- list(
-#     "cost_vs_national" = "cost_vs_national",
-#     "age_smoker_interaction" = "age_smoker_interaction",
-#     "age_sex_interaction" = "age_sex_interaction", 
-#     "high_risk_combo" = "high_risk_combo",
-#     "risk_score" = "risk_score",
-#     "age_squared" = "age_squared",
-#     "bmi_squared" = "bmi_squared",
-#     "age_bmi_interaction" = "age_bmi_interaction"
-#   )
-#   
-#   # Loop through each row in the plan
-#   for(i in 1:nrow(plan_updated)) {
-#     # Use anova_code column instead of variables
-#     plan_variable <- plan_updated$anova_code[i]
-#     
-#     # Check if plan_variable has a valid value
-#     if(length(plan_variable) > 0 && !is.na(plan_variable) && plan_variable %in% names(variable_mapping)) {
-#       test_variable <- variable_mapping[[plan_variable]]
-#       
-#       # Find matching result in results data
-#       matching_result <- results %>% 
-#         filter(test_name == test_variable & term == test_variable) %>%
-#         slice_head(n = 1)
-#       
-#       if(nrow(matching_result) > 0 && !is.na(matching_result$f_value)) {
-#         # Update plan with results
-#         plan_updated$f_value[i] <- round(matching_result$f_value, 3)
-#         
-#         # Format p-value
-#         p_val <- matching_result$p_value
-#         plan_updated$p_value[i] <- if_else(p_val < 0.001, "< 0.001", 
-#                                            as.character(round(p_val, 4)))
-#         
-#         # Assign significance codes
-#         plan_updated$significance[i] <- case_when(
-#           p_val < 0.001 ~ "***",
-#           p_val < 0.01 ~ "**", 
-#           p_val < 0.05 ~ "*",
-#           p_val < 0.1 ~ ".",
-#           TRUE ~ "ns"
-#         )
-#         
-#         plan_updated$status[i] <- "Completed"
-#       }
-#     }
-#   }
-#   
-#   return(plan_updated)
-# }
-# 
-# # Apply the update function
-# engineered_anova_plan_final <- update_engineered_plan_with_results(
-#   engineered_anova_plan_updated, 
-#   engineered_test_results
-# )
-# 
-# # Save the updated plan
-# write_csv(engineered_anova_plan_final, "outputs/tables/engineered_features_anova_plan.csv")
-# 
-# ## 8.2 Create Summary Reports for Engineered Features ####
-# 
-# # Summary of completed engineered feature tests
-# engineered_completed_summary <- engineered_anova_plan_final %>%
-#   filter(status == "Completed" & !is.na(f_value)) %>%
-#   arrange(desc(f_value)) %>%
-#   select(anova_code, what_it_tests, f_value, p_value, significance, expected_significance)
-# 
-# write_csv(engineered_completed_summary, "outputs/tables/engineered_features_completed_summary.csv")
-# 
-# # Summary by significance level
-# engineered_significance_summary <- engineered_anova_plan_final %>%
-#   filter(status == "Completed") %>%
-#   count(significance, expected_significance) %>%
-#   arrange(expected_significance, significance)
-# 
-# write_csv(engineered_significance_summary, "outputs/tables/engineered_features_significance_summary.csv")
-# 
-# # 9 Final Data Quality Checks ####
+# 9 Analytics ####
+
+
+# 10 Model Selection ####
+
+# A Final Data Quality Checks ####
 # 
 # # Check for missing values
 # missing_values_summary <- final_feature_data %>%
@@ -1730,7 +1780,7 @@ write_csv(feature_summary, "outputs/tables/feature_engineering_completion_summar
 # 
 # write_csv(feature_count_summary, "outputs/tables/final_feature_count_summary.csv")
 # 
-# # 10 Final Summary Report ####
+# B Final Summary Report ####
 # 
 # # Merge summaries of both original and engineered ANOVA results
 # all_completed_tests <- bind_rows(

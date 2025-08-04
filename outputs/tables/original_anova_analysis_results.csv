@@ -1,0 +1,13 @@
+analysis_id,analysis_type,variables,f_value,p_value,eta_squared,significant,effect_size_interpretation
+1,One-way,smoker → charges,2177.615,0,0.62,TRUE,Very Large
+2,One-way,sex → charges,4.4,0.036,0.003,TRUE,Small
+3,One-way,age_group_standard → charges,92.015,0,0.064,TRUE,Large
+4,One-way,bmi_category → charges,18.731,0,0.04,TRUE,Medium
+5,One-way,region → charges,2.97,0.031,0.007,TRUE,Small
+6,One-way,has_children → charges,5.627,0.018,0.004,TRUE,Small
+7,Two-way,smoker × sex → charges,2188.851,0,0.62,TRUE,Very Large
+8,Two-way,smoker × age_group → charges,1.296,0.255,0,FALSE,Small
+9,Two-way,sex × age_group → charges,0.056,0.813,0,FALSE,Small
+10,Two-way,bmi_category × smoker → charges,194.236,0,0.103,TRUE,Large
+11,Two-way,bmi_category × sex → charges,1.657,0.174,0.004,FALSE,Small
+12,Two-way,has_children × sex → charges,0.329,0.566,0,FALSE,Small

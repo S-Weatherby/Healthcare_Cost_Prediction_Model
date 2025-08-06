@@ -1134,7 +1134,7 @@ apply_encoding_strategies <- function(data) {
   write_csv(top_features, "outputs/tables/top_performing_features.csv")
 
 # 9 Scaling and Normalization Prep ####
-  ##principal component analysis - most important features that capture the majority of the variance in the data
+  ##principal component analysis (PCA method) - most important features that capture the majority of the variance in the data
 
 prepare_for_scaling <- function(data) {
   
@@ -1145,7 +1145,7 @@ prepare_for_scaling <- function(data) {
     colnames()
   
   # Remove zero variance columns
-  zero_variance_cols <- numeric_cols[map_lgl(numeric_cols, function(col) {
+  zero_variance_cols <- numeric_cols[sapply(numeric_cols, function(col) {
     var(data[[col]], na.rm = TRUE) == 0
   })]
   
@@ -1157,10 +1157,10 @@ prepare_for_scaling <- function(data) {
   # Create scaling assessment
   scaling_needs <- tibble(
     feature = numeric_cols,
-    mean_val = map_dbl(numeric_cols, ~mean(data[[.x]], na.rm = TRUE)),
-    sd_val = map_dbl(numeric_cols, ~sd(data[[.x]], na.rm = TRUE)),
-    min_val = map_dbl(numeric_cols, ~min(data[[.x]], na.rm = TRUE)),
-    max_val = map_dbl(numeric_cols, ~max(data[[.x]], na.rm = TRUE)),
+    mean_val = sapply(numeric_cols, function(x) mean(data[[x]], na.rm = TRUE)),
+    sd_val = sapply(numeric_cols, function(x) sd(data[[x]], na.rm = TRUE)),
+    min_val = sapply(numeric_cols, function(x) min(data[[x]], na.rm = TRUE)),
+    max_val = sapply(numeric_cols, function(x) max(data[[x]], na.rm = TRUE)),
     range_val = max_val - min_val,
     cv = abs(sd_val / mean_val),
     
@@ -1189,25 +1189,43 @@ write_csv(scaling_prep$data, "data/processed/insurance_ready_for_scaling.csv")
 ## Select features based on effect size (PCA-inspired approach)
 
 # High-impact feature set (Large + Medium effect sizes for PCA-style selection)
-high_impact_features <- complete_feature_analysis %>%
-  filter(significant == TRUE, eta_squared >= 0.06) %>%
-  pull(feature_name)
-
-# Essential feature set (based on ANOVA priorities)
-essential_features <- updated_master_table %>%
-  filter(created == TRUE, anova_priority %in% c("Very_High", "High")) %>%
-  pull(feature_name)
+if (exists("complete_feature_analysis") && nrow(complete_feature_analysis) > 0) {
+  high_impact_features <- complete_feature_analysis %>%
+    filter(significant == TRUE, eta_squared >= 0.06) %>%
+    pull(feature_name)
+  # Essential feature set (based on ANOVA priorities)
+  essential_features <- updated_master_table %>%
+    filter(created == TRUE, anova_priority %in% c("Very_High", "High")) %>%
+    pull(feature_name)
+} else {
+  high_impact_features <- c("smoker_cost_multiplier", "smoker_age_interaction", 
+                            "smoker_sex_combo", "compound_lifestyle_risk", 
+                            "health_risk_score", "age_cost_curve")
+  essential_features <- c("smoker_cost_multiplier", "sex_cost_premium", 
+                          "bmi_risk_factor", "age_cost_curve")
+}
 
 # Create feature sets that exist in the data
 available_high_impact <- high_impact_features[high_impact_features %in% colnames(cost_efficiency_segments)]
 available_essential <- essential_features[essential_features %in% colnames(cost_efficiency_segments)]
 
-# Create modeling datasets (unscaled)
-modeling_data_high_impact <- cost_efficiency_segments %>%
-  select(all_of(c("charges", available_high_impact)))
+# Create modeling datasets (unscaled) w/ error handling
 
-modeling_data_essential <- cost_efficiency_segments %>%
-  select(all_of(c("charges", available_essential)))
+if (length(available_high_impact) > 0) {
+  modeling_data_high_impact <- cost_efficiency_segments %>%
+    select(all_of(c("charges", available_high_impact)))
+} else {
+  modeling_data_high_impact <- cost_efficiency_segments %>%
+    select(charges, smoker_cost_multiplier, compound_lifestyle_risk, health_risk_score)
+}
+
+if (length(available_essential) > 0) {
+  modeling_data_essential <- cost_efficiency_segments %>%
+    select(all_of(c("charges", available_essential)))
+} else {
+  modeling_data_essential <- cost_efficiency_segments %>%
+    select(charges, smoker_cost_multiplier, sex_cost_premium, bmi_risk_factor)
+}
 
 ## Apply scaling to selected features only
 scale_modeling_data <- function(data) {
@@ -1279,8 +1297,6 @@ feature_selection_summary <- tibble(
 )
 
 write_csv(feature_selection_summary, "outputs/tables/feature_selection_summary.csv")
-
-
 
 # .1 Data Dictionary Update ####
 ## Data Dictionary Update for Feature Engineering (Script 2)

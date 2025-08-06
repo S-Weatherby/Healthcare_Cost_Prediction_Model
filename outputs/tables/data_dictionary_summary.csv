@@ -1,0 +1,8 @@
+source,n_variables,n_numeric,n_categorical,total_missing,avg_missing_pct
+ANOVA Analysis Results,7,4,2,0,0
+Kaggle Medical Insurance Dataset,7,4,3,0,0
+Derived from age,1,0,1,0,0
+Derived from bmi,1,0,1,0,0
+Derived from charges,1,0,1,0,0
+Derived from children,1,0,1,0,0
+Standardized from age,1,0,1,0,0

@@ -1,0 +1,51 @@
+feature_name,f_value,p_value,eta_squared,significant,effect_size_interpretation,analysis_source
+compound_lifestyle_risk,4618.743634273023,0,0.7756410549212319,TRUE,Large,Advanced_Features
+charges_percentile_rank,4556.061484170344,0,0.773254233074568,TRUE,Large,Engineered_Features
+smoker_bmi_interaction,617.116610570938,0,0.7645941150119586,TRUE,Large,Engineered_Features
+compound_risk_score,3570.7006804855914,0,0.7277192787990111,TRUE,Large,Engineered_Features
+health_risk_score,3405.6848284938187,0,0.7182436099565965,TRUE,Large,Engineered_Features
+smoker_age_interaction,1052.2102173093358,0,0.7029370475108523,TRUE,Large,Engineered_Features
+cost_efficiency_quintiles,723.8314859363691,0,0.6847452117612247,TRUE,Large,Advanced_Features
+smoker_region_combo,320.1170134661866,6.369686344645939e-280,0.6275364377498962,TRUE,Large,Engineered_Features
+smoker_years_estimate,2207.0145726506225,3.1559797654383207e-285,0.6229199816695857,TRUE,Large,Engineered_Features
+smoker_sex_combo,732.5817119746994,2.1477872640258553e-281,0.622283050260094,TRUE,Large,Engineered_Features
+smoker → charges,2177.615,0,0.62,TRUE,Very Large,Original_Variables
+smoker × sex → charges,2188.851,0,0.62,TRUE,Very Large,Original_Variables
+smoker_cost_multiplier,2177.6148680565598,8.271435842111365e-283,0.6197648148219033,TRUE,Large,Engineered_Features
+smoker_encoded,2177.6148680565598,8.271435842111365e-283,0.6197648148219033,TRUE,Large,Engineered_Features
+outlier_detection_flags,505.31709906313716,3.113582129600301e-265,0.6025959039266946,TRUE,Large,Advanced_Features
+smoker_age_severity_index,1380.1247612234474,4.425498428696534e-208,0.5081227419766138,TRUE,Large,Advanced_Features
+individual_vs_cohort_ratio,727.1376071196705,3.152800243868018e-128,0.3524426119762416,TRUE,Large,Advanced_Features
+metabolic_syndrome_risk,25.56784322844934,7.229007582575081e-29,0.10334568163245728,TRUE,Medium,Advanced_Features
+bmi_category × smoker → charges,194.236,0,0.103,TRUE,Large,Original_Variables
+age_squared,132.88063347756338,2.2348190735045753e-29,0.09046387463286948,TRUE,Medium,Engineered_Features
+age_bins,14.566865334597589,1.06786672772648e-22,0.08985102279263053,TRUE,Medium,Engineered_Features
+age_cubed,129.40792379692778,1.0992029920050388e-28,0.08830846462302944,TRUE,Medium,Engineered_Features
+age_log,122.64412929160751,2.4756512753748836e-27,0.0840809124232174,TRUE,Medium,Engineered_Features
+age_region_interaction,15.397840722094367,1.7401292294387523e-19,0.07496593278664414,TRUE,Medium,Engineered_Features
+has_children_age_interaction,33.82710707935962,4.521093371362283e-21,0.07069497856687741,TRUE,Medium,Engineered_Features
+age_cost_curve,92.01499641418556,4.046001302246794e-21,0.06443559531604336,TRUE,Medium,Engineered_Features
+age_group_standard → charges,92.015,0,0.064,TRUE,Large,Original_Variables
+sex_bmi_interaction,9.211750777384383,3.6429578914729065e-11,0.04624100105258525,TRUE,Small,Engineered_Features
+bmi_category_encoded,18.73063972881844,6.6627976806919644e-12,0.04042026026114366,TRUE,Small,Engineered_Features
+bmi_health_category,18.73063972881844,6.6627976806919644e-12,0.04042026026114366,TRUE,Small,Engineered_Features
+bmi_risk_factor,18.73063972881844,6.6627976806919644e-12,0.04042026026114365,TRUE,Small,Engineered_Features
+bmi_category → charges,18.731,0,0.04,TRUE,Medium,Original_Variables
+bmi_log,55.241805032832794,1.8956734352157408e-13,0.03970683229399438,TRUE,Small,Engineered_Features
+bmi_squared,51.679282791787436,1.083960931220557e-12,0.03724151785837509,TRUE,Small,Engineered_Features
+region_children_interaction,2.4626899428905342,0.016391831472321417,0.01279567454669416,TRUE,Small,Engineered_Features
+family_cost_optimization,3.657294945597849,0.0057054826117120885,0.01085549348579232,TRUE,Small,Advanced_Features
+region → charges,2.97,0.031,0.007,TRUE,Small,Original_Variables
+region_encoded,2.9696266935891105,0.03089335607049773,0.0066340168070312565,TRUE,Negligible,Engineered_Features
+region_cost_index,2.9696266935890634,0.030893356070499742,0.0066340168070311515,TRUE,Negligible,Engineered_Features
+region_cost_multiplier,2.9696266935890634,0.030893356070499742,0.0066340168070311515,TRUE,Negligible,Engineered_Features
+regional_market_tier,3.910930424637059,0.020251675051913148,0.005824943037736328,TRUE,Negligible,Engineered_Features
+has_children_factor,5.626674005248964,0.017830174683564327,0.0041939193027903015,TRUE,Negligible,Engineered_Features
+has_children → charges,5.627,0.018,0.004,TRUE,Small,Original_Variables
+bmi_category × sex → charges,1.657,0.174,0.004,FALSE,Small,Original_Variables
+sex_cost_premium,4.399701697437463,0.03613272100592978,0.003282380391360747,TRUE,Negligible,Engineered_Features
+sex_encoded,4.399701697437463,0.03613272100592978,0.003282380391360747,TRUE,Negligible,Engineered_Features
+sex → charges,4.4,0.036,0.003,TRUE,Small,Original_Variables
+smoker × age_group → charges,1.296,0.255,0,FALSE,Small,Original_Variables
+sex × age_group → charges,0.056,0.813,0,FALSE,Small,Original_Variables
+has_children × sex → charges,0.329,0.566,0,FALSE,Small,Original_Variables

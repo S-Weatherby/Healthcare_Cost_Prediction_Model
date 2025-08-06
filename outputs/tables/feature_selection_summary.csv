@@ -1,0 +1,5 @@
+dataset,n_features,n_observations,selection_criteria
+High Impact,23,1338,eta_squared >= 0.06 (Medium+ effect)
+Essential,10,1338,ANOVA priority: Very_High + High
+High Impact Scaled,28,1338,eta_squared >= 0.06 + scaled
+Essential Scaled,10,1338,ANOVA priority: Very_High + High + scaled

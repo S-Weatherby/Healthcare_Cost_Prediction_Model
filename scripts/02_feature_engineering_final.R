@@ -12,6 +12,38 @@ library(fastDummies)
 library(caret)
 library(corrplot)
 
+# Data dictionary setup
+data_dictionary <- tibble(
+  variable_name = character(),
+  data_type = character(),
+  source = character(),
+  description = character(),
+  possible_values = character(),
+  missing_count = numeric(),
+  missing_percent = numeric(),
+  notes = character()
+)
+
+add_to_dictionary <- function(var_name, data_type, source, description, possible_values = "", notes = "") {
+  new_row <- tibble(
+    variable_name = var_name,
+    data_type = data_type,
+    source = source,
+    description = description,
+    possible_values = possible_values,
+    missing_count = 0,
+    missing_percent = 0,
+    notes = notes
+  )
+  data_dictionary <<- bind_rows(data_dictionary, new_row)
+}
+
+update_dictionary <- function(var_name, notes) {
+  if (var_name %in% data_dictionary$variable_name) {
+    data_dictionary$notes[data_dictionary$variable_name == var_name] <<- notes
+  }
+}
+
 # Ensure output directories exist
 if (!dir.exists("outputs/tables")) dir.create("outputs/tables", recursive = TRUE)
 if (!dir.exists("data/processed")) dir.create("data/processed", recursive = TRUE)
@@ -913,26 +945,18 @@ apply_encoding_strategies <- function(data) {
   
   cost_efficiency_segments <- insurance_encoded %>%
     mutate(
-      # Core efficiency metrics
       cost_per_risk_point = charges / compound_lifestyle_risk,
-      benchmark_deviation_quartile = ntile(abs(individual_vs_cohort_ratio - 1), 4),
-      
-      # Regional optimization opportunities
       regional_cost_opportunity = case_when(
         region_cost_index < 1.0 & charges > median(charges) ~ "Underpriced_Market",
         region_cost_index > 1.0 & charges < median(charges) ~ "Overpriced_Market", 
         TRUE ~ "Appropriately_Priced"
       ),
-      
-      # Family efficiency categorization
       family_efficiency_category = case_when(
         children == 0 ~ "Individual",
         children > 0 & cost_per_risk_point < median(cost_per_risk_point) ~ "Efficient_Family",
         children > 0 & cost_per_risk_point >= median(cost_per_risk_point) ~ "Inefficient_Family",
         TRUE ~ "Standard_Family"
       ),
-      
-      # Business Intelligence segments
       high_value_low_risk = case_when(
         compound_lifestyle_risk < 2.0 & 
           charges > quantile(charges, 0.75) ~ "High_Value_Low_Risk",
@@ -940,8 +964,6 @@ apply_encoding_strategies <- function(data) {
           charges < quantile(charges, 0.25) ~ "Low_Value_High_Risk",
         TRUE ~ "Standard_Profile"
       ),
-      
-      # Intervention priority targeting
       intervention_priority = case_when(
         outlier_detection_flags == "Risk_Cost_Mismatch" ~ "High_Priority",
         smoker == "yes" & age > 45 & charges > 25000 ~ "Smoking_Cessation_Target",
@@ -949,8 +971,6 @@ apply_encoding_strategies <- function(data) {
         charges > quantile(charges, 0.90) ~ "Care_Coordination_Target",
         TRUE ~ "Standard_Care"
       ),
-      
-      # Market opportunity identification
       market_opportunity = case_when(
         region_cost_index > 1.1 & 
           cost_efficiency_quintiles >= 4 ~ "Premium_Market_Opportunity",
@@ -958,8 +978,6 @@ apply_encoding_strategies <- function(data) {
           cost_efficiency_quintiles <= 2 ~ "Value_Market_Opportunity",
         TRUE ~ "Saturated_Market"
       ),
-      
-      # Risk pool subsidization analysis
       subsidization_role = case_when(
         compound_lifestyle_risk < 1.5 & 
           charges < quantile(charges, 0.4) ~ "Cross_Subsidizer",

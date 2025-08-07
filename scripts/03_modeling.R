@@ -279,5 +279,6 @@ step_r2 <- R2(step_pred_val, validation_data_hi_scaled$charges)
 
 plot(lm_full)
 
-## Regularized Regression
+## 3.2 Regularized Regression ####
+
 

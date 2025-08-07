@@ -31,27 +31,25 @@ high_impact_data <- load_data_safely("data/processed/modeling_data_high_impact.c
 essential_data <- load_data_safely("data/processed/modeling_data_essential.csv")
 high_impact_scaled <- load_data_safely("data/processed/modeling_data_high_impact_scaled.csv")
 essential_scaled <- load_data_safely("data/processed/modeling_data_essential_scaled.csv")
-ential_scaled <- read_csv("data/processed/modeling_data_essential_scaled.csv")
 
 # reference tables
 complete_feature_analysis <- read_csv("outputs/tables/complete_feature_analysis_final.csv")
 top_features <- read_csv("outputs/tables/top_performing_features.csv")
 
-# high impact data as primary dataset
-modeling_data <- high_impact_data
-
 # 1 Data Exploration ####
+
+## 1.1.1 High Impact Data ####
 
 dataset_summary <- tibble(
   dataset = "Primary Modeling Data",
-  n_features = ncol(modeling_data) - 1,
-  n_observations = nrow(modeling_data),
-  target_mean = mean(modeling_data$charges),
-  target_sd = sd(modeling_data$charges)
+  n_features = ncol(high_impact_data) - 1,
+  n_observations = nrow(high_impact_data),
+  target_mean = mean(high_impact_data$charges),
+  target_sd = sd(high_impact_data$charges)
 )
 
-## 1.2 Target Variable Analysis ####
-charges_analysis <- modeling_data %>%
+## 1.1.2 Target Variable Analysis ####
+charges_analysis <- high_impact_data %>%
   summarise(
     mean_charges = mean(charges),
     median_charges = median(charges),
@@ -60,8 +58,8 @@ charges_analysis <- modeling_data %>%
     max_charges = max(charges)
   )
 
-# 1.3 Feature Correlation ####
-numeric_features <- modeling_data %>% select_if(is.numeric)
+## 1.1.3 Feature Correlation ####
+numeric_features <- high_impact_data %>% select_if(is.numeric)
 cor_matrix <- cor(numeric_features, use = "complete.obs")
 
 # Identify highly correlated features (>0.8)
@@ -69,32 +67,68 @@ high_cor_features <- findCorrelation(cor_matrix, cutoff = 0.8, names = TRUE)
 
 # 2 Data Pre-processing ####
 
-## 2.1 Missing values check
-missing_summary <- modeling_data %>%
+set.seed(123)  # For reproducibility 
+
+## 2.1.1 Missing values check High Impact
+missing_summary <- high_impact_data %>%
   summarise_all(~sum(is.na(.))) %>%
   gather(variable, missing_count) %>%
-  mutate(missing_percentage = missing_count / nrow(modeling_data) * 100) %>%
+  mutate(missing_percentage = missing_count / nrow(high_impact_data) * 100) %>%
   filter(missing_count > 0)
 
-## 2.2 Train/Validation/Test Split for modeling_data (High_Impact_data_unscaled) ####
+## 2.2 Train/Validation/Test Split for modeling_data ####
 
-set.seed(123)  # For reproducibility
-
+### 2.2.1 Create Train/Validation/Test Splits for High Impact Data (Unscaled) ####
 # Create stratified split based on charges quartiles
-modeling_data$charges_quartile <- ntile(modeling_data$charges, 4)
+high_impact_data$charges_quartile <- ntile(high_impact_data$charges, 4)
 
 # 70% train, 15% validation, 15% test
-train_indices <- createDataPartition(modeling_data$charges_quartile, 
-                                     p = 0.70, list = FALSE)
-temp_data <- modeling_data[-train_indices, ]
-val_test_indices <- createDataPartition(temp_data$charges_quartile, 
-                                        p = 0.5, list = FALSE)
+train_idx_hi <- createDataPartition(high_impact_data$charges_quartile, p = 0.70, list = FALSE)
+temp_data_hi <- high_impact_data[-train_idx_hi, ]
+val_test_idx_hi <- createDataPartition(temp_data_hi$charges_quartile, p = 0.5, list = FALSE)
 
-train_data <-modeling_data[train_indices, ] %>% select(-charges_quartile)
-validation_data <- temp_data[val_test_indices, ] %>% select(-charges_quartile)
-test_data <- temp_data[-val_test_indices, ] %>% select(-charges_quartile)
+train_data_hi <- high_impact_data[train_idx_hi, ] %>% select(-charges_quartile)
+validation_data_hi <- temp_data_hi[val_test_idx_hi, ] %>% select(-charges_quartile)
+test_data_hi <- temp_data_hi[-val_test_idx_hi, ] %>% select(-charges_quartile)
 
-## 2.3 Train/Validation/Test Split for other ______ data set; to be done ####
+### 2.2.2 Create Train/Validation/Test Splits for High Impact Data (Scaled) ####
+# Create stratified split based on charges quartiles
+high_impact_scaled$charges_quartile <- ntile(high_impact_scaled$charges, 4)
+
+# 70% train, 15% validation, 15% test
+train_idx_hi_scaled <- createDataPartition(high_impact_scaled$charges_quartile, p = 0.70, list = FALSE)
+temp_data_hi_scaled <- high_impact_scaled[-train_idx_hi_scaled, ]
+val_test_idx_hi_scaled <- createDataPartition(temp_data_hi_scaled$charges_quartile, p = 0.5, list = FALSE)
+
+train_data_hi_scaled <- high_impact_scaled[train_idx_hi_scaled, ] %>% select(-charges_quartile)
+validation_data_hi_scaled <- temp_data_hi_scaled[val_test_idx_hi_scaled, ] %>% select(-charges_quartile)
+test_data_hi_scaled <- temp_data_hi_scaled[-val_test_idx_hi_scaled, ] %>% select(-charges_quartile)
+
+### 2.2.3 Create Train/Validation/Test Splits for Essential Data (Unscaled) ####
+# Create stratified split based on charges quartiles
+essential_data$charges_quartile <- ntile(essential_data$charges, 4)
+
+# 70% train, 15% validation, 15% test
+train_idx_ess <- createDataPartition(essential_data$charges_quartile, p = 0.70, list = FALSE)
+temp_data_ess <- essential_data[-train_idx_ess, ]
+val_test_idx_ess <- createDataPartition(temp_data_ess$charges_quartile, p = 0.5, list = FALSE)
+
+train_data_ess <- essential_data[train_idx_ess, ] %>% select(-charges_quartile)
+validation_data_ess <- temp_data_ess[val_test_idx_ess, ] %>% select(-charges_quartile)
+test_data_ess <- temp_data_ess[-val_test_idx_ess, ] %>% select(-charges_quartile)
+
+### 2.2.4 Create Train/Validation/Test Splits for Essential Data (Scaled) ####
+# Create stratified split based on charges quartiles
+essential_scaled$charges_quartile <- ntile(essential_scaled$charges, 4)
+
+# 70% train, 15% validation, 15% test
+train_idx_ess_scaled <- createDataPartition(essential_scaled$charges_quartile, p = 0.70, list = FALSE)
+temp_data_ess_scaled <- essential_scaled[-train_idx_ess_scaled, ]
+val_test_idx_ess_scaled <- createDataPartition(temp_data_ess_scaled$charges_quartile, p = 0.5, list = FALSE)
+
+train_data_ess_scaled <- essential_scaled[train_idx_ess_scaled, ] %>% select(-charges_quartile)
+validation_data_ess_scaled <- temp_data_ess_scaled[val_test_idx_ess_scaled, ] %>% select(-charges_quartile)
+test_data_ess_scaled <- temp_data_ess_scaled[-val_test_idx_ess_scaled, ] %>% select(-charges_quartile)
 
 # 3 Baseline Models ####
 ## Linear Regression, (baseline performance)

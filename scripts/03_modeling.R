@@ -84,6 +84,8 @@ charges_analysis <- high_impact_data %>%
     mean_charges = mean(charges),
     median_charges = median(charges),
     sd_charges = sd(charges),
+    skewness = moments::skewness(charges),
+    kurtosis = moments::kurtosis(charges),
     min_charges = min(charges),
     max_charges = max(charges)
   )
@@ -252,7 +254,7 @@ formula_simple <- as.formula(paste("charges ~", paste(top_5_features, collapse =
 # available_features <- top_5_features[top_5_features %in% names(train_data_ess_scaled)]
 # formula_essential <- as.formula(paste("charges ~", paste(available_features, collapse = " + ")))
 
-### 3.1.1 HI Scaled Simple LM
+### 3.1.1 HI Scaled Simple LM top 5 features
 lm_hi_scaled_simp <- lm(formula_simple, data = train_data_hi_scaled)
 summary(lm_hi_scaled_simp)
 
@@ -261,16 +263,32 @@ hi_scaled_lm_pred_val <- predict(lm_hi_scaled_simp, validation_data_hi_scaled)
 lm_rmse <- RMSE(hi_scaled_lm_pred_val, validation_data_hi_scaled$charges)
 lm_r2 <- R2(hi_scaled_lm_pred_val, validation_data_hi_scaled$charges)
 
-plot(lm_hi_scaled_simp)
+# save simple diagnostic plots
+png("outputs/plots/simple_linear_diagnostics.png", width = 1200, height = 800, res = 100)
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+plot(lm_hi_scaled_simp, main = "Simple Linear Model Diagnostics")
+dev.off()
 
 ### 3.1.2 Top Features Linear Regression ###
 # Full model with Top Features
 lm_full <- lm(charges ~ ., data = train_data_hi_scaled)
 summary(lm_full)
 
+# Save full model diagnostic plots
+png("outputs/plots/full_linear_diagnostics.png", width = 1200, height = 800, res = 100)
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+plot(lm_full, main = "Full Linear Model Diagnostics")
+dev.off()
+
 # Stepwise selection
 lm_step <- step(lm_full, direction = "both")
 summary(lm_step)
+
+# Save stepwise model diagnostic plots
+png("outputs/plots/stepwise_linear_diagnostics.png", width = 1200, height = 800, res = 100)
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+plot(lm_step, main = "Stepwise Linear Model Diagnostics")
+dev.off()
 
 # Evaluate stepwise model
 step_pred_val <- predict(lm_step, validation_data_hi_scaled)
@@ -278,6 +296,8 @@ step_rmse <- RMSE(step_pred_val, validation_data_hi_scaled$charges)
 step_r2 <- R2(step_pred_val, validation_data_hi_scaled$charges)
 
 plot(lm_full)
+
+### 3.1.3 Linear Model Comparison
 
 ## 3.2 Regularized Regression ####
 

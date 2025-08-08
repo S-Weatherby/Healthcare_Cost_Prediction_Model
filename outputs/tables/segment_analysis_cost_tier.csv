@@ -1,0 +1,4 @@
+"cost_tier","n_observations","mean_actual","mean_predicted","mean_percentage_error","median_percentage_error","rmse_segment"
+"Low Cost",66,3617.25,3705.17,3.81,1.93,106.25
+"Medium Cost",68,9629.87,9646.28,0.31,0.29,32.81
+"High Cost",66,26964.87,26919.28,0.51,0.33,348.64

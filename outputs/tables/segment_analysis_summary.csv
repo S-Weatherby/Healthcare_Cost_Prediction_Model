@@ -1,0 +1,4 @@
+"Segment","Category","Mean_Percentage_Error","RMSE","Sample_Size"
+"Cost Tier","Low Cost",3.81,106.25,66
+"Cost Tier","Medium Cost",0.31,32.81,68
+"Cost Tier","High Cost",0.51,348.64,66

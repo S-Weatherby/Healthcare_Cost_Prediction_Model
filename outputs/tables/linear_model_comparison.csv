@@ -1,0 +1,4 @@
+"Model","Features","RMSE","R_squared","Adj_R_squared","AIC"
+"Simple (Top 5)",5,3015.84,0.9394,0.9421,17638.9
+"Stepwise",17,2288.96,0.965,0.9742,16890.9
+"Full Model",39,2311.62,0.9643,0.9742,16908.7

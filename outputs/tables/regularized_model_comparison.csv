@@ -1,0 +1,4 @@
+"Model","RMSE","R_squared","Lambda_Min","Features_Selected"
+"Ridge",2432.7549,0.9606,1075.5557,39
+"Lasso",2270.8429,0.9655,1.1804,35
+"Elastic Net",2247.9273,0.9662,15.1757,28

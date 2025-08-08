@@ -1,0 +1,9 @@
+"Model","RMSE","R_squared","Type","Rank_RMSE","MAE"
+"GBM",886.6347,0.995,"Tree-based",1,149.54
+"Random Forest",938.8469,0.9945,"Tree-based",2,332.68
+"Elastic Net",2247.9273,0.9662,"Regularized",3,1239.8
+"Lasso",2270.8429,0.9655,"Regularized",4,1182.72
+"Stepwise",2288.96,0.965,"Linear",5,1177.98
+"Full Model",2311.62,0.9643,"Linear",6,1186.36
+"Ridge",2432.7549,0.9606,"Regularized",7,1522.31
+"Simple (Top 5)",3015.84,0.9394,"Linear",8,2234.61
